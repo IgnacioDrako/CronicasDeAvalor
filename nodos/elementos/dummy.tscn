@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=3 uid="uid://boukh04k5k6qn"]
+
+[ext_resource type="Script" path="res://codigo/dummy.gd" id="1_red3k"]
+[ext_resource type="Texture2D" uid="uid://bdxu1or47pj8g" path="res://recursos/Enemigos/Training Dummy Sprite Sheet.png" id="2_ocgdq"]
+[ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="3_eib1x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ubc8"]
+atlas = ExtResource("2_ocgdq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8nlq"]
+atlas = ExtResource("2_ocgdq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd6o1"]
+atlas = ExtResource("2_ocgdq")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kjca"]
+atlas = ExtResource("2_ocgdq")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pig0i"]
+atlas = ExtResource("2_ocgdq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qofw"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ubc8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8nlq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dd6o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kjca")
+}],
+"loop": true,
+"name": &"hit0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pig0i")
+}],
+"loop": true,
+"name": &"idel",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecd22"]
+size = Vector2(21, 46)
+
+[node name="Dummy" type="CharacterBody2D"]
+script = ExtResource("1_red3k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -32)
+scale = Vector2(1.60938, 2.04688)
+sprite_frames = SubResource("SpriteFrames_2qofw")
+animation = &"idel"
+
+[node name="hurtboxenemi" parent="." instance=ExtResource("3_eib1x")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxenemi"]
+position = Vector2(-0.5, -30)
+shape = SubResource("RectangleShape2D_ecd22")
+debug_color = Color(0.949855, 0.332668, 0, 0.419608)
+
+[node name="TimerHurt" type="Timer" parent="."]
+
+[node name="Hp" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -77.0
+offset_right = 19.0
+offset_bottom = -54.0
