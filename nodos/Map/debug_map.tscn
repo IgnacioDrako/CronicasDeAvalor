@@ -1,4 +1,4 @@
-[gd_scene load_steps=476 format=4 uid="uid://b7y8ufoscpbcg"]
+[gd_scene load_steps=478 format=4 uid="uid://b7y8ufoscpbcg"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_5lqsj"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_f5s7g"]
@@ -158,7 +158,9 @@
 [ext_resource type="Texture2D" uid="uid://b6ssr2ragcclm" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_2.png" id="156_8eig7"]
 [ext_resource type="Texture2D" uid="uid://cgaxvc5cuyu8e" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_3.png" id="157_5kmbw"]
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="158_vd7ji"]
-[ext_resource type="PackedScene" uid="uid://boukh04k5k6qn" path="res://nodos/elementos/dummy.tscn" id="159_un42c"]
+[ext_resource type="PackedScene" uid="uid://c80lh8gk2f85" path="res://nodos/elementos/dummy_2.tscn" id="160_7ps6a"]
+[ext_resource type="PackedScene" uid="uid://cwjdyjy1abd3q" path="res://nodos/elementos/caco_demonio.tscn" id="160_d3vbx"]
+[ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="161_40wpq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgrhb"]
 texture = ExtResource("1_5lqsj")
@@ -2522,5 +2524,36 @@ tile_set = SubResource("TileSet_2p2ek")
 [node name="player" parent="." instance=ExtResource("158_vd7ji")]
 top_level = true
 
-[node name="Dummy" parent="." instance=ExtResource("159_un42c")]
-position = Vector2(102, 8)
+[node name="Dummy2" parent="." instance=ExtResource("160_7ps6a")]
+position = Vector2(-103, 7)
+
+[node name="CacoDemonio" parent="." instance=ExtResource("160_d3vbx")]
+position = Vector2(-177, -83)
+
+[node name="Plataformas" type="Node" parent="."]
+
+[node name="PlataformaDummy" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(411, -104)
+
+[node name="PlataformaDummy2" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(313, -32)
+
+[node name="PlataformaDummy3" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(-26, -230)
+
+[node name="PlataformaDummy4" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(101, -279)
+
+[node name="PlataformaDummy5" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(278, -160)
+
+[node name="PlataformaDummy6" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(124, -188)
+
+[node name="PlataformaDummy7" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(459, -220)
+
+[node name="PlataformaDummy8" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(-71, -305)
+
+[node name="Enemigos" type="Node" parent="."]

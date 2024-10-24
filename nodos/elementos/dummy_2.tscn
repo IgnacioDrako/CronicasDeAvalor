@@ -1,30 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://boukh04k5k6qn"]
+[gd_scene load_steps=11 format=3 uid="uid://c80lh8gk2f85"]
 
-[ext_resource type="Script" path="res://codigo/dummy.gd" id="1_red3k"]
-[ext_resource type="Texture2D" uid="uid://bdxu1or47pj8g" path="res://recursos/Enemigos/Training Dummy Sprite Sheet.png" id="2_ocgdq"]
-[ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="3_eib1x"]
+[ext_resource type="Texture2D" uid="uid://bdxu1or47pj8g" path="res://recursos/Enemigos/Training Dummy Sprite Sheet.png" id="1_3ndyp"]
+[ext_resource type="Script" path="res://codigo/dummy.gd" id="1_aty77"]
+[ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="2_r33sv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ubc8"]
-atlas = ExtResource("2_ocgdq")
+atlas = ExtResource("1_3ndyp")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8nlq"]
-atlas = ExtResource("2_ocgdq")
+atlas = ExtResource("1_3ndyp")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dd6o1"]
-atlas = ExtResource("2_ocgdq")
+atlas = ExtResource("1_3ndyp")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kjca"]
-atlas = ExtResource("2_ocgdq")
+atlas = ExtResource("1_3ndyp")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pig0i"]
-atlas = ExtResource("2_ocgdq")
+atlas = ExtResource("1_3ndyp")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2qofw"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qq8ro"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -41,7 +41,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Hit0",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [],
 "loop": true,
@@ -57,25 +57,25 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecd22"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2p5v3"]
 size = Vector2(21, 46)
 
-[node name="Dummy" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("1_red3k")
+[node name="Dummy2" type="Node2D"]
+script = ExtResource("1_aty77")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -32)
 scale = Vector2(1.60938, 2.04688)
-sprite_frames = SubResource("SpriteFrames_2qofw")
+sprite_frames = SubResource("SpriteFrames_qq8ro")
 animation = &"Hit0"
+autoplay = "idel"
+frame_progress = 0.230531
 
-[node name="hurtboxenemi" parent="." instance=ExtResource("3_eib1x")]
+[node name="hurtboxenemi" parent="." instance=ExtResource("2_r33sv")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxenemi"]
 position = Vector2(-0.5, -30)
-shape = SubResource("RectangleShape2D_ecd22")
+shape = SubResource("RectangleShape2D_2p5v3")
 debug_color = Color(0.949855, 0.332668, 0, 0.419608)
 
 [node name="TimerHurt" type="Timer" parent="."]
@@ -85,5 +85,3 @@ offset_left = -21.0
 offset_top = -77.0
 offset_right = 19.0
 offset_bottom = -54.0
-
-[connection signal="body_entered" from="hurtboxenemi" to="." method="_on_hurtboxenemi_body_entered"]

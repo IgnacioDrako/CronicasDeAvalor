@@ -81,7 +81,7 @@ func _on_attack_timer_timeout() -> void:
 	if is_on_floor():
 		animated_sprite.play("Idle")
 
-func receive_damage(damage_amount: int) -> void:
+func received_damage(damage_amount: int) -> void:
 	if is_hurt:  # Evita que el jugador reciba daño mientras ya está herido
 		return
 	health -= damage_amount
@@ -91,6 +91,13 @@ func receive_damage(damage_amount: int) -> void:
 	animated_sprite.play("hurt")
 	is_hurt = true  # Cambia el estado a herido
 	hurt_timer.start(0.2)  # Inicia el temporizador para volver a la normalidad
+	if animated_sprite.flip_h:
+		position.x = position.x+25  # Si está mirando a la izquierda, empuja a la derecha
+		print("entra")
+	else:
+		position.x = position.x-25  # Si está mirando a la derecha, empuja a la izquierda
+		print("entra")
+
 
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false  # Permitir que el jugador reciba daño de nuevo

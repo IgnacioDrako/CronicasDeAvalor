@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dr8f68mtcrruu"]
+[gd_scene load_steps=52 format=3 uid="uid://dr8f68mtcrruu"]
 
 [ext_resource type="Script" path="res://codigo/player.gd" id="1_kk8ih"]
 [ext_resource type="Texture2D" uid="uid://bar0prfo5eq7q" path="res://recursos/player/_Idle.png" id="2_srovr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://uwpvmax3vw7y" path="res://recursos/player/_Jump.png" id="4_anig5"]
 [ext_resource type="Texture2D" uid="uid://b67rjkyqt63at" path="res://recursos/player/_Hit.png" id="5_rp83d"]
 [ext_resource type="PackedScene" uid="uid://cqur4ilb6yi5h" path="res://recursos/player/hitboxplayer.tscn" id="8_m8omp"]
+[ext_resource type="Script" path="res://codigo/hurtboxpj.gd" id="8_u6lbh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi7r4"]
 atlas = ExtResource("2_srovr")
@@ -343,11 +344,14 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r361v"]
-size = Vector2(30, 49)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnvqv"]
 size = Vector2(42, 50)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l3a78"]
+height = 43.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26gfo"]
+size = Vector2(27, 50)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -360,11 +364,6 @@ sprite_frames = SubResource("SpriteFrames_0rcv5")
 animation = &"dead"
 autoplay = "Idle"
 frame_progress = 0.138935
-
-[node name="hurtbox" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -26.5)
-shape = SubResource("RectangleShape2D_r361v")
-debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="HurtTimer" type="Timer" parent="."]
 
@@ -387,3 +386,15 @@ position = Vector2(0, -26)
 shape = SubResource("RectangleShape2D_nnvqv")
 disabled = true
 debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("8_u6lbh")
+
+[node name="hurtbox" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(1, -26)
+shape = SubResource("CapsuleShape2D_l3a78")
+debug_color = Color(0, 1, 0, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("RectangleShape2D_26gfo")
