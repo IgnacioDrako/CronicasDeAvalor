@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 var health = 50
 var is_hurt: bool = false 
-var speed = 100.0
+var speed = 50.0
 var player_position = Vector2()
 var threshold = 1.0  # Umbral para evitar vibraciones
 var damage = 10
@@ -50,14 +50,21 @@ func received_damage(damage: int) -> void:
 		health -= damage
 		#print("CacoDemonio recibe daño: ", damage)
 		#print("Salud restante: ", health)
-		velocity.x = 0
-		velocity.y = 0
+		speed = 0
 		animated_sprite_2d.stop()
 		animated_sprite_2d.play("Hit")  # Reproduce la animación de daño
 		timer_hurt.start(0.5)  # Inicia el temporizador para la animación de daño
+		if animated_sprite_2d.flip_h:
+			position.x = position.x+30  # Si está mirando a la izquierda, empuja a la derecha
+		else:
+			position.x = position.x-30  # Si está mirando a la derecha, empuja a la izquierda
 		if health <= 0:
+			$Detection/detector.disabled=true
+			speed = 0
+			position.y -= 1 
+			animated_sprite_2d.stop()
 			animated_sprite_2d.play("Dead")
-			dead_timer.start(1)
+			dead_timer.start(1.5)
 
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false  # Permitir que el caco demonio reciba daño nuevamente
@@ -77,7 +84,12 @@ func _on_detection_2_body_entered(body: Node2D) -> void:
 
 
 func _on_detection_2_body_exited(body: Node2D) -> void:
-	speed = 100
-	animated_sprite_2d.stop()
-	animated_sprite_2d.play("idel")
+	if not is_hurt:
+		speed = 100
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("idel")
+	else:
+		speed = 0
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("idel")
 	pass # Replace with function body.

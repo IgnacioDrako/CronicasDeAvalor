@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi6wqb7ntbchc"]
+
+[ext_resource type="Script" path="res://codigo/detection.gd" id="1_c32wm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fehjn"]
+size = Vector2(397, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_awbvk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idel",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4e60"]
+size = Vector2(50, 104)
+
+[node name="Aberracion0" type="CharacterBody2D"]
+
+[node name="Timerhurt" type="Timer" parent="."]
+
+[node name="TimerAtaque" type="Timer" parent="."]
+
+[node name="Detection" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("1_c32wm")
+
+[node name="detector" type="CollisionShape2D" parent="Detection"]
+position = Vector2(0, -42.5)
+shape = SubResource("RectangleShape2D_fehjn")
+debug_color = Color(0.870588, 0, 0.843137, 0.0745098)
+
+[node name="update" type="Timer" parent="Detection"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_awbvk")
+animation = &"idel"
+autoplay = "idel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -49)
+shape = SubResource("RectangleShape2D_e4e60")
+
+[connection signal="body_entered" from="Detection" to="Detection" method="_on_body_entered"]
+[connection signal="body_exited" from="Detection" to="Detection" method="_on_body_exited"]

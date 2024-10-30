@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 250.0
 const JUMP_VELOCITY = -400.0
+const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -10,18 +11,37 @@ const JUMP_VELOCITY = -400.0
 @onready var hurt_timer: Timer = $HurtTimer  # Asegúrate de que este timer esté presente en la escena
 @export var offset_x: float = 100.0 
 @onready var hit_box: Area2D = $hitboxplayer
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Asegúrate de que este nodo esté presente en la escena
+@onready var timerroll: Timer = $Timerroll
+@onready var hurtbox: CollisionShape2D = $hurtbox/hurtbox
 
 var health = 100  # Salud del jugador
 var is_attacking: bool = false  # Variable para controlar el ataque
 var is_hurt: bool = false  # Estado para controlar si el jugador está herido
 var is_dead: bool = false  # Estado para controlar la muerte
+var is_rolling: bool = false  # Estado para controlar si el jugador está rodando
+var can_roll: bool = true  # Estado para controlar si el jugador puede rodar
+
+# Variables para almacenar las posiciones y escalas originales
+var original_collision_shape_scale: Vector2
+var original_collision_shape_position: Vector2
+var original_hit_box_scale: Vector2
+var original_hit_box_position: Vector2
 
 func _ready() -> void:
 	add_to_group("PJ")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	respawn_timer.timeout.connect(_on_respawn_timer_timeout)
 	hurt_timer.timeout.connect(_on_hurt_timer_timeout)  # Conectar el temporizador de hurt
+	timerroll.timeout.connect(_on_timerroll_timeout)  # Conectar el temporizador de roll
+	animated_sprite.animation_finished.connect(_on_animation_finished)  # Conectar la señal de animación terminada
 	hit_box.add_to_group("Hitbox")
+
+	# Almacenar las posiciones y escalas originales
+	original_collision_shape_scale = collision_shape.scale
+	original_collision_shape_position = collision_shape.position
+	original_hit_box_scale = hit_box.scale
+	original_hit_box_position = hit_box.position
 
 func _physics_process(delta: float) -> void:
 	if health <= 0:
@@ -41,8 +61,12 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta  # Aplica gravedad cuando no esté en el suelo
 
-	# Saltar solo si está en el suelo y no está atacando ni herido
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	# Detectar si el jugador está rodando
+	if Input.is_action_just_pressed("roll") and can_roll:
+		start_rolling()
+
+	# Saltar solo si está en el suelo y no está atacando ni herido ni rodando
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and not is_rolling:
 		velocity.y = JUMP_VELOCITY
 
 	# Ataque en el suelo o en el aire, con cooldown
@@ -66,14 +90,47 @@ func _physics_process(delta: float) -> void:
 
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite.play("Idle")
+			if is_rolling:
+				animated_sprite.play("rollidel")
+			else:
+				animated_sprite.play("Idle")
 		else:
 			animated_sprite.play("move")
 	else:
 		animated_sprite.play("salto")
 
-	velocity.x = direction * SPEED
+	if is_rolling:
+		velocity.x = direction * ROLL_SPEED
+	else:
+		velocity.x = direction * SPEED
 	move_and_slide()
+
+func start_rolling() -> void:
+	is_rolling = true
+	can_roll = false
+	animated_sprite.play("rollidel")
+	collision_shape.scale.y = 0.5  # Reducir la altura del collision shape
+	collision_shape.position.y = original_collision_shape_position.y / 2  # Ajustar la posición del collision shape
+	hurtbox.scale.y = 0.5  # Reducir la altura de la hurtbox
+	hurtbox.position.y = original_hit_box_position.y / 2  # Ajustar la posición de la hurtbox
+	hurtbox.disabled = true  # Deshabilitar la hurtbox durante el roll
+	timerroll.start(1.0)  # Duración del roll
+
+func stop_rolling() -> void:
+	is_rolling = false
+	animated_sprite.play("Idle")
+	collision_shape.scale = original_collision_shape_scale  # Restaurar la altura del collision shape
+	collision_shape.position = original_collision_shape_position  # Restaurar la posición del collision shape
+	hurtbox.scale = original_hit_box_scale  # Restaurar la altura de la hurtbox
+	hurtbox.position = original_hit_box_position  # Restaurar la posición de la hurtbox
+	hurtbox.disabled = false  # Habilitar la hurtbox después del roll
+	timerroll.start(1.5)  # Tiempo de enfriamiento del roll
+
+func _on_timerroll_timeout() -> void:
+	if is_rolling:
+		stop_rolling()
+	else:
+		can_roll = true
 
 func _on_attack_timer_timeout() -> void:
 	is_attacking = false
@@ -87,20 +144,27 @@ func received_damage(damage_amount: int) -> void:
 	health -= damage_amount
 	print("Jugador recibe daño: ", damage_amount)
 	print("Salud restante: ", health)
-	animated_sprite.stop()
 	animated_sprite.play("hurt")
 	is_hurt = true  # Cambia el estado a herido
 	hurt_timer.start(0.2)  # Inicia el temporizador para volver a la normalidad
 	if animated_sprite.flip_h:
-		position.x = position.x+25  # Si está mirando a la izquierda, empuja a la derecha
-		print("entra")
+		position.x += 25  # Si está mirando a la izquierda, empuja a la derecha
 	else:
-		position.x = position.x-25  # Si está mirando a la derecha, empuja a la izquierda
-		print("entra")
-
+		position.x -= 25  # Si está mirando a la derecha, empuja a la izquierda
 
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false  # Permitir que el jugador reciba daño de nuevo
+	if is_on_floor():
+		animated_sprite.play("Idle")
+	else:
+		animated_sprite.play("salto")
+
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == "hurt" and not is_hurt:
+		if is_on_floor():
+			animated_sprite.play("Idle")
+		else:
+			animated_sprite.play("salto")
 
 func die(delta) -> void:
 	if is_dead:

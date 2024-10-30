@@ -128,10 +128,34 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yjbn")
 }],
 "loop": true,
 "name": &"Dead",
-"speed": 7.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -223,7 +247,7 @@ script = ExtResource("1_sulyk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, -2)
 sprite_frames = SubResource("SpriteFrames_5ge54")
-animation = &"ataque"
+animation = &"Dead"
 autoplay = "idel"
 
 [node name="hurtboxenemi" parent="." instance=ExtResource("2_1fvu4")]

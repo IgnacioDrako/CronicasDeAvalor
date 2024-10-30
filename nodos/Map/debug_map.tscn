@@ -2528,7 +2528,7 @@ top_level = true
 position = Vector2(-103, 7)
 
 [node name="CacoDemonio" parent="." instance=ExtResource("160_d3vbx")]
-position = Vector2(-177, -83)
+position = Vector2(-511, -62)
 
 [node name="Plataformas" type="Node" parent="."]
 
