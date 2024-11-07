@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="5_3ds1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fehjn"]
-size = Vector2(398, 55)
+size = Vector2(332, 91)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4mwa"]
 atlas = ExtResource("2_24j53")
@@ -331,18 +331,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1flbn"]
-radius = 11.0
-height = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4e60"]
+size = Vector2(36.5, 59)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fpehc"]
-size = Vector2(39, 42.5)
+size = Vector2(24, 42.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ywofi"]
 height = 46.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu5wk"]
-size = Vector2(102, 54)
+[sub_resource type="CircleShape2D" id="CircleShape2D_00uep"]
+radius = 51.0882
 
 [node name="Aberracion0" type="CharacterBody2D"]
 script = ExtResource("1_lty4q")
@@ -352,34 +351,38 @@ script = ExtResource("1_lty4q")
 [node name="TimerAtaque" type="Timer" parent="."]
 
 [node name="Detection" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 script = ExtResource("1_c32wm")
 
 [node name="detector" type="CollisionShape2D" parent="Detection"]
-position = Vector2(0, -28)
+position = Vector2(0, -46.5)
 shape = SubResource("RectangleShape2D_fehjn")
 debug_color = Color(0.870588, 0, 0.843137, 0.0745098)
 
 [node name="update" type="Timer" parent="Detection"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-6, -47)
+position = Vector2(1, -48)
 sprite_frames = SubResource("SpriteFrames_awbvk")
 animation = &"idel"
 autoplay = "idel"
+frame_progress = 0.122233
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -29)
-shape = SubResource("CapsuleShape2D_1flbn")
+shape = SubResource("RectangleShape2D_e4e60")
 
 [node name="HitBoxEnemy" parent="." instance=ExtResource("3_i2u4q")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxEnemy"]
-position = Vector2(0, -28)
+position = Vector2(-35, -23)
 shape = SubResource("RectangleShape2D_fpehc")
 debug_color = Color(0.837887, 0.385729, 0, 0.42)
 
 [node name="hurtboxenemi" parent="." instance=ExtResource("5_3ds1i")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtboxenemi"]
 position = Vector2(0, -29)
@@ -387,11 +390,13 @@ shape = SubResource("CapsuleShape2D_ywofi")
 debug_color = Color(0.518193, 0.575247, 0, 0.42)
 
 [node name="Detection2" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
+script = ExtResource("1_c32wm")
 
 [node name="detector2" type="CollisionShape2D" parent="Detection2"]
-position = Vector2(0, -28)
-shape = SubResource("RectangleShape2D_bu5wk")
+position = Vector2(0, -29)
+shape = SubResource("CircleShape2D_00uep")
 debug_color = Color(0.870588, 0, 0.843137, 0.0745098)
 
 [node name="update2" type="Timer" parent="Detection2"]
@@ -401,8 +406,7 @@ position = Vector2(0, 2)
 rotation = 0.0872665
 target_position = Vector2(1.74311, 19.9239)
 
-[node name="Busqueda" type="Timer" parent="."]
-
 [connection signal="body_entered" from="Detection" to="Detection" method="_on_body_entered"]
 [connection signal="body_exited" from="Detection" to="Detection" method="_on_body_exited"]
-[connection signal="body_entered" from="Detection2" to="." method="_on_detection_2_body_entered"]
+[connection signal="body_entered" from="Detection2" to="Detection2" method="_on_body_entered"]
+[connection signal="body_exited" from="Detection2" to="Detection2" method="_on_body_exited"]

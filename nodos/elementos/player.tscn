@@ -515,8 +515,8 @@ size = Vector2(42, 50)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l3a78"]
 height = 43.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_26gfo"]
-size = Vector2(27, 50)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s7nx"]
+height = 48.0
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -564,6 +564,6 @@ debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -26)
-shape = SubResource("RectangleShape2D_26gfo")
+shape = SubResource("CapsuleShape2D_2s7nx")
 
 [node name="Timerroll" type="Timer" parent="."]

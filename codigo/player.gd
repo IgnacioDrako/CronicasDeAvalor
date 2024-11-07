@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 250.0
+const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando
 
@@ -91,12 +91,12 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if direction == 0:
 			if is_rolling:
-				animated_sprite.play("rollidel")
+				animated_sprite.play("roll")
 			else:
 				animated_sprite.play("Idle")
-		else:
+		elif not is_rolling:
 			animated_sprite.play("move")
-	else:
+	elif not is_rolling:
 		animated_sprite.play("salto")
 
 	if is_rolling:
@@ -108,21 +108,17 @@ func _physics_process(delta: float) -> void:
 func start_rolling() -> void:
 	is_rolling = true
 	can_roll = false
-	animated_sprite.play("rollidel")
+	animated_sprite.play("roll")
 	collision_shape.scale.y = 0.5  # Reducir la altura del collision shape
 	collision_shape.position.y = original_collision_shape_position.y / 2  # Ajustar la posición del collision shape
-	hurtbox.scale.y = 0.5  # Reducir la altura de la hurtbox
-	hurtbox.position.y = original_hit_box_position.y / 2  # Ajustar la posición de la hurtbox
 	hurtbox.disabled = true  # Deshabilitar la hurtbox durante el roll
-	timerroll.start(1.0)  # Duración del roll
+	timerroll.start(0.5)  # Duración del roll
 
 func stop_rolling() -> void:
 	is_rolling = false
 	animated_sprite.play("Idle")
 	collision_shape.scale = original_collision_shape_scale  # Restaurar la altura del collision shape
 	collision_shape.position = original_collision_shape_position  # Restaurar la posición del collision shape
-	hurtbox.scale = original_hit_box_scale  # Restaurar la altura de la hurtbox
-	hurtbox.position = original_hit_box_position  # Restaurar la posición de la hurtbox
 	hurtbox.disabled = false  # Habilitar la hurtbox después del roll
 	timerroll.start(1.5)  # Tiempo de enfriamiento del roll
 
@@ -146,7 +142,7 @@ func received_damage(damage_amount: int) -> void:
 	print("Salud restante: ", health)
 	animated_sprite.play("hurt")
 	is_hurt = true  # Cambia el estado a herido
-	hurt_timer.start(0.2)  # Inicia el temporizador para volver a la normalidad
+	hurt_timer.start(0.5)  # Inicia el temporizador para volver a la normalidad
 	if animated_sprite.flip_h:
 		position.x += 25  # Si está mirando a la izquierda, empuja a la derecha
 	else:
@@ -154,10 +150,6 @@ func received_damage(damage_amount: int) -> void:
 
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false  # Permitir que el jugador reciba daño de nuevo
-	if is_on_floor():
-		animated_sprite.play("Idle")
-	else:
-		animated_sprite.play("salto")
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "hurt" and not is_hurt:
