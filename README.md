@@ -1,1 +1,1 @@
-Actual TFG y (Espero) Futuro juego Indi a  desarroyar
+Actual TFG y (esperamos) futuro juego indie a desarrollar
