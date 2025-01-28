@@ -168,3 +168,11 @@ func die(delta) -> void:
 
 func _on_respawn_timer_timeout() -> void:
 	get_tree().reload_current_scene()  # Reinicia la escena
+
+func hit(damage: int) -> void:
+	if not is_hurt and not is_dead:
+		health -= damage
+		is_hurt = true
+		hurt_timer.start()
+		if health <= 0:
+			die(0.5)

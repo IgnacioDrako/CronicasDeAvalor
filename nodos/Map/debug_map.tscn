@@ -161,7 +161,7 @@
 [ext_resource type="PackedScene" uid="uid://c80lh8gk2f85" path="res://nodos/elementos/dummy_2.tscn" id="160_7ps6a"]
 [ext_resource type="PackedScene" uid="uid://cwjdyjy1abd3q" path="res://nodos/elementos/caco_demonio.tscn" id="160_d3vbx"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="161_40wpq"]
-[ext_resource type="PackedScene" uid="uid://bi6wqb7ntbchc" path="res://nodos/elementos/aberracion_0.tscn" id="162_2x42f"]
+[ext_resource type="PackedScene" uid="uid://cbhaouns2iaun" path="res://nodos/elementos/aberración_1.tscn" id="162_kpa2o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xgrhb"]
 texture = ExtResource("1_5lqsj")
@@ -2569,5 +2569,5 @@ position = Vector2(-310, -410)
 [node name="CacoDemonio" parent="Enemigos" instance=ExtResource("160_d3vbx")]
 position = Vector2(-511, -62)
 
-[node name="Aberracion0" parent="Enemigos" instance=ExtResource("162_2x42f")]
-position = Vector2(-461, -286)
+[node name="aberración_1" parent="." instance=ExtResource("162_kpa2o")]
+position = Vector2(-427, -287)

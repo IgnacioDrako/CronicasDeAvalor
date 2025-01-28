@@ -258,6 +258,7 @@ shape = SubResource("CircleShape2D_a2u8l")
 debug_color = Color(1, 0.505882, 0, 0.419608)
 
 [node name="Detection" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 script = ExtResource("4_5nbfa")
 
@@ -277,7 +278,6 @@ debug_color = Color(1, 0, 0, 0.419608)
 [node name="TimerHurt" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_pvn6n")
 
 [node name="Timerdead" type="Timer" parent="."]
@@ -287,6 +287,7 @@ collision_mask = 2
 script = ExtResource("4_5nbfa")
 
 [node name="detector2" type="CollisionShape2D" parent="Detection2"]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_l2qjy")
 debug_color = Color(0.628904, 0, 0.195567, 0.0745098)
 

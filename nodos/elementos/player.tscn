@@ -537,7 +537,6 @@ frame_progress = 0.560343
 [node name="Timerdead" type="Timer" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 position = Vector2(-5, 4)
 zoom = Vector2(2, 2)
 limit_left = -5000
@@ -546,7 +545,7 @@ limit_right = 5000
 limit_bottom = 300
 
 [node name="hitboxplayer" parent="." instance=ExtResource("8_m8omp")]
-visible = false
+collision_mask = 1
 
 [node name="hitbox" type="CollisionShape2D" parent="hitboxplayer"]
 position = Vector2(0, -26)
