@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://cbhaouns2iaun"]
+[gd_scene load_steps=53 format=3 uid="uid://cbhaouns2iaun"]
 
 [ext_resource type="Script" path="res://codigo/aberración_1.gd" id="1_2g33f"]
 [ext_resource type="Texture2D" uid="uid://xxd3k4phjpj1" path="res://recursos/Enemigos/Bringer-of-Death-SpritSheet_no-Effect.png" id="2_7floc"]
 [ext_resource type="Script" path="res://codigo/hit_box_enemy.gd" id="3_6yq7x"]
+[ext_resource type="Script" path="res://codigo/hurtboxenemi.gd" id="4_qmlu1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4mwa"]
 atlas = ExtResource("2_7floc")
@@ -347,9 +348,8 @@ script = ExtResource("1_2g33f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -46)
 sprite_frames = SubResource("SpriteFrames_7kkiv")
-animation = &"Ataque"
+animation = &"hut"
 autoplay = "idel"
-frame_progress = 0.952158
 
 [node name="hit_Box" type="Area2D" parent="."]
 script = ExtResource("3_6yq7x")
@@ -361,6 +361,7 @@ debug_color = Color(0.777575, 0.439139, 0, 0.42)
 
 [node name="hurt_box" type="Area2D" parent="."]
 visibility_layer = 2
+script = ExtResource("4_qmlu1")
 
 [node name="cuerpo" type="CollisionShape2D" parent="hurt_box"]
 visibility_layer = 2

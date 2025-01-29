@@ -3,6 +3,8 @@ extends CharacterBody2D
 var velocidad = Vector2(50, 0)
 var derecha = true
 var atacando = false  # Variable para controlar si el enemigo está atacando
+var is_hurt = false
+var vida = 50
 
 @onready var mirar_izquierda: RayCast2D = $mirarIzquierda
 @onready var mirar_derecha: RayCast2D = $mirarDerecha  
@@ -32,7 +34,18 @@ func mover(delta: float) -> void:
 	if atacando:
 		# No se mueve durante el ataque
 		return
-	
+	if is_hurt==true:
+		velocidad.x = 0
+		sprite.stop()
+		sprite.play("Hit")
+		vida -= 10
+		is_hurt = false
+		await get_tree().create_timer(0.5).timeout
+		sprite.stop()
+		sprite.play("move")
+		velocidad.x = 50
+		move_and_slide()
+		return
 	sprite.play("move")
 	if derecha:
 		hit_box.position.x = 20
@@ -97,5 +110,37 @@ func _on_mirarespalda_area_entered(area: Area2D) -> void:
 		if derecha:
 			derecha = false
 		else:
-			derecha = truecd
+			derecha = true
+	pass # Replace with function body.
+func muerte() -> void:
+	
+	queue_free()
+	pass # Replace with function body.
+func received_damage(damage: int) -> void:
+	if not is_hurt:  # Solo recibe daño si no está en estado de daño
+		is_hurt = true  # Cambia el estado a herido
+		vida -= damage
+		velocidad = Vector2(0, 0)
+		sprite.stop()
+		sprite.play("hut")  # Reproduce la animación de daño
+		await get_tree().create_timer(0.5).timeout
+		if derecha:
+			velocidad.x = 50  # Si está mirando a la izquierda, empuja a la derecha
+		else:
+			velocidad.x = -50  # Si está mirando a la derecha, empuja a la izquierda
+		if vida <= 0:
+			$DetectoPJ/visión.disabled=true
+			velocidad = Vector2(0, 0)
+			velocity = Vector2(0, 0)
+			move_and_slide()
+			sprite.stop()
+			sprite.play("dead")
+			await get_tree().create_timer(2.5).timeout
+			muerte()
+		else:
+			sprite.stop()
+			sprite.play("move")
+			is_hurt = false  # Permitir que el caco demonio reciba daño nuevamente
+			velocidad = Vector2(50, 0)
+			move_and_slide()
 	pass # Replace with function body.
