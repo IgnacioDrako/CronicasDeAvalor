@@ -14,6 +14,7 @@ const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Asegúrate de que este nodo esté presente en la escena
 @onready var timerroll: Timer = $Timerroll
 @onready var hurtbox: CollisionShape2D = $hurtbox/hurtbox
+@onready var varravida: Sprite2D = $Hud/HP0/HP3
 
 var health = 100  # Salud del jugador
 var is_attacking: bool = false  # Variable para controlar el ataque
@@ -42,7 +43,13 @@ func _ready() -> void:
 	original_collision_shape_position = collision_shape.position
 	original_hit_box_scale = hit_box.scale
 	original_hit_box_position = hit_box.position
-
+	#Barra de vida
+	actualizar_Vida()
+func actualizar_Vida() -> void:
+	$Hud/HP0/Vida.text = str(health)
+	varravida.scale.x = 1.0 * health/100
+	pass
+	
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		die(delta)  # Solo llama a die() si la salud es 0 o menos
@@ -52,6 +59,7 @@ func _physics_process(delta: float) -> void:
 
 	# Permitimos saltar y atacar, pero no mover horizontalmente
 	if is_hurt or is_attacking:
+		actualizar_Vida()
 		velocity.x = 0  # Detener el movimiento horizontal
 		if not is_on_floor():
 			velocity += get_gravity() * delta  # Deja que la gravedad afecte el movimiento vertical
