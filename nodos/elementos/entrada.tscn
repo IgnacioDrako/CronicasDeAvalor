@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://edijvxvx3tii"]
+
+[ext_resource type="Script" path="res://codigo/entrada.gd" id="1_naovf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6j6yn"]
+radius = 34.0
+height = 112.0
+
+[node name="Entrada" type="Node2D"]
+script = ExtResource("1_naovf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_6j6yn")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

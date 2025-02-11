@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8qr00x5qgm1x"]
+
+[ext_resource type="Script" path="res://codigo/menu_player.gd" id="1_d8xdn"]
+[ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="1_m8op5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = -1.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d8xdn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.314
+anchor_top = 0.323
+anchor_right = 0.462
+anchor_bottom = 0.432
+offset_left = 0.271973
+offset_top = -0.304016
+offset_right = -0.223999
+offset_bottom = 0.0639954
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.752941, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_m8op5")
+theme_override_font_sizes/font_size = 25
+text = "Continue"
+
+[node name="Exit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_hover_color = Color(0.752941, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_m8op5")
+theme_override_font_sizes/font_size = 25
+text = "Exit
+"
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,0 +1,336 @@
+[gd_scene load_steps=70 format=4 uid="uid://dm1ugis7i5sm2"]
+
+[ext_resource type="Texture2D" uid="uid://b6ssr2ragcclm" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_2.png" id="1_bnaxn"]
+[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_imvj2"]
+[ext_resource type="Texture2D" uid="uid://duu727owf7b44" path="res://recursos/Free Pixel Art Forest/Free Pixel Art Forest/Preview/Background.png" id="2_6o70i"]
+[ext_resource type="Texture2D" uid="uid://c04gxgh7ryipu" path="res://recursos/Medieval_Castle_Asset_Pack/map/blank.png" id="3_b48u2"]
+[ext_resource type="Texture2D" uid="uid://dlhh86iwgf806" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_side_right_2.png" id="4_y6kyv"]
+[ext_resource type="Texture2D" uid="uid://bl0epw5drnc74" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_15.png" id="5_mdhhv"]
+[ext_resource type="Texture2D" uid="uid://b73f6v7llklyx" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_4.png" id="6_sah6e"]
+[ext_resource type="Texture2D" uid="uid://b2rttdcy6wbsw" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_5.png" id="7_tjvt3"]
+[ext_resource type="Texture2D" uid="uid://c5j8jnoj0ylew" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_6.png" id="8_x5dx3"]
+[ext_resource type="Texture2D" uid="uid://ctkuq0kkbfjen" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_7.png" id="9_djiv5"]
+[ext_resource type="Texture2D" uid="uid://bn1648koy5lq4" path="res://recursos/Medieval_Castle_Asset_Pack/map/floor_tile_2.png" id="10_le0a5"]
+[ext_resource type="Texture2D" uid="uid://cr0d8532w20u5" path="res://recursos/Medieval_Castle_Asset_Pack/map/floor_tile_4.png" id="11_vdxk3"]
+[ext_resource type="Texture2D" uid="uid://cqtibxqa1lq11" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_7.png" id="12_dus5v"]
+[ext_resource type="Texture2D" uid="uid://dkn7rn8rd1aku" path="res://recursos/Medieval_Castle_Asset_Pack/map/merlons_4.png" id="13_uvgkj"]
+[ext_resource type="Texture2D" uid="uid://cbp4i8w7o7wr1" path="res://recursos/Medieval_Castle_Asset_Pack/map/merlons_5.png" id="14_sqfia"]
+[ext_resource type="Texture2D" uid="uid://bbkwjmylioc6d" path="res://recursos/Medieval_Castle_Asset_Pack/map/merlons_3.png" id="15_3faa5"]
+[ext_resource type="Texture2D" uid="uid://dbaaimo2rvj7n" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_14.png" id="16_v4srd"]
+[ext_resource type="Texture2D" uid="uid://5bdpvbfvnj3s" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_2.png" id="17_otfof"]
+[ext_resource type="Texture2D" uid="uid://bhjgi3up58sms" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_1.png" id="18_1iyfj"]
+[ext_resource type="Texture2D" uid="uid://vtl4mp4yxddq" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_4.png" id="19_t3w7r"]
+[ext_resource type="Texture2D" uid="uid://xev2lqy1byvv" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_6.png" id="20_xpn4h"]
+[ext_resource type="Texture2D" uid="uid://b627qq5tmpe58" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_11.png" id="21_c87lc"]
+[ext_resource type="Texture2D" uid="uid://dypl81n66276q" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_10.png" id="22_xxopk"]
+[ext_resource type="Texture2D" uid="uid://b3u032lk8ml86" path="res://recursos/Medieval_Castle_Asset_Pack/map/wall_9.png" id="23_14e0o"]
+[ext_resource type="Texture2D" uid="uid://cded0umq063rf" path="res://recursos/Medieval_Castle_Asset_Pack/map/ceiling_transparent_2.png" id="24_8nqca"]
+[ext_resource type="Texture2D" uid="uid://c4kcrptq1eyqk" path="res://recursos/Medieval_Castle_Asset_Pack/map/column_4.png" id="25_5ixb0"]
+[ext_resource type="Texture2D" uid="uid://dwjxdry8jll12" path="res://recursos/Medieval_Castle_Asset_Pack/map/column_3.png" id="26_hlyat"]
+[ext_resource type="Texture2D" uid="uid://cbaioxtuobmk3" path="res://recursos/Medieval_Castle_Asset_Pack/map/floor_tile_1.png" id="27_nf3ro"]
+[ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="28_wrstn"]
+[ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="29_okbc5"]
+[ext_resource type="Texture2D" uid="uid://bgbqrud6gox5s" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_3.png" id="30_k2v3h"]
+[ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="31_85vs4"]
+[ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="33_7fo4c"]
+[ext_resource type="PackedScene" uid="uid://edijvxvx3tii" path="res://nodos/elementos/entrada.tscn" id="33_kf7sr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhc7f"]
+texture = ExtResource("1_bnaxn")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_77ksy"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vhc7f")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b3vds"]
+texture = ExtResource("3_b48u2")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ptspf"]
+sources/0 = SubResource("TileSetAtlasSource_b3vds")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ohy12"]
+texture = ExtResource("4_y6kyv")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f5v4n"]
+texture = ExtResource("5_mdhhv")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c7ihl"]
+texture = ExtResource("6_sah6e")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5wuj"]
+texture = ExtResource("7_tjvt3")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4k8m"]
+texture = ExtResource("8_x5dx3")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g13nx"]
+texture = ExtResource("9_djiv5")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8p52y"]
+texture = ExtResource("10_le0a5")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qefpb"]
+texture = ExtResource("11_vdxk3")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m7fcy"]
+texture = ExtResource("12_dus5v")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lppj2"]
+texture = ExtResource("13_uvgkj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fg0hj"]
+texture = ExtResource("14_sqfia")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4eicw"]
+texture = ExtResource("15_3faa5")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gyefg"]
+texture = ExtResource("16_v4srd")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4m6lt"]
+texture = ExtResource("13_uvgkj")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pit46"]
+texture = ExtResource("17_otfof")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1aaug"]
+texture = ExtResource("18_1iyfj")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g3pwn"]
+texture = ExtResource("19_t3w7r")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2awq4"]
+texture = ExtResource("20_xpn4h")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ysl4"]
+texture = ExtResource("21_c87lc")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_akddl"]
+texture = ExtResource("22_xxopk")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a8qe"]
+texture = ExtResource("23_14e0o")
+0:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kv1ij"]
+texture = ExtResource("24_8nqca")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j8w2e"]
+texture = ExtResource("25_5ixb0")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2sky2"]
+texture = ExtResource("26_hlyat")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sipta"]
+texture = ExtResource("27_nf3ro")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwkcy"]
+texture = ExtResource("28_wrstn")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h4hsw"]
+texture = ExtResource("29_okbc5")
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qgpto"]
+texture = ExtResource("30_k2v3h")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hc823"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ohy12")
+sources/1 = SubResource("TileSetAtlasSource_f5v4n")
+sources/2 = SubResource("TileSetAtlasSource_gyefg")
+sources/3 = SubResource("TileSetAtlasSource_kv1ij")
+sources/4 = SubResource("TileSetAtlasSource_j8w2e")
+sources/5 = SubResource("TileSetAtlasSource_2sky2")
+sources/6 = SubResource("TileSetAtlasSource_sipta")
+sources/7 = SubResource("TileSetAtlasSource_gwkcy")
+sources/8 = SubResource("TileSetAtlasSource_h4hsw")
+sources/9 = SubResource("TileSetAtlasSource_qgpto")
+sources/10 = SubResource("TileSetAtlasSource_c7ihl")
+sources/11 = SubResource("TileSetAtlasSource_s5wuj")
+sources/12 = SubResource("TileSetAtlasSource_x4k8m")
+sources/13 = SubResource("TileSetAtlasSource_g13nx")
+sources/14 = SubResource("TileSetAtlasSource_8p52y")
+sources/15 = SubResource("TileSetAtlasSource_qefpb")
+sources/16 = SubResource("TileSetAtlasSource_m7fcy")
+sources/17 = SubResource("TileSetAtlasSource_lppj2")
+sources/18 = SubResource("TileSetAtlasSource_fg0hj")
+sources/19 = SubResource("TileSetAtlasSource_4eicw")
+sources/20 = SubResource("TileSetAtlasSource_4m6lt")
+sources/21 = SubResource("TileSetAtlasSource_pit46")
+sources/22 = SubResource("TileSetAtlasSource_1aaug")
+sources/23 = SubResource("TileSetAtlasSource_g3pwn")
+sources/24 = SubResource("TileSetAtlasSource_2awq4")
+sources/25 = SubResource("TileSetAtlasSource_6ysl4")
+sources/26 = SubResource("TileSetAtlasSource_akddl")
+sources/27 = SubResource("TileSetAtlasSource_3a8qe")
+
+[sub_resource type="Animation" id="Animation_j6vak"]
+resource_name = "dummy"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r4ycc"]
+_data = {
+"dummy": SubResource("Animation_j6vak")
+}
+
+[node name="Entrada_Mapa0" type="Node2D"]
+position = Vector2(-7, -95)
+script = ExtResource("1_imvj2")
+
+[node name="TileMapLayer0" type="TileMapLayer" parent="."]
+position = Vector2(-384, -706)
+tile_map_data = PackedByteArray("AAAAAC4AAAAAAAAAAAABAC4AAAABAAAAAAACAC4AAAAAAAAAAAADAC4AAAABAAAAAAAEAC4AAAAAAAAAAAAFAC4AAAABAAAAAAAGAC4AAAAAAAAAAAAHAC4AAAABAAAAAAAIAC4AAAAAAAAAAAAJAC4AAAABAAAAAAAKAC4AAAAAAAAAAAALAC4AAAABAAAAAAAMAC4AAAAAAAAAAAANAC4AAAABAAAAAAAOAC4AAAAAAAAAAAAPAC4AAAABAAAAAAAQAC4AAAAAAAAAAAARAC4AAAABAAAAAAASAC4AAAAAAAAAAAATAC4AAAABAAAAAAAUAC4AAAAAAAAAAAAVAC4AAAABAAAAAAAWAC4AAAAAAAAAAAAXAC4AAAABAAAAAAAYAC4AAAAAAAAAAAAZAC4AAAABAAAAAAAaAC4AAAAAAAAAAAAbAC4AAAABAAAAAAAcAC4AAAAAAAAAAAAdAC4AAAABAAAAAAAeAC4AAAAAAAAAAAAfAC4AAAABAAAAAAAgAC4AAAAAAAAAAAAhAC4AAAABAAAAAAAiAC4AAAAAAAAAAAAjAC4AAAABAAAAAAAkAC4AAAAAAAAAAAAlAC4AAAABAAAAAAAmAC4AAAAAAAAAAAAnAC4AAAABAAAAAAAoAC4AAAAAAAAAAAApAC4AAAABAAAAAAAqAC4AAAAAAAAAAAArAC4AAAABAAAAAAAsAC4AAAAAAAAAAAAtAC4AAAABAAAAAAAuAC4AAAAAAAAAAAAvAC4AAAABAAAAAAAwAC4AAAAAAAAAAAAxAC4AAAABAAAAAAAyAC4AAAAAAAAAAAAzAC4AAAABAAAAAAA0AC4AAAAAAAAAAAA1AC4AAAABAAAAAAA2AC4AAAAAAAAAAAA3AC4AAAABAAAAAAA4AC4AAAAAAAAAAAA5AC4AAAABAAAAAAAAAC0AAAABAAAAAAAAACwAAAABAAAAAAAAACsAAAABAAAAAAAAACoAAAABAAAAAAAAACkAAAABAAAAAAAAACgAAAABAAAAAAAAACcAAAABAAAAAAAAACYAAAABAAAAAAAAACUAAAABAAAAAAAAACQAAAABAAAAAAAAACMAAAABAAAAAAAAACIAAAABAAAAAAAAACEAAAABAAAAAAAAACAAAAABAAAAAAAAAB8AAAABAAAAAAAAAB4AAAABAAAAAAAAAB0AAAABAAAAAAAAABwAAAABAAAAAAAAABsAAAAAAAAAAAAAABoAAAAAAAAAAAAAABkAAAAAAAAAAAAAABgAAAAAAAAAAAAAABcAAAAAAAAAAAAAABYAAAAAAAAAAAAAABUAAAAAAAAAAAAAABQAAAAAAAAAAAAAABMAAAAAAAAAAAAAABIAAAAAAAAAAAAAABEAAAAAAAAAAAA5AC0AAAABAAAAAAA5ACwAAAABAAAAAAA5ACsAAAABAAAAAAA5ACoAAAABAAAAAAA5ACkAAAABAAAAAAA5ACgAAAABAAAAAAA5ACcAAAABAAAAAAA5ACYAAAABAAAAAAA5ACUAAAABAAAAAAA5ACQAAAABAAAAAAA5ACEAAAABAAAAAAA5ACAAAAABAAAAAAA5AB8AAAABAAAAAAA5AB4AAAABAAAAAAA5ACIAAAABAAAAAAA5ACMAAAABAAAAAAA5ABsAAAABAAAAAAA5ABwAAAABAAAAAAA5AB0AAAABAAAAAAA5ABEAAAABAAAAAAA5ABIAAAABAAAAAAA5ABMAAAABAAAAAAA5ABQAAAABAAAAAAA5ABUAAAABAAAAAAA5ABYAAAABAAAAAAA5ABcAAAABAAAAAAA5ABgAAAABAAAAAAA5ABkAAAABAAAAAAA5ABoAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_77ksy")
+
+[node name="TextureRect" type="TextureRect" parent="TileMapLayer0"]
+offset_left = 333.0
+offset_top = 474.0
+offset_right = 1261.0
+offset_bottom = 1267.0
+texture = ExtResource("2_6o70i")
+
+[node name="Tfondo1" type="TextureRect" parent="TileMapLayer0"]
+offset_left = -594.0
+offset_top = 476.0
+offset_right = 334.0
+offset_bottom = 1269.0
+texture = ExtResource("2_6o70i")
+
+[node name="fondo" type="TextureRect" parent="TileMapLayer0"]
+offset_left = 339.0
+offset_top = 6.0
+offset_right = 1267.0
+offset_bottom = 799.0
+texture = ExtResource("2_6o70i")
+
+[node name="fondo0" type="TextureRect" parent="TileMapLayer0"]
+offset_left = -587.0
+offset_top = 6.0
+offset_right = 341.0
+offset_bottom = 799.0
+texture = ExtResource("2_6o70i")
+
+[node name="TileMapLayer1_0" type="TileMapLayer" parent="TileMapLayer0"]
+position = Vector2(-64, -33)
+tile_map_data = PackedByteArray("AAA1ACkAAAABAAEAAAA1ACoAAAABAAAAAAA2ACkAAAAAAAEAAAA2ACoAAAAAAAAAAAA3ACkAAAABAAEAAAA3ACoAAAABAAAAAAA4ACkAAAAAAAEAAAA4ACoAAAAAAAAAAAA3ACsAAAABAAEAAAA4ACsAAAAAAAEAAAA5ACoAAAABAAAAAAA5ACsAAAABAAEAAAA2ACgAAAAAAAAAAAA3ACgAAAABAAAAAAA0ACgAAAAAAAAAAAA1ACgAAAABAAAAAAA0ACkAAAAAAAEAAAA0ACoAAAAAAAAAAAA0ACsAAAAAAAEAAAA0ACwAAAAAAAEAAAA1ACsAAAABAAEAAAA1ACwAAAABAAEAAAA0AC0AAAAAAAAAAAA0AC4AAAAAAAAAAAA1AC0AAAABAAAAAAA1AC4AAAABAAAAAAA0AC8AAAAAAAEAAAA1AC8AAAABAAEAAAA2AC4AAAAAAAAAAAA2AC8AAAAAAAEAAAA3AC4AAAABAAAAAAA3AC8AAAABAAEAAAA4AC4AAAAAAAAAAAA4AC8AAAAAAAEAAAA5AC4AAAABAAAAAAA5AC8AAAABAAEAAAA2ACwAAAAAAAAAAAA2AC0AAAAAAAEAAAA3ACwAAAABAAAAAAA3AC0AAAABAAEAAAA2ACsAAAAAAAEAAAA4ACgAAAAAAAAAAAA5ACgAAAABAAAAAAA5ACkAAAABAAEAAAA4ACwAAAAAAAAAAAA4AC0AAAAAAAEAAAA5ACwAAAABAAAAAAA5AC0AAAABAAEAAAA=")
+tile_set = SubResource("TileSet_ptspf")
+
+[node name="TileMapLayer1" type="TileMapLayer" parent="TileMapLayer0"]
+position = Vector2(-65, -32)
+tile_map_data = PackedByteArray("AAA5AC4ADQAAAAAAAAA5ACwADQAAAAAAAAA5AC0ADQAAAAEAAAA5ACoACwAAAAAAAAA5ACsACwAAAAEAAAA4ACgACQAAAAAAAAA4ACkACQAAAAEAAAA5ACgAGwAAAAEAAAA5ACkACQABAAEAAAA2ACgACAAAAAAAAAA3ACgACAABAAAAAAA0ACgABwAAAAAAAAA0ACkABwAAAAEAAAA1ACgABwABAAAAAAA1ACkABwABAAEAAAA0ACoACgAAAAAAAAA0ACsACgAAAAEAAAA0ACwADAAAAAAAAAA0AC0ADAAAAAEAAAA5AC8ADQAAAAEAAAA0AC4ADAAAAAAAAAA0AC8ADAAAAAEAAAA6AC4AAAAAAAAAAAA6AC8AAAAAAAEAAAA7AC4AAAABAAAAAAA7AC8AAAABAAEAAAA6ACwAAAAAAAAAAAA6AC0AAAAAAAEAAAA7ACwAAAABAAAAAAA7AC0AAAABAAEAAAA6ACoAAAAAAAAAAAA6ACsAAAAAAAEAAAA7ACoAAAABAAAAAAA7ACsAAAABAAEAAAA6ACgAAAAAAAAAAAA6ACkAAAAAAAEAAAA7ACgAAAABAAAAAAA7ACkAAAABAAEAAAAzADAADgAAAAAAAAA0ADAADgABAAAAAAA1ADAADgAAAAAAAAA2ADAADgABAAAAAAA3ADAADgAAAAAAAAA4ADAADgABAAAAAAA5ADAADwAAAAAAAAA6ADAADwAAAAAAAAA7ADAADwABAAAAAAAyAC4AEAAAAAAAAAAyAC8AEAAAAAEAAAAzAC4AEAABAAAAAAAzAC8AEAABAAEAAAAyACwAEAAAAAAAAAAyAC0AEAAAAAEAAAAzACwAEAABAAAAAAAzAC0AEAABAAEAAAAyACoAEAAAAAAAAAAyACsAEAAAAAEAAAAzACoAEAABAAAAAAAzACsAEAABAAEAAAAyACgAEAAAAAAAAAAyACkAEAAAAAEAAAAzACgAEAABAAAAAAAzACkAEAABAAEAAAAxADAABgABAAAAAAAyADAABgABAAAAAAAyACYAGAAAAAAAAAAyACcAGAAAAAEAAAAzACcAFwAAAAAAAAA0ACcAFwABAAAAAAAyACUAFgAAAAAAAAA1ACcAFwAAAAAAAAA2ACcAFwABAAAAAAA3ACcAFwAAAAAAAAA4ACcAGwAAAAEAAAA5ACcAGwAAAAAAAAA6ACcAFwABAAAAAAA7ACYAGwAAAAAAAAA7ACcAGwAAAAEAAAA7ACQAGwAAAAAAAAA7ACUAGwAAAAEAAAA4ACYAGwAAAAAAAAAwADAABgABAAAAAAAvADAABgABAAAAAAAuADAABgABAAAAAAAtADAABgABAAAAAAAsADAABgAAAAAAAAA=")
+tile_set = SubResource("TileSet_hc823")
+
+[node name="Entrada" parent="." instance=ExtResource("33_kf7sr")]
+position = Vector2(431, -18)
+
+[node name="ColorRect" type="ColorRect" parent="Entrada"]
+offset_left = -702.0
+offset_top = -484.0
+offset_right = 505.0
+offset_bottom = 218.0
+color = Color(1, 1, 1, 0)
+
+[node name="TrasicionAnimacion" type="AnimationPlayer" parent="Entrada/ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_r4ycc")
+}
+
+[node name="player" parent="." instance=ExtResource("31_85vs4")]
+position = Vector2(52, -25)
+
+[node name="MenuPausa" parent="player" instance=ExtResource("33_7fo4c")]
+offset_left = -117.0
+offset_top = -207.0
+offset_right = -117.0
+offset_bottom = -207.0

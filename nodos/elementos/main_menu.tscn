@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw4gmp4s0ojxv"]
+
+[ext_resource type="Script" path="res://codigo/main_menu.gd" id="1_uqrro"]
+[ext_resource type="Texture2D" uid="uid://by178bsckufft" path="res://recursos/Medieval_Castle_Asset_Pack/Background/layer_1.png" id="2_4b2wh"]
+[ext_resource type="Texture2D" uid="uid://8pglfltdbdhg" path="res://recursos/img/menuInicial.png" id="3_mil3x"]
+[ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="4_88b55"]
+[ext_resource type="AudioStream" uid="uid://ds0wt60nkvtsh" path="res://recursos/audio/musica/menudemo.mp3" id="6_bu6yb"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uqrro")
+
+[node name="Fondo_0" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4b2wh")
+expand_mode = 1
+
+[node name="fondo_1" type="TextureRect" parent="Fondo_0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_mil3x")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Fondo_0"]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 1148.0
+offset_bottom = 274.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_88b55")
+theme_override_font_sizes/font_size = 75
+text = "Cronicas de Avalon"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -354.0
+offset_top = -29.0
+offset_right = 354.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Jugar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_88b55")
+theme_override_font_sizes/font_size = 40
+text = "Jugar"
+
+[node name="Salir" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_88b55")
+theme_override_font_sizes/font_size = 40
+text = "Salir"
+
+[node name="intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bu6yb")
+parameters/looping = true
+
+[connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

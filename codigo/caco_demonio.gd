@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var timer_detection: Timer = $Detection/update
 @onready var dead_timer: Timer = $Timerdead
 @onready var detector_2: CollisionShape2D = $Detection2/detector2
+@onready var audioataque: AudioStreamPlayer2D = $Audioataque
+@onready var audioerido: AudioStreamPlayer2D = $Audioerido
+@onready var audiomuerte: AudioStreamPlayer2D = $Audiomuerte
 
 var health = 50
 var is_hurt: bool = false 
@@ -31,6 +34,8 @@ func get_PJ_position(pos_x: int, pos_y: int) -> void:
 	#print("Caco demonio ha recibido: ", pos_x, " y ", pos_y)
 
 func move_towards_player(delta):
+	if is_hurt or health <= 0:
+		return  # No moverse si está herido o muerto
 	var direction = player_position - position
 	if direction.length() > threshold:
 		direction = direction.normalized()
@@ -53,43 +58,42 @@ func received_damage(damage: int) -> void:
 		speed = 0
 		animated_sprite_2d.stop()
 		animated_sprite_2d.play("Hit")  # Reproduce la animación de daño
+		audioerido.play()
 		timer_hurt.start(0.5)  # Inicia el temporizador para la animación de daño
 		if animated_sprite_2d.flip_h:
-			position.x = position.x+30  # Si está mirando a la izquierda, empuja a la derecha
+			position.x += 30  # Si está mirando a la izquierda, empuja a la derecha
 		else:
-			position.x = position.x-30  # Si está mirando a la derecha, empuja a la izquierda
+			position.x -= 30  # Si está mirando a la derecha, empuja a la izquierda
 		if health <= 0:
-			$Detection/detector.disabled=true
+			$Detection/detector.disabled = true
 			speed = 0
 			position.y -= 1 
 			animated_sprite_2d.stop()
 			animated_sprite_2d.play("Dead")
+			audiomuerte.play()
 			dead_timer.start(1.5)
 
 func _on_hurt_timer_timeout() -> void:
 	is_hurt = false  # Permitir que el caco demonio reciba daño nuevamente
-	animated_sprite_2d.play("idel")
+	if health > 0:
+		animated_sprite_2d.play("Idle")
 
 func _on_detection_timer_timeout() -> void:
 	DetectionShape.disabled = not DetectionShape.disabled  # Alternar el estado del CollisionShape2D
 
 func die() -> void:
 	queue_free()
-func _on_detection_2_body_entered(body: Node2D) -> void:
-	print("Detetion 2")
-	animated_sprite_2d.stop()
-	animated_sprite_2d.play("ataque")
-	speed = speed*2
-	pass # Replace with function body.
 
+func _on_detection_2_body_entered(body: Node2D) -> void:
+	if not is_hurt and health > 0:
+		print("Detetion 2")
+		animated_sprite_2d.stop()
+		animated_sprite_2d.play("Ataque")
+		audioataque.play()
+		speed *= 2
 
 func _on_detection_2_body_exited(body: Node2D) -> void:
-	if not is_hurt:
-		speed = 100
+	if not is_hurt and health > 0:
+		speed = 50
 		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idel")
-	else:
-		speed = 0
-		animated_sprite_2d.stop()
-		animated_sprite_2d.play("idel")
-	pass # Replace with function body.
+		animated_sprite_2d.play("Idle")

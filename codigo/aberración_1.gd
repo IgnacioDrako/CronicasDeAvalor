@@ -17,6 +17,9 @@ var vida = 50
 @onready var timer: Timer = $Ataque  
 @onready var buscar: Timer = $Buscar  
 @onready var mirarespalda: Area2D = $mirarespalda
+@onready var audio_da_o: AudioStreamPlayer2D = $AudioDaño
+@onready var audio_erido: AudioStreamPlayer2D = $AudioErido
+@onready var audio_muerte: AudioStreamPlayer2D = $AudioMuerte
 
 func _ready() -> void:
 	cajaataque.disabled = true
@@ -27,24 +30,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	mirar_suelo()
-	if not atacando:  # Solo mueve si no está atacando
+	if not atacando and not is_hurt:  # Solo mueve si no está atacando ni herido
 		mover(delta)
 
 func mover(delta: float) -> void:
-	if atacando:
-		# No se mueve durante el ataque
-		return
-	if is_hurt==true:
-		velocidad.x = 0
-		sprite.stop()
-		sprite.play("Hit")
-		vida -= 10
-		is_hurt = false
-		await get_tree().create_timer(0.5).timeout
-		sprite.stop()
-		sprite.play("move")
-		velocidad.x = 50
-		move_and_slide()
+	if atacando or is_hurt:
+		# No se mueve durante el ataque o si está herido
 		return
 	sprite.play("move")
 	if derecha:
@@ -90,6 +81,7 @@ func ataque() -> void:
 	atacando = true  # Activamos el estado de ataque
 	sprite.stop()
 	sprite.play("Ataque")
+	audio_da_o.play()
 	velocidad = Vector2(0, 0)  # Detenemos la velocidad
 	velocity = Vector2(0, 0)  # Detenemos el movimiento
 	move_and_slide()  # Asegura que la entidad no se mueva mientras ataca
@@ -98,49 +90,46 @@ func ataque() -> void:
 	await get_tree().create_timer(0.5).timeout
 	cajaataque.disabled  = false
 	pass
+
 func _on_ataque_timeout() -> void:
 	# Cuando el ataque termina, desactivamos el estado de ataque
 	atacando = false
 	vision.disabled = false
-	cajaataque.disabled =true
+	cajaataque.disabled = true
 	# Ahora el enemigo puede volver a moverse
 	sprite.play("move")  # Se puede reiniciar la animación de movimiento si lo deseas
+
 func _on_mirarespalda_area_entered(area: Area2D) -> void:
 	if area.name == "hurtbox":
 		if derecha:
 			derecha = false
 		else:
 			derecha = true
-	pass # Replace with function body.
-func muerte() -> void:
-	
-	queue_free()
-	pass # Replace with function body.
+	pass
+
 func received_damage(damage: int) -> void:
 	if not is_hurt:  # Solo recibe daño si no está en estado de daño
 		is_hurt = true  # Cambia el estado a herido
 		vida -= damage
 		velocidad = Vector2(0, 0)
 		sprite.stop()
-		sprite.play("hut")  # Reproduce la animación de daño
+		sprite.play("Hit")  # Reproduce la animación de daño
+		audio_erido.play()
 		await get_tree().create_timer(0.5).timeout
-		if derecha:
-			velocidad.x = 50  # Si está mirando a la izquierda, empuja a la derecha
-		else:
-			velocidad.x = -50  # Si está mirando a la derecha, empuja a la izquierda
 		if vida <= 0:
-			$DetectoPJ/visión.disabled=true
+			$DetectoPJ/visión.disabled = true
 			velocidad = Vector2(0, 0)
 			velocity = Vector2(0, 0)
 			move_and_slide()
 			sprite.stop()
 			sprite.play("dead")
-			await get_tree().create_timer(2.5).timeout
-			muerte()
+			audio_muerte.play()
+			atacando = true
+			await get_tree().create_timer(1.5).timeout
+			queue_free()  # "muere"
 		else:
-			sprite.stop()
+			is_hurt = false  # Permitir que el enemigo reciba daño nuevamente
 			sprite.play("move")
-			is_hurt = false  # Permitir que el caco demonio reciba daño nuevamente
 			velocidad = Vector2(50, 0)
 			move_and_slide()
-	pass # Replace with function body.
+	pass

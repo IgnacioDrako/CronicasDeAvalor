@@ -2,7 +2,6 @@ extends Area2D
 signal received_damage(damage: int)  
 func _ready():
 	connect("area_entered",_on_area_entered)  
-
 func _on_area_entered(hitbox: HitBoxEnemi) -> void:  
 	print(hitbox) 
 	if hitbox != null:

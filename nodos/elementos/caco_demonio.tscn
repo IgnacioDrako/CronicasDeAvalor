@@ -1,10 +1,13 @@
-[gd_scene load_steps=36 format=3 uid="uid://cwjdyjy1abd3q"]
+[gd_scene load_steps=39 format=3 uid="uid://cwjdyjy1abd3q"]
 
 [ext_resource type="Texture2D" uid="uid://b0d7jcqi7dkud" path="res://recursos/Enemigos/Cacodaemon Sprite Sheet.png" id="1_gd06k"]
 [ext_resource type="Script" path="res://codigo/caco_demonio.gd" id="1_sulyk"]
 [ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="2_1fvu4"]
 [ext_resource type="Script" path="res://codigo/detection.gd" id="4_5nbfa"]
 [ext_resource type="PackedScene" uid="uid://dg2yvldmsbw6u" path="res://nodos/elementos/hit_box_enemy.tscn" id="5_dj30p"]
+[ext_resource type="AudioStream" uid="uid://b8xr2k7emua0v" path="res://recursos/audio/efecto/ataque/Cacodemonio.ogg" id="6_o0552"]
+[ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="7_r37im"]
+[ext_resource type="AudioStream" uid="uid://vw5pf3sgf6wk" path="res://recursos/audio/efecto/Muerte/CacodemonioDeath.ogg" id="8_7bstb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spgvv"]
 atlas = ExtResource("1_gd06k")
@@ -153,9 +156,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4yjbn")
 }],
-"loop": true,
+"loop": false,
 "name": &"Dead",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -249,7 +252,7 @@ position = Vector2(-4, -2)
 sprite_frames = SubResource("SpriteFrames_5ge54")
 animation = &"ataque"
 autoplay = "idel"
-frame_progress = 0.39573
+frame_progress = 0.910899
 
 [node name="hurtboxenemi" parent="." instance=ExtResource("2_1fvu4")]
 
@@ -290,6 +293,15 @@ script = ExtResource("4_5nbfa")
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_l2qjy")
 debug_color = Color(0.628904, 0, 0.195567, 0.0745098)
+
+[node name="Audioataque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_o0552")
+
+[node name="Audioerido" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_r37im")
+
+[node name="Audiomuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_7bstb")
 
 [connection signal="body_entered" from="Detection" to="Detection" method="_on_body_entered"]
 [connection signal="body_exited" from="Detection" to="Detection" method="_on_body_exited"]

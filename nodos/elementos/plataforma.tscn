@@ -6,6 +6,8 @@
 size = Vector2(128, 17)
 
 [node name="PlataformaDummy" type="AnimatableBody2D"]
+light_mask = 2
+visibility_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ef8ae")

@@ -11,10 +11,16 @@ const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando
 @onready var hurt_timer: Timer = $HurtTimer  # Asegúrate de que este timer esté presente en la escena
 @export var offset_x: float = 100.0 
 @onready var hit_box: Area2D = $hitboxplayer
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D  # Asegúrate de que este nodo esté presente en la escena
+@onready var collision_shape: CollisionShape2D = $Cuerpo  # Asegúrate de que este nodo esté presente en la escena
 @onready var timerroll: Timer = $Timerroll
 @onready var hurtbox: CollisionShape2D = $hurtbox/hurtbox
-@onready var varravida: Sprite2D = $Hud/HP0/HP3
+@onready var varravida: Sprite2D = $Camera2D/Hud/HP0/HP3
+@onready var audio_rodar: AudioStreamPlayer2D = $AudioRodar
+@onready var audioda_hurt: AudioStreamPlayer2D = $Audiodaño
+@onready var audioda_ataque: AudioStreamPlayer2D = $Audiodañar
+@onready var audiomorir: AudioStreamPlayer2D = $Audiomorir
+@onready var audio_caminar: AudioStreamPlayer2D = $AudioCaminar
+
 
 var health = 100  # Salud del jugador
 var is_attacking: bool = false  # Variable para controlar el ataque
@@ -45,8 +51,9 @@ func _ready() -> void:
 	original_hit_box_position = hit_box.position
 	#Barra de vida
 	actualizar_Vida()
+
 func actualizar_Vida() -> void:
-	$Hud/HP0/Vida.text = str(health)
+	$Camera2D/Hud/Vida.text = str(health)
 	varravida.scale.x = 1.0 * health/100
 	pass
 	
@@ -83,6 +90,7 @@ func _physics_process(delta: float) -> void:
 		$hitboxplayer/hitbox.disabled = false
 		animated_sprite.play("ataque0")
 		attack_timer.start(0.5)  # Cooldown de 0.5 segundos
+		audioda_ataque.play()  # Reproducir sonido de ataque
 		if not is_on_floor():
 			velocity += get_gravity() * delta  # Asegura que la gravedad siga actuando en el ataque aéreo
 		return
@@ -96,14 +104,18 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 		$hitboxplayer.position.x = -40
 
+	# Control de animaciones basado en el estado del jugador
 	if is_on_floor():
 		if direction == 0:
+			audio_caminar.stop()  # Detener el sonido de caminar
 			if is_rolling:
 				animated_sprite.play("roll")
 			else:
 				animated_sprite.play("Idle")
 		elif not is_rolling:
 			animated_sprite.play("move")
+			if (Input.is_action_just_pressed("MVI") or Input.is_action_just_pressed("MVD")):
+				audio_caminar.play()  # Reproducir sonido de caminar
 	elif not is_rolling:
 		animated_sprite.play("salto")
 
@@ -117,6 +129,7 @@ func start_rolling() -> void:
 	is_rolling = true
 	can_roll = false
 	animated_sprite.play("roll")
+	audio_rodar.play()  # Reproducir sonido de rodar
 	collision_shape.scale.y = 0.5  # Reducir la altura del collision shape
 	collision_shape.position.y = original_collision_shape_position.y / 2  # Ajustar la posición del collision shape
 	hurtbox.disabled = true  # Deshabilitar la hurtbox durante el roll
@@ -149,6 +162,7 @@ func received_damage(damage_amount: int) -> void:
 	print("Jugador recibe daño: ", damage_amount)
 	print("Salud restante: ", health)
 	animated_sprite.play("hurt")
+	audioda_hurt.play()  # Reproducir sonido de daño recibido
 	is_hurt = true  # Cambia el estado a herido
 	hurt_timer.start(0.5)  # Inicia el temporizador para volver a la normalidad
 	if animated_sprite.flip_h:
@@ -172,6 +186,7 @@ func die(delta) -> void:
 	is_dead = true  # Cambia el estado a muerto
 	velocity += get_gravity() * delta 
 	animated_sprite.play("dead")
+	audiomorir.play()  # Reproducir sonido de muerte
 	respawn_timer.start(1)  # Inicia el temporizador
 
 func _on_respawn_timer_timeout() -> void:

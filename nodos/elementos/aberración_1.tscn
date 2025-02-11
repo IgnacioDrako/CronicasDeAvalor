@@ -1,9 +1,12 @@
-[gd_scene load_steps=53 format=3 uid="uid://cbhaouns2iaun"]
+[gd_scene load_steps=56 format=3 uid="uid://cbhaouns2iaun"]
 
 [ext_resource type="Script" path="res://codigo/aberración_1.gd" id="1_2g33f"]
 [ext_resource type="Texture2D" uid="uid://xxd3k4phjpj1" path="res://recursos/Enemigos/Bringer-of-Death-SpritSheet_no-Effect.png" id="2_7floc"]
 [ext_resource type="Script" path="res://codigo/hit_box_enemy.gd" id="3_6yq7x"]
 [ext_resource type="Script" path="res://codigo/hurtboxenemi.gd" id="4_qmlu1"]
+[ext_resource type="AudioStream" uid="uid://d1jm77jtsn57l" path="res://recursos/audio/efecto/ataque/Miss2.ogg" id="5_1vya3"]
+[ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="6_x7p8h"]
+[ext_resource type="AudioStream" uid="uid://oat3vhmll0mk" path="res://recursos/audio/efecto/Muerte/Aberracion.ogg" id="7_iumy3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4mwa"]
 atlas = ExtResource("2_7floc")
@@ -206,7 +209,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dns3l")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque",
 "speed": 8.0
 }, {
@@ -253,7 +256,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xrmci")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
 "speed": 10.0
 }, {
@@ -348,7 +351,7 @@ script = ExtResource("1_2g33f")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -46)
 sprite_frames = SubResource("SpriteFrames_7kkiv")
-animation = &"hut"
+animation = &"Ataque"
 autoplay = "idel"
 
 [node name="hit_Box" type="Area2D" parent="."]
@@ -402,6 +405,15 @@ target_position = Vector2(-7, 10)
 [node name="detasdetiimbecil" type="CollisionShape2D" parent="mirarespalda"]
 position = Vector2(-1, -25)
 shape = SubResource("RectangleShape2D_08avp")
+
+[node name="AudioDaño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1vya3")
+
+[node name="AudioErido" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_x7p8h")
+
+[node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_iumy3")
 
 [connection signal="area_entered" from="DetectoPJ" to="." method="_on_detecto_pj_area_entered"]
 [connection signal="area_exited" from="DetectoPJ" to="." method="_on_detecto_pj_area_exited"]
