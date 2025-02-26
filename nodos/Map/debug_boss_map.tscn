@@ -1,4 +1,4 @@
-[gd_scene load_steps=479 format=4 uid="uid://blefswfnofgf7"]
+[gd_scene load_steps=480 format=4 uid="uid://blefswfnofgf7"]
 
 [ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_jobla"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_la6yu"]
@@ -162,6 +162,7 @@
 [ext_resource type="PackedScene" uid="uid://cg8mpfya153iv" path="res://nodos/elementos/brujo.tscn" id="158_w2hcu"]
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="158_yfwkd"]
 [ext_resource type="PackedScene" uid="uid://c3tyxdl1vido6" path="res://nodos/elementos/fireball.tscn" id="160_abakx"]
+[ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="163_able5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1fk2"]
 texture = ExtResource("1_la6yu")
@@ -185,7 +186,9 @@ texture = ExtResource("3_hwdul")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cbmkw"]
 texture = ExtResource("4_upfvq")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cvh5e"]
 texture = ExtResource("5_myt8i")
@@ -1176,16 +1179,21 @@ texture = ExtResource("154_l2muo")
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xbb2b"]
 texture = ExtResource("155_mwntv")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_458v5"]
 texture = ExtResource("156_fakar")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bo64c"]
 texture = ExtResource("157_dtqob")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_b818i"]
@@ -2529,6 +2537,7 @@ offset_left = -117.0
 offset_top = -181.0
 offset_right = -117.0
 offset_bottom = -181.0
+focus_mode = 2
 
 [node name="Map" type="Node" parent="."]
 
@@ -2548,7 +2557,34 @@ tile_map_data = PackedByteArray("AADw//j/LAAAAAAAAADw//n/LAAAAAEAAADw//r/CAAAAAA
 tile_set = SubResource("TileSet_wxxlp")
 
 [node name="Brujo" parent="." instance=ExtResource("158_w2hcu")]
-position = Vector2(-206, -194)
+position = Vector2(-733, -297)
 
 [node name="Fireball" parent="." instance=ExtResource("160_abakx")]
 position = Vector2(-256, -11)
+
+[node name="PlataformaDummy" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-738, -277)
+
+[node name="PlataformaDummy2" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-735, -152)
+
+[node name="PlataformaDummy3" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-496, -263)
+
+[node name="PlataformaDummy4" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-338, -121)
+
+[node name="PlataformaDummy5" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-193, -248)
+
+[node name="PlataformaDummy6" parent="." instance=ExtResource("163_able5")]
+position = Vector2(192, -121)
+
+[node name="PlataformaDummy7" parent="." instance=ExtResource("163_able5")]
+position = Vector2(95, -248)
+
+[node name="PlataformaDummy8" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-87, -76)
+
+[node name="PlataformaDummy9" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-514, -97)

@@ -314,6 +314,7 @@ tile_set = SubResource("TileSet_hc823")
 position = Vector2(431, -18)
 
 [node name="ColorRect" type="ColorRect" parent="Entrada"]
+z_index = 1
 offset_left = -702.0
 offset_top = -484.0
 offset_right = 505.0

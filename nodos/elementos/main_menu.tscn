@@ -64,16 +64,30 @@ theme_override_constants/separation = 15
 
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Cargar")
 theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_88b55")
 theme_override_font_sizes/font_size = 40
-text = "Jugar"
+text = "Nueva Partida"
+
+[node name="Cargar" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Jugar")
+focus_neighbor_bottom = NodePath("../Salir")
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_88b55")
+theme_override_font_sizes/font_size = 40
+text = "Cargar"
 
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Cargar")
 theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
@@ -83,7 +97,9 @@ text = "Salir"
 
 [node name="intro" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_bu6yb")
+volume_db = 10.182
 parameters/looping = true
 
 [connection signal="pressed" from="VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="VBoxContainer/Cargar" to="." method="_on_cargar_pressed"]
 [connection signal="pressed" from="VBoxContainer/Salir" to="." method="_on_salir_pressed"]

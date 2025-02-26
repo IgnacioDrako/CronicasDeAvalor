@@ -1,4 +1,4 @@
-[gd_scene load_steps=482 format=4 uid="uid://b7y8ufoscpbcg"]
+[gd_scene load_steps=485 format=4 uid="uid://b7y8ufoscpbcg"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_5lqsj"]
 [ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_pqend"]
@@ -165,6 +165,9 @@
 [ext_resource type="PackedScene" uid="uid://cwjdyjy1abd3q" path="res://nodos/elementos/caco_demonio.tscn" id="160_d3vbx"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="161_40wpq"]
 [ext_resource type="PackedScene" uid="uid://cbhaouns2iaun" path="res://nodos/elementos/aberración_1.tscn" id="162_kpa2o"]
+[ext_resource type="PackedScene" uid="uid://bl23rj5fjx8v3" path="res://nodos/elementos/guardar.tscn" id="166_ptjrr"]
+[ext_resource type="AudioStream" uid="uid://gkkjv8kkkh4" path="res://recursos/audio/musica/mazmorraDemo.mp3" id="167_jfn61"]
+[ext_resource type="PackedScene" uid="uid://vbqy5j5yfitg" path="res://nodos/elementos/heal.tscn" id="168_i34bd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v2f0b"]
 texture = ExtResource("1_5lqsj")
@@ -2584,7 +2587,7 @@ position = Vector2(-103, 7)
 [node name="Enemigos" type="Node" parent="."]
 
 [node name="CacoDemonio" parent="Enemigos" instance=ExtResource("160_d3vbx")]
-position = Vector2(-244, -126)
+position = Vector2(-520, -557)
 
 [node name="aberración_1" parent="Enemigos" instance=ExtResource("162_kpa2o")]
 position = Vector2(-427, -287)
@@ -2593,3 +2596,14 @@ position = Vector2(-427, -287)
 
 [node name="PortalDummy" parent="Cambio mapa" instance=ExtResource("2_a8m3u")]
 position = Vector2(-2180, -488)
+
+[node name="Guardar" parent="." instance=ExtResource("166_ptjrr")]
+position = Vector2(-1258, -515)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("167_jfn61")
+autoplay = true
+parameters/looping = true
+
+[node name="heal" parent="." instance=ExtResource("168_i34bd")]
+position = Vector2(-817, -533)

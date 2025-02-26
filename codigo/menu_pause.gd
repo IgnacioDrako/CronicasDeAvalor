@@ -3,6 +3,8 @@ signal continuar_juego
 signal salir_al_menu
 
 func _ready():
+	$PanelContainer/VBoxContainer/Continue.grab_focus()
+	$PanelContainer/VBoxContainer/Exit.grab_focus()
 	print("Menu de pausa listo")
 	print("Nodo padre: ", get_parent().name)
 	$PanelContainer/VBoxContainer/Continue.pressed.connect(_on_continuar_pressed)

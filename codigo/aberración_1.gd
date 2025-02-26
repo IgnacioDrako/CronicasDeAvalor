@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
+# Máquina de estados para la aberración
+enum EnemyState {MOVING, ATTACKING, HURT, DEAD}
+var current_state = EnemyState.MOVING
+
 var velocidad = Vector2(50, 0)
 var derecha = true
-var atacando = false  # Variable para controlar si el enemigo está atacando
+var atacando = false
 var is_hurt = false
 var vida = 50
 
@@ -25,19 +29,65 @@ func _ready() -> void:
 	cajaataque.disabled = true
 	mirar_derecha.enabled = true
 	mirar_izquierda.enabled = true
-	timer.connect("timeout", Callable(self, "_on_ataque_timeout"))  # Conectamos el evento de timeout del ataque
-	hit_box.connect("area_entered", Callable(self, "_on_hit_box_area_entered"))  # Verificar si el pj está en el área de ataque
+	timer.connect("timeout", Callable(self, "_on_ataque_timeout"))
+	hit_box.connect("area_entered", Callable(self, "_on_hit_box_area_entered"))
 
 func _physics_process(delta: float) -> void:
 	mirar_suelo()
-	if not atacando and not is_hurt:  # Solo mueve si no está atacando ni herido
-		mover(delta)
+	
+	# Determinar el próximo estado
+	var next_state = current_state
+	
+	if vida <= 0:
+		next_state = EnemyState.DEAD
+	elif is_hurt:
+		next_state = EnemyState.HURT
+	elif atacando:
+		next_state = EnemyState.ATTACKING
+	else:
+		next_state = EnemyState.MOVING
+	
+	# Cambiar la animación solo si el estado cambió
+	if current_state != next_state:
+		change_state(next_state)
+	
+	# Lógica de movimiento según el estado
+	handle_state_logic(delta)
+
+func change_state(new_state: int) -> void:
+	current_state = new_state
+	
+	match current_state:
+		EnemyState.MOVING:
+			sprite.play("move")
+		EnemyState.ATTACKING:
+			sprite.play("Ataque")
+			audio_da_o.play()
+		EnemyState.HURT:
+			sprite.play("Hit")
+			audio_erido.play()
+		EnemyState.DEAD:
+			sprite.play("dead")
+			audio_muerte.play()
+
+func handle_state_logic(delta: float) -> void:
+	match current_state:
+		EnemyState.MOVING:
+			mover(delta)
+		EnemyState.ATTACKING:
+			# No hacer nada, esperar a que termine la animación
+			pass
+		EnemyState.HURT:
+			# No hacer nada, esperar a que termine la animación
+			pass
+		EnemyState.DEAD:
+			# No hacer nada, esperar a que se elimine
+			pass
 
 func mover(delta: float) -> void:
-	if atacando or is_hurt:
-		# No se mueve durante el ataque o si está herido
+	if current_state != EnemyState.MOVING:
 		return
-	sprite.play("move")
+		
 	if derecha:
 		hit_box.position.x = 20
 		velocidad.x = 50
@@ -65,71 +115,84 @@ func mirar_suelo() -> void:
 		velocidad.x = 0
 
 func _on_detecto_pj_area_entered(body) -> void:
-	if body.name == "hurtbox": 
+	if body.name == "hurtbox" and current_state == EnemyState.MOVING:
 		ataque()
-	pass
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	print("Debug hitbox")
-	if area.name == "hurtbox": 
-		print("Debug hitbox, pj")
+	if area.name == "hurtbox" and current_state == EnemyState.MOVING:
 		ataque()
 
-	pass
-
 func ataque() -> void:
-	atacando = true  # Activamos el estado de ataque
-	sprite.stop()
-	sprite.play("Ataque")
-	audio_da_o.play()
-	velocidad = Vector2(0, 0)  # Detenemos la velocidad
-	velocity = Vector2(0, 0)  # Detenemos el movimiento
-	move_and_slide()  # Asegura que la entidad no se mueva mientras ataca
-	timer.start(1.0)  # Inicia el ataque, que durará 1 segundo 
+	if current_state != EnemyState.MOVING:
+		return
+		
+	atacando = true
+	velocidad = Vector2(0, 0)
+	velocity = Vector2(0, 0)
+	move_and_slide()
+	timer.start(1.0)
 	vision.disabled = true
+	
+	change_state(EnemyState.ATTACKING)
+	
 	await get_tree().create_timer(0.5).timeout
-	cajaataque.disabled  = false
-	pass
+	cajaataque.disabled = false
 
 func _on_ataque_timeout() -> void:
-	# Cuando el ataque termina, desactivamos el estado de ataque
 	atacando = false
 	vision.disabled = false
 	cajaataque.disabled = true
-	# Ahora el enemigo puede volver a moverse
-	sprite.play("move")  # Se puede reiniciar la animación de movimiento si lo deseas
+	
+	if current_state == EnemyState.ATTACKING and vida > 0:
+		change_state(EnemyState.MOVING)
 
 func _on_mirarespalda_area_entered(area: Area2D) -> void:
 	if area.name == "hurtbox":
-		if derecha:
-			derecha = false
-		else:
-			derecha = true
-	pass
+		derecha = !derecha
 
 func received_damage(damage: int) -> void:
-	if not is_hurt:  # Solo recibe daño si no está en estado de daño
-		is_hurt = true  # Cambia el estado a herido
-		vida -= damage
-		velocidad = Vector2(0, 0)
-		sprite.stop()
-		sprite.play("Hit")  # Reproduce la animación de daño
-		audio_erido.play()
-		await get_tree().create_timer(0.5).timeout
-		if vida <= 0:
-			$DetectoPJ/visión.disabled = true
-			velocidad = Vector2(0, 0)
-			velocity = Vector2(0, 0)
-			move_and_slide()
-			sprite.stop()
-			sprite.play("dead")
-			audio_muerte.play()
-			atacando = true
-			await get_tree().create_timer(1.5).timeout
-			queue_free()  # "muere"
-		else:
-			is_hurt = false  # Permitir que el enemigo reciba daño nuevamente
-			sprite.play("move")
-			velocidad = Vector2(50, 0)
-			move_and_slide()
-	pass
+	if current_state == EnemyState.HURT or current_state == EnemyState.DEAD:
+		return
+		
+	is_hurt = true
+	vida -= damage
+	velocidad = Vector2(0, 0)
+	velocity = Vector2(0, 0)
+	move_and_slide()
+	
+	change_state(EnemyState.HURT)
+	
+	await get_tree().create_timer(0.5).timeout
+	
+	if vida <= 0:
+		die()
+	else:
+		is_hurt = false
+		if current_state == EnemyState.HURT:
+			change_state(EnemyState.MOVING)
+
+func die():
+	$DetectoPJ/visión.disabled = true
+	velocidad = Vector2(0, 0)
+	velocity = Vector2(0, 0)
+	move_and_slide()
+	atacando = true
+	
+	change_state(EnemyState.DEAD)
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	spawn_drop()
+	queue_free()
+
+func spawn_drop():
+	var drop_scene = preload("res://nodos/elementos/heal.tscn")
+	var drop_instance = drop_scene.instantiate()
+	
+	# Configurar posición y propiedades
+	drop_instance.global_position = global_position
+	get_tree().get_root().add_child(drop_instance)
+	
+	# Opcional: Aplicar un pequeño impulso
+	if drop_instance is RigidBody2D:
+		drop_instance.apply_impulse(Vector2(randf_range(-50, 50), randf_range(-100, -50)))

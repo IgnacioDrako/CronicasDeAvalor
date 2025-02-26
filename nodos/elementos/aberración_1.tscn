@@ -353,6 +353,8 @@ position = Vector2(0, -46)
 sprite_frames = SubResource("SpriteFrames_7kkiv")
 animation = &"Ataque"
 autoplay = "idel"
+frame = 9
+frame_progress = 1.0
 
 [node name="hit_Box" type="Area2D" parent="."]
 script = ExtResource("3_6yq7x")

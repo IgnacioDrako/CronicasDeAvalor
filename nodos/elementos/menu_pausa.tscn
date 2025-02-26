@@ -29,6 +29,7 @@ alignment = 1
 
 [node name="Continue" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../Exit")
 theme_override_colors/icon_hover_color = Color(0.752941, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_l3ubb")
 theme_override_font_sizes/font_size = 25
@@ -36,6 +37,7 @@ text = "Continue"
 
 [node name="Exit" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Continue")
 theme_override_colors/icon_hover_color = Color(0.752941, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_l3ubb")
 theme_override_font_sizes/font_size = 25
