@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Máquina de estados para el caco demonio - Eliminamos MOVING
+# Máquina de estados para el caco demonio 
 enum DemonState {IDLE, ATTACKING, HURT, DEAD}
 var current_state = DemonState.IDLE
 

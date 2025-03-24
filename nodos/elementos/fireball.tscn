@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3tyxdl1vido6"]
+[gd_scene load_steps=23 format=3 uid="uid://c3tyxdl1vido6"]
 
 [ext_resource type="Texture2D" uid="uid://cwdyvu7rxabb1" path="res://recursos/maguia/Fire Effect 2/Fire Effect 2/Explosion 2 SpriteSheet.png" id="1_wjdit"]
+[ext_resource type="Script" path="res://codigo/fireball.gd" id="1_wyinm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xx4e8"]
 atlas = ExtResource("1_wjdit")
@@ -140,14 +141,25 @@ animations = [{
 radius = 44.1475
 
 [node name="Fireball" type="Node2D"]
+script = ExtResource("1_wyinm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -45)
 scale = Vector2(2.52083, 2.58333)
 sprite_frames = SubResource("SpriteFrames_yvwol")
 autoplay = "default"
-frame_progress = 0.356969
+frame_progress = 0.977578
 
-[node name="range" type="CollisionShape2D" parent="."]
+[node name="damage" type="Area2D" parent="."]
+
+[node name="range" type="CollisionShape2D" parent="damage"]
 position = Vector2(1, -33)
 shape = SubResource("CircleShape2D_otyue")
+disabled = true
+
+[node name="mamotreto" type="Timer" parent="."]
+
+[node name="mondongo" type="Timer" parent="."]
+
+[connection signal="area_entered" from="damage" to="." method="_on_damage_area_entered"]
+[connection signal="timeout" from="mondongo" to="." method="_on_mondongo_timeout"]

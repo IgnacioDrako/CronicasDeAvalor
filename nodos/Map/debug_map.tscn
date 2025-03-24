@@ -1,4 +1,4 @@
-[gd_scene load_steps=485 format=4 uid="uid://b7y8ufoscpbcg"]
+[gd_scene load_steps=486 format=4 uid="uid://b7y8ufoscpbcg"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_5lqsj"]
 [ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_pqend"]
@@ -165,6 +165,7 @@
 [ext_resource type="PackedScene" uid="uid://cwjdyjy1abd3q" path="res://nodos/elementos/caco_demonio.tscn" id="160_d3vbx"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="161_40wpq"]
 [ext_resource type="PackedScene" uid="uid://cbhaouns2iaun" path="res://nodos/elementos/aberración_1.tscn" id="162_kpa2o"]
+[ext_resource type="PackedScene" uid="uid://cg8mpfya153iv" path="res://nodos/elementos/brujo.tscn" id="165_2eyut"]
 [ext_resource type="PackedScene" uid="uid://bl23rj5fjx8v3" path="res://nodos/elementos/guardar.tscn" id="166_ptjrr"]
 [ext_resource type="AudioStream" uid="uid://gkkjv8kkkh4" path="res://recursos/audio/musica/mazmorraDemo.mp3" id="167_jfn61"]
 [ext_resource type="PackedScene" uid="uid://vbqy5j5yfitg" path="res://nodos/elementos/heal.tscn" id="168_i34bd"]
@@ -2514,6 +2515,7 @@ sources/155 = SubResource("TileSetAtlasSource_3ai8c")
 sources/156 = SubResource("TileSetAtlasSource_80yey")
 
 [node name="DebugMap" type="Node2D"]
+position = Vector2(-19, -4)
 script = ExtResource("1_pqend")
 
 [node name="Plataformas" type="Node" parent="."]
@@ -2557,6 +2559,15 @@ position = Vector2(-1803, -584)
 [node name="PlataformaDummy13" parent="Plataformas" instance=ExtResource("161_40wpq")]
 position = Vector2(-2186, -681)
 
+[node name="PlataformaDummy14" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(-1270, -580)
+
+[node name="PlataformaDummy15" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(-853, -538)
+
+[node name="PlataformaDummy16" parent="Plataformas" instance=ExtResource("161_40wpq")]
+position = Vector2(-1455, -550)
+
 [node name="Map" type="Node" parent="."]
 
 [node name="MainMap" type="TileMapLayer" parent="Map"]
@@ -2573,7 +2584,7 @@ tile_set = SubResource("TileSet_2p2ek")
 [node name="player" parent="." instance=ExtResource("158_vd7ji")]
 top_level = true
 z_index = 1
-position = Vector2(-890, -482)
+position = Vector2(-1446, -481)
 
 [node name="MenuPausa" parent="player" instance=ExtResource("160_8bc8o")]
 offset_left = -117.0
@@ -2591,6 +2602,9 @@ position = Vector2(-520, -557)
 
 [node name="aberración_1" parent="Enemigos" instance=ExtResource("162_kpa2o")]
 position = Vector2(-427, -287)
+
+[node name="Brujo" parent="Enemigos" instance=ExtResource("165_2eyut")]
+position = Vector2(-1042, -580)
 
 [node name="Cambio mapa" type="Node" parent="."]
 

@@ -30,6 +30,8 @@ window/stretch/aspect="expand"
 
 Heal=""
 player=""
+pjhurtbox=""
+pjataque=""
 
 [input]
 
