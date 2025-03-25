@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cwjdyjy1abd3q"]
+[gd_scene load_steps=42 format=3 uid="uid://cwjdyjy1abd3q"]
 
 [ext_resource type="Texture2D" uid="uid://b0d7jcqi7dkud" path="res://recursos/Enemigos/Cacodaemon Sprite Sheet.png" id="1_gd06k"]
 [ext_resource type="Script" path="res://codigo/caco_demonio.gd" id="1_sulyk"]
@@ -8,6 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://b8xr2k7emua0v" path="res://recursos/audio/efecto/ataque/Cacodemonio.ogg" id="6_o0552"]
 [ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="7_r37im"]
 [ext_resource type="AudioStream" uid="uid://vw5pf3sgf6wk" path="res://recursos/audio/efecto/Muerte/CacodemonioDeath.ogg" id="8_7bstb"]
+[ext_resource type="Texture2D" uid="uid://245jfvow2xwf" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar_background.png" id="9_cndwr"]
+[ext_resource type="Texture2D" uid="uid://pk0mu2ilnrtj" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/health_bar.png" id="10_0w2m8"]
+[ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="11_k6ku2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spgvv"]
 atlas = ExtResource("1_gd06k")
@@ -302,6 +305,21 @@ stream = ExtResource("7_r37im")
 
 [node name="Audiomuerte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_7bstb")
+
+[node name="vida" type="Sprite2D" parent="."]
+position = Vector2(1, -38)
+texture = ExtResource("9_cndwr")
+
+[node name="barraVida" type="TextureProgressBar" parent="vida"]
+offset_left = -50.0
+offset_top = -4.0
+offset_right = 50.0
+offset_bottom = 36.0
+texture_over = ExtResource("10_0w2m8")
+
+[node name="hud" type="Sprite2D" parent="vida"]
+position = Vector2(-3, 0)
+texture = ExtResource("11_k6ku2")
 
 [connection signal="body_entered" from="Detection" to="Detection" method="_on_body_entered"]
 [connection signal="body_exited" from="Detection" to="Detection" method="_on_body_exited"]

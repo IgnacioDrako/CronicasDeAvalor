@@ -12,8 +12,8 @@ func _ready() -> void:
 	actualizar_texto_vida()
 # Actualizar el texto de vida
 func actualizar_texto_vida():
-	$Hp.text = "health: " + str(health)
-
+	#$Hp.text = "health: " + str(health)
+	$vida/vida.scale.x = health / 100.0
 # Eliminar el muñeco cuando muere
 func die() -> void:
 	queue_free()  # Eliminar el muñeco de la escena

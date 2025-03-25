@@ -2593,7 +2593,7 @@ offset_right = -117.0
 offset_bottom = -207.0
 
 [node name="Dummy2" parent="." instance=ExtResource("160_7ps6a")]
-position = Vector2(-103, 7)
+position = Vector2(-102, 12)
 
 [node name="Enemigos" type="Node" parent="."]
 

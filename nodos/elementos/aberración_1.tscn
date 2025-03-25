@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cbhaouns2iaun"]
+[gd_scene load_steps=59 format=3 uid="uid://cbhaouns2iaun"]
 
 [ext_resource type="Script" path="res://codigo/aberración_1.gd" id="1_2g33f"]
 [ext_resource type="Texture2D" uid="uid://xxd3k4phjpj1" path="res://recursos/Enemigos/Bringer-of-Death-SpritSheet_no-Effect.png" id="2_7floc"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://d1jm77jtsn57l" path="res://recursos/audio/efecto/ataque/Miss2.ogg" id="5_1vya3"]
 [ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="6_x7p8h"]
 [ext_resource type="AudioStream" uid="uid://oat3vhmll0mk" path="res://recursos/audio/efecto/Muerte/Aberracion.ogg" id="7_iumy3"]
+[ext_resource type="Texture2D" uid="uid://245jfvow2xwf" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar_background.png" id="8_grenc"]
+[ext_resource type="Texture2D" uid="uid://pk0mu2ilnrtj" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/health_bar.png" id="9_yncku"]
+[ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="10_4q8w4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4mwa"]
 atlas = ExtResource("2_7floc")
@@ -416,6 +419,21 @@ stream = ExtResource("6_x7p8h")
 
 [node name="AudioMuerte" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_iumy3")
+
+[node name="Barravida0" type="Sprite2D" parent="."]
+position = Vector2(0, -60)
+texture = ExtResource("8_grenc")
+
+[node name="vida" type="TextureProgressBar" parent="Barravida0"]
+offset_left = -49.0
+offset_top = -3.0
+offset_right = 51.0
+offset_bottom = 37.0
+texture_over = ExtResource("9_yncku")
+
+[node name="BarraVida" type="Sprite2D" parent="Barravida0"]
+position = Vector2(0, 1)
+texture = ExtResource("10_4q8w4")
 
 [connection signal="area_entered" from="DetectoPJ" to="." method="_on_detecto_pj_area_entered"]
 [connection signal="area_exited" from="DetectoPJ" to="." method="_on_detecto_pj_area_exited"]

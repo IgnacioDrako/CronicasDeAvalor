@@ -605,12 +605,11 @@ position = Vector2(-258, -132)
 texture = ExtResource("13_nscuh")
 
 [node name="HP0" type="Sprite2D" parent="Camera2D/Hud"]
-position = Vector2(88, 2.38419e-07)
+position = Vector2(96, 3)
 scale = Vector2(1.02542, 1.42308)
-texture = ExtResource("14_lj1b0")
 
 [node name="HP1" type="Sprite2D" parent="Camera2D/Hud/HP0"]
-position = Vector2(7.62939e-06, 0)
+position = Vector2(-6.82648, -1.4054)
 texture = ExtResource("15_m4dt1")
 
 [node name="vida" type="TextureProgressBar" parent="Camera2D/Hud/HP0"]
@@ -624,6 +623,11 @@ offset_top = -6.49435
 offset_right = -59.0008
 offset_bottom = -6.50435
 texture_over = ExtResource("16_lcuxc")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/Hud/HP0"]
+position = Vector2(-7.95599, -2.028)
+scale = Vector2(1, 1)
+texture = ExtResource("14_lj1b0")
 
 [node name="Vida" type="Label" parent="Camera2D/Hud"]
 anchors_preset = -1

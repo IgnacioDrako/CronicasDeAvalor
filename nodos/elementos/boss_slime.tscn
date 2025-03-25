@@ -1,9 +1,12 @@
-[gd_scene load_steps=58 format=3 uid="uid://b586c3vkx4kp1"]
+[gd_scene load_steps=61 format=3 uid="uid://b586c3vkx4kp1"]
 
 [ext_resource type="Script" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
 [ext_resource type="Texture2D" uid="uid://cte56ba48imkg" path="res://recursos/Enemigos/boss_Slime/sprite_creado.png" id="1_s226o"]
 [ext_resource type="Texture2D" uid="uid://d0afqs5ra7dp2" path="res://recursos/Enemigos/boss_Slime/sprite_creado1.png" id="2_fqlmh"]
 [ext_resource type="Texture2D" uid="uid://cu6kx6bllk21e" path="res://recursos/Enemigos/boss_Slime/sprite_creado0.png" id="3_pupxb"]
+[ext_resource type="Texture2D" uid="uid://245jfvow2xwf" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar_background.png" id="5_rebo3"]
+[ext_resource type="Texture2D" uid="uid://pk0mu2ilnrtj" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/health_bar.png" id="6_7k0ea"]
+[ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="7_iy1fy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wirsj"]
 atlas = ExtResource("2_fqlmh")
@@ -370,10 +373,12 @@ autoplay = "idel"
 frame_progress = 0.532298
 
 [node name="AnimatedSpriteAtqueD2" type="AnimatedSprite2D" parent="."]
-position = Vector2(67, -47)
+visible = false
+position = Vector2(68, -46)
 sprite_frames = SubResource("SpriteFrames_3socb")
 animation = &"attack"
-frame_progress = 0.386087
+frame = 2
+frame_progress = 0.452123
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -22)
@@ -405,12 +410,12 @@ shape = SubResource("RectangleShape2D_l52tu")
 debug_color = Color(4.50023e-06, 0.647847, 0.199274, 0.42)
 
 [node name="Derecha" type="RayCast2D" parent="."]
-position = Vector2(55, -31)
+position = Vector2(59, -31)
 rotation = -1.59092
 target_position = Vector2(-0.321926, 15.9967)
 
 [node name="Izquierda" type="RayCast2D" parent="."]
-position = Vector2(-59, -33)
+position = Vector2(-62, -33)
 rotation = 1.56731
 target_position = Vector2(-0.0663261, 18.9999)
 
@@ -422,6 +427,21 @@ shape = SubResource("RectangleShape2D_iybss")
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="flip_timer" type="Timer" parent="."]
+
+[node name="fondoVida" type="Sprite2D" parent="."]
+position = Vector2(0, -90)
+texture = ExtResource("5_rebo3")
+
+[node name="Barravida" type="TextureProgressBar" parent="fondoVida"]
+offset_left = -50.0
+offset_top = -3.0
+offset_right = 50.0
+offset_bottom = 37.0
+max_value = 500.0
+texture_over = ExtResource("6_7k0ea")
+
+[node name="Sprite2D" type="Sprite2D" parent="fondoVida"]
+texture = ExtResource("7_iy1fy")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

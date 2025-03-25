@@ -9,6 +9,7 @@ var derecha = true
 var atacando = false
 var is_hurt = false
 var vida = 50
+var maxvida = 50
 
 @onready var mirar_izquierda: RayCast2D = $mirarIzquierda
 @onready var mirar_derecha: RayCast2D = $mirarDerecha  
@@ -26,12 +27,18 @@ var vida = 50
 @onready var audio_muerte: AudioStreamPlayer2D = $AudioMuerte
 
 func _ready() -> void:
+	maxvida = vida
+	actualizarvida()
 	cajaataque.disabled = true
 	mirar_derecha.enabled = true
 	mirar_izquierda.enabled = true
 	timer.connect("timeout", Callable(self, "_on_ataque_timeout"))
 	hit_box.connect("area_entered", Callable(self, "_on_hit_box_area_entered"))
-
+func actualizarvida() -> void:
+	# Actualiza la barra de vida
+	var porcentajevida = float(vida) / maxvida
+	porcentajevida = max(0.0, porcentajevida)
+	$Barravida0/vida.scale.x = porcentajevida
 func _physics_process(delta: float) -> void:
 	mirar_suelo()
 	
@@ -159,7 +166,6 @@ func received_damage(damage: int) -> void:
 	velocidad = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	move_and_slide()
-	
 	change_state(EnemyState.HURT)
 	
 	await get_tree().create_timer(0.5).timeout
@@ -192,7 +198,6 @@ func spawn_drop():
 	# Configurar posición y propiedades
 	drop_instance.global_position = global_position
 	get_tree().get_root().add_child(drop_instance)
-	
 	# Opcional: Aplicar un pequeño impulso
 	if drop_instance is RigidBody2D:
 		drop_instance.apply_impulse(Vector2(randf_range(-50, 50), randf_range(-100, -50)))

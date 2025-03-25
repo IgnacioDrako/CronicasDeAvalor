@@ -2583,4 +2583,4 @@ position = Vector2(-87, -76)
 position = Vector2(-514, -97)
 
 [node name="BossSlime" parent="." instance=ExtResource("162_jdv7c")]
-position = Vector2(14, 6)
+position = Vector2(14, -4)

@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c80lh8gk2f85"]
+[gd_scene load_steps=14 format=3 uid="uid://c80lh8gk2f85"]
 
 [ext_resource type="Texture2D" uid="uid://bdxu1or47pj8g" path="res://recursos/Enemigos/Training Dummy Sprite Sheet.png" id="1_3ndyp"]
 [ext_resource type="Script" path="res://codigo/dummy.gd" id="1_aty77"]
 [ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="2_r33sv"]
+[ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="4_k5sw2"]
+[ext_resource type="Texture2D" uid="uid://245jfvow2xwf" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar_background.png" id="5_gnvss"]
+[ext_resource type="Texture2D" uid="uid://pk0mu2ilnrtj" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/health_bar.png" id="6_bwl3q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ubc8"]
 atlas = ExtResource("1_3ndyp")
@@ -80,8 +83,19 @@ debug_color = Color(0.949855, 0.332668, 0, 0.419608)
 
 [node name="TimerHurt" type="Timer" parent="."]
 
-[node name="Hp" type="Label" parent="."]
-offset_left = -21.0
-offset_top = -77.0
-offset_right = 19.0
-offset_bottom = -54.0
+[node name="vida" type="Sprite2D" parent="."]
+position = Vector2(-1, -62)
+texture = ExtResource("4_k5sw2")
+
+[node name="vida" type="TextureProgressBar" parent="vida"]
+offset_left = -49.0
+offset_top = -3.0
+offset_right = 69.0
+offset_bottom = 37.0
+texture_under = ExtResource("5_gnvss")
+texture_over = ExtResource("6_bwl3q")
+texture_progress_offset = Vector2(100, 0)
+
+[node name="Hp" type="Label" parent="vida/vida"]
+offset_right = 40.0
+offset_bottom = 23.0

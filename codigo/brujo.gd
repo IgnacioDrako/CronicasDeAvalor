@@ -10,14 +10,20 @@ enum BrujoState {IDLE, CASTING, HURT, DEAD}
 @onready var hurt: Timer = $hurt
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var espera: Timer = $espera
+@onready var dead: Timer = $dead
+@onready var cast: AudioStreamPlayer2D = $cast
+@onready var hit: AudioStreamPlayer2D = $hit
+@onready var dead_2: AudioStreamPlayer2D = $dead2
+@onready var vida: TextureProgressBar = $vidaFondo/Vida
 
-var health = 50
+var health = 40
 var is_hurt: bool = false
 var player_position = Vector2()
 var damage = 10
 var is_attacking: bool = false
 var damage_received: bool = false
 var current_state = BrujoState.IDLE
+var maxlife = 40
 
 func change_state(new_state: BrujoState) -> void:
 	if current_state == new_state:
@@ -45,7 +51,8 @@ func _ready():
 	hurt.timeout.connect(_on_hurt_timer_timeout)
 	casteo.timeout.connect(_on_detection_timer_timeout)
 	detetion.start(1.0)
-	
+	maxlife = health
+	actualizar_vida()
 	# Iniciar en estado IDLE
 	change_state(BrujoState.IDLE)
 
@@ -64,7 +71,11 @@ func _process(delta):
 		BrujoState.DEAD:
 			# Comportamiento en estado DEAD
 			pass
-
+func actualizar_vida():
+	var porcentaje_vida = float(health) / maxlife
+	porcentaje_vida = max(0.0, porcentaje_vida)
+	vida.scale.x = porcentaje_vida
+	pass
 func take_damage(amount):
 	if current_state == BrujoState.DEAD:
 		return
@@ -95,9 +106,17 @@ func _on_detection_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player") and area.is_in_group("pjhurtbox") and current_state != BrujoState.DEAD:
 		print("Brujo: Player detected")
 		get_pj_position(area.global_position.x, area.global_position.y)
+		_face_player(area.global_position.x)  # Asegurarse de que el personaje mire al jugador
 		change_state(BrujoState.CASTING)
 		summon_spel("res://nodos/elementos/fireball.tscn", player_position)
 		espera.start(1.5)
+		cast.play()
+func _face_player(player_x: float) -> void:
+	# Cambiar la dirección de la imagen del personaje según la posición del jugador
+	if player_x < global_position.x:
+		animated_sprite_2d.flip_h=true  # Mirar a la izquierda
+	else:
+		animated_sprite_2d.flip_h=false   # Mirar a la derecha
 
 func summon_spel(scene_path: String, position: Vector2) -> void:
 	var scene = preload("res://nodos/elementos/fireball.tscn")
@@ -113,10 +132,24 @@ func _on_espera_timeout() -> void:
 func received_damage(damage: int) -> void:
 	print("¡Recibiendo daño! Health antes: ", health)
 	health -= damage
+	actualizar_vida()
 	if health <= 0:
 		print("¡Muriendo!")
 		change_state(BrujoState.DEAD)
+		dead.start(3.2)
+		dead_2.play()
 	else:
 		change_state(BrujoState.HURT)
 		hurt.start(1.0)  # Duración de la animación de daño
+		hit.play()
 	pass
+
+func _on_body_area_entered(area: Area2D) -> void:
+	if area.is_in_group("pjataque"):
+		received_damage(10)
+	pass # Replace with function body.
+
+
+func _on_dead_timeout() -> void:
+	queue_free()
+	pass # Replace with function body.
