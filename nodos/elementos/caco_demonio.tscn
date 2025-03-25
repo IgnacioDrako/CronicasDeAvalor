@@ -315,6 +315,7 @@ offset_left = -50.0
 offset_top = -4.0
 offset_right = 50.0
 offset_bottom = 36.0
+max_value = 50.0
 texture_over = ExtResource("10_0w2m8")
 
 [node name="hud" type="Sprite2D" parent="vida"]

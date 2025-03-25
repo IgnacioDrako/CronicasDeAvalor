@@ -112,7 +112,6 @@ func cancel_combo() -> void:
 	auto_combo_timer.stop()
 
 func actualizar_Vida() -> void:
-	$Camera2D/Hud/Vida.text = str(DemoGlobal.vidaPj)
 	$Camera2D/Hud/HP0/vida.scale.x = DemoGlobal.vidaPj / 100.0
 	
 func _physics_process(delta: float) -> void:

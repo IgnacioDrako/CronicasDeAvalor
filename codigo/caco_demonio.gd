@@ -17,8 +17,8 @@ var current_state = DemonState.IDLE
 @onready var audiomuerte: AudioStreamPlayer2D = $Audiomuerte
 @onready var barra_vida: TextureProgressBar = $vida/barraVida
 
-var health = 100
-var maxlife = 100
+var health = 50
+var maxlife = 50
 var is_hurt: bool = false
 var speed = 50.0
 var player_position = Vector2()
@@ -28,8 +28,7 @@ var is_attacking: bool = false
 var damage_received: bool = false  # Nueva variable para forzar el cambio de estado
 
 func _ready():
-	maxlife = health
-	actualizarvida()
+	#actualizarvida()
 	add_to_group("enemys")
 	dead_timer.timeout.connect(die)
 	timer_hurt.timeout.connect(_on_hurt_timer_timeout)
@@ -143,11 +142,10 @@ func received_damage(damage: int) -> void:
 	if current_state == DemonState.HURT or current_state == DemonState.DEAD:
 		print("Ya estaba herido o muerto, ignorando daño")
 		return
-		
 	is_hurt = true
 	damage_received = true  # Marcar que se recibió daño para forzar cambio en _process
 	health -= damage
-	
+	actualizarvida()
 	print("Health después: ", health, " is_hurt: ", is_hurt)
 	
 	# Efecto de knock-back

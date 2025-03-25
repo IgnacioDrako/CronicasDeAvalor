@@ -626,23 +626,7 @@ texture_over = ExtResource("16_lcuxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Hud/HP0"]
 position = Vector2(-7.95599, -2.028)
-scale = Vector2(1, 1)
 texture = ExtResource("14_lj1b0")
-
-[node name="Vida" type="Label" parent="Camera2D/Hud"]
-anchors_preset = -1
-anchor_left = 2.045
-anchor_top = 0.5
-anchor_right = 2.045
-anchor_bottom = 0.5
-offset_left = -71.52
-offset_top = -40.5
-offset_right = 15.48
-offset_bottom = -17.5
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="hitboxplayer" parent="." groups=["pjataque", "player"] instance=ExtResource("8_m8omp")]
 collision_mask = 1

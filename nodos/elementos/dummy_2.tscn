@@ -97,5 +97,6 @@ texture_over = ExtResource("6_bwl3q")
 texture_progress_offset = Vector2(100, 0)
 
 [node name="Hp" type="Label" parent="vida/vida"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

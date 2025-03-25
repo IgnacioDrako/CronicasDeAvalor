@@ -8,8 +8,8 @@ var velocidad = Vector2(50, 0)
 var derecha = true
 var atacando = false
 var is_hurt = false
-var vida = 50
-var maxvida = 50
+var heal = 50
+var max_heal = 50
 
 @onready var mirar_izquierda: RayCast2D = $mirarIzquierda
 @onready var mirar_derecha: RayCast2D = $mirarDerecha  
@@ -25,27 +25,30 @@ var maxvida = 50
 @onready var audio_da_o: AudioStreamPlayer2D = $AudioDaño
 @onready var audio_erido: AudioStreamPlayer2D = $AudioErido
 @onready var audio_muerte: AudioStreamPlayer2D = $AudioMuerte
+@onready var barravida: TextureProgressBar = $Barravida0/vida
 
 func _ready() -> void:
-	maxvida = vida
-	actualizarvida()
+	max_heal = heal
+	#actualizarheal()
 	cajaataque.disabled = true
 	mirar_derecha.enabled = true
 	mirar_izquierda.enabled = true
 	timer.connect("timeout", Callable(self, "_on_ataque_timeout"))
 	hit_box.connect("area_entered", Callable(self, "_on_hit_box_area_entered"))
-func actualizarvida() -> void:
-	# Actualiza la barra de vida
-	var porcentajevida = float(vida) / maxvida
-	porcentajevida = max(0.0, porcentajevida)
-	$Barravida0/vida.scale.x = porcentajevida
+func actualizarheal() -> void:
+	# Calcula el porcentaje de vida actual
+	var porcentaje_vida = float(heal) / max_heal
+	# Asegura que el porcentaje no sea negativo
+	porcentaje_vida = max(0.0, porcentaje_vida)
+	# Actualiza la escala de la barra de vida
+	barravida.scale.x = porcentaje_vida
 func _physics_process(delta: float) -> void:
 	mirar_suelo()
 	
 	# Determinar el próximo estado
 	var next_state = current_state
 	
-	if vida <= 0:
+	if heal <= 0:
 		next_state = EnemyState.DEAD
 	elif is_hurt:
 		next_state = EnemyState.HURT
@@ -150,7 +153,7 @@ func _on_ataque_timeout() -> void:
 	vision.disabled = false
 	cajaataque.disabled = true
 	
-	if current_state == EnemyState.ATTACKING and vida > 0:
+	if current_state == EnemyState.ATTACKING and heal > 0:
 		change_state(EnemyState.MOVING)
 
 func _on_mirarespalda_area_entered(area: Area2D) -> void:
@@ -160,9 +163,9 @@ func _on_mirarespalda_area_entered(area: Area2D) -> void:
 func received_damage(damage: int) -> void:
 	if current_state == EnemyState.HURT or current_state == EnemyState.DEAD:
 		return
-		
 	is_hurt = true
-	vida -= damage
+	heal -= damage
+	actualizarheal()
 	velocidad = Vector2(0, 0)
 	velocity = Vector2(0, 0)
 	move_and_slide()
@@ -170,7 +173,7 @@ func received_damage(damage: int) -> void:
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	if vida <= 0:
+	if heal <= 0:
 		die()
 	else:
 		is_hurt = false

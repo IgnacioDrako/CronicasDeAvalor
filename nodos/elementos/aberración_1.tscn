@@ -429,6 +429,7 @@ offset_left = -49.0
 offset_top = -3.0
 offset_right = 51.0
 offset_bottom = 37.0
+max_value = 50.0
 texture_over = ExtResource("9_yncku")
 
 [node name="BarraVida" type="Sprite2D" parent="Barravida0"]

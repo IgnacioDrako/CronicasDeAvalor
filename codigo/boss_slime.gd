@@ -66,4 +66,4 @@ func actualizarvida():
 	porcentaje_vida = max(0.0, porcentaje_vida)
 	
 	# Actualiza la escala de la barra de vida
-	$fondoVida/Barravida.scale.x = porcentaje_vida
+	barravida.scale.x = porcentaje_vida
