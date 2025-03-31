@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b586c3vkx4kp1"]
+[gd_scene load_steps=62 format=3 uid="uid://b586c3vkx4kp1"]
 
 [ext_resource type="Script" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
 [ext_resource type="Texture2D" uid="uid://cte56ba48imkg" path="res://recursos/Enemigos/boss_Slime/sprite_creado.png" id="1_s226o"]
@@ -362,6 +362,9 @@ size = Vector2(50, 31)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iybss"]
 size = Vector2(114, 51)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qffh1"]
+size = Vector2(115, 13)
+
 [node name="BossSlime" type="CharacterBody2D"]
 script = ExtResource("1_5tkg7")
 
@@ -374,11 +377,10 @@ frame_progress = 0.532298
 
 [node name="AnimatedSpriteAtqueD2" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(68, -46)
+position = Vector2(68, -47)
 sprite_frames = SubResource("SpriteFrames_3socb")
 animation = &"attack"
-frame = 2
-frame_progress = 0.452123
+frame_progress = 0.371341
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, -22)
@@ -422,11 +424,11 @@ target_position = Vector2(-0.0663261, 18.9999)
 [node name="hitbox2" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox2"]
-position = Vector2(-1, -24)
+position = Vector2(-3, -23)
 shape = SubResource("RectangleShape2D_iybss")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="flip_timer" type="Timer" parent="."]
+[node name="coso" type="Timer" parent="."]
 
 [node name="fondoVida" type="Sprite2D" parent="."]
 position = Vector2(0, -90)
@@ -443,5 +445,13 @@ texture_over = ExtResource("6_7k0ea")
 [node name="Sprite2D" type="Sprite2D" parent="fondoVida"]
 texture = ExtResource("7_iy1fy")
 
+[node name="detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(0.5, -20.5)
+shape = SubResource("RectangleShape2D_qffh1")
+
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="coso" to="." method="_on_coso_timeout"]
+[connection signal="area_entered" from="detection" to="." method="_on_detection_area_entered"]

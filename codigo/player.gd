@@ -345,6 +345,8 @@ func _on_animation_finished(anim_name: String) -> void:
 			change_state(PlayerState.JUMPING)
 
 func received_damage(damage_amount: int) -> void:
+	if DemoGlobal.vidaPj <= 0:
+		die()
 	if is_hurt or is_dead or current_state == PlayerState.ROLLING:
 		return
 	

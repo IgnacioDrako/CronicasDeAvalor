@@ -102,7 +102,7 @@ func _on_detection_timer_timeout():
 		casteo.start()
 
 func _on_detection_area_entered(area: Area2D) -> void:
-	print("Brujo: Area entered")
+	#print("Brujo: Area entered")
 	if area.is_in_group("player") and area.is_in_group("pjhurtbox") and current_state != BrujoState.DEAD:
 		print("Brujo: Player detected")
 		get_pj_position(area.global_position.x, area.global_position.y)
@@ -138,6 +138,7 @@ func received_damage(damage: int) -> void:
 		change_state(BrujoState.DEAD)
 		dead.start(3.2)
 		dead_2.play()
+		
 	else:
 		change_state(BrujoState.HURT)
 		hurt.start(1.0)  # Duración de la animación de daño
@@ -151,5 +152,16 @@ func _on_body_area_entered(area: Area2D) -> void:
 
 
 func _on_dead_timeout() -> void:
+	spawn_drop()
 	queue_free()
 	pass # Replace with function body.
+
+func spawn_drop():
+	var drop_scene = preload("res://nodos/elementos/heal.tscn")
+	var drop_instance = drop_scene.instantiate()
+	# Configurar posición y propiedades
+	drop_instance.global_position = global_position
+	get_tree().get_root().add_child(drop_instance)
+	# Opcional: Aplicar un pequeño impulso
+	if drop_instance is RigidBody2D:
+		drop_instance.apply_impulse(Vector2(randf_range(-50, 50), randf_range(-100, -50)))

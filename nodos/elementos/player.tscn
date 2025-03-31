@@ -333,7 +333,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t4oio")
 }],
-"loop": false,
+"loop": true,
 "name": &"ataque0",
 "speed": 8.0
 }, {
@@ -583,8 +583,9 @@ script = ExtResource("1_kk8ih")
 position = Vector2(1, -56)
 scale = Vector2(1.38333, 1.3875)
 sprite_frames = SubResource("SpriteFrames_0rcv5")
-animation = &"Idle"
+animation = &"ataque1"
 autoplay = "Idle"
+frame_progress = 0.415482
 
 [node name="HurtTimer" type="Timer" parent="."]
 

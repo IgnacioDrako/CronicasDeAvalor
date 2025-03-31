@@ -1,6 +1,6 @@
-[gd_scene load_steps=479 format=4 uid="uid://blefswfnofgf7"]
+[gd_scene load_steps=480 format=4 uid="uid://blefswfnofgf7"]
 
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_jobla"]
+[ext_resource type="Script" path="res://codigo/debug_boss_map.gd" id="1_5uqp1"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_la6yu"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="2_b8vgi"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_swr8y"]
@@ -162,6 +162,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="158_yfwkd"]
 [ext_resource type="PackedScene" uid="uid://b586c3vkx4kp1" path="res://nodos/elementos/boss_slime.tscn" id="162_jdv7c"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="163_able5"]
+[ext_resource type="PackedScene" uid="uid://chyx11ect2a6r" path="res://recursos/interactuavles/imvocador.tscn" id="163_cxf1h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1fk2"]
 texture = ExtResource("1_la6yu")
@@ -2525,11 +2526,11 @@ sources/155 = SubResource("TileSetAtlasSource_wq5ab")
 sources/156 = SubResource("TileSetAtlasSource_5orm1")
 
 [node name="debug_boss_map" type="Node2D"]
-script = ExtResource("1_jobla")
+script = ExtResource("1_5uqp1")
 
 [node name="player" parent="." instance=ExtResource("158_yfwkd")]
 top_level = true
-position = Vector2(-67, -119)
+position = Vector2(-429, -218)
 
 [node name="MenuPausa" parent="player" instance=ExtResource("2_b8vgi")]
 offset_left = -117.0
@@ -2556,31 +2557,59 @@ tile_map_data = PackedByteArray("AADw//j/LAAAAAAAAADw//n/LAAAAAEAAADw//r/CAAAAAA
 tile_set = SubResource("TileSet_wxxlp")
 
 [node name="PlataformaDummy" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-738, -277)
+position = Vector2(-622, -217)
 
 [node name="PlataformaDummy2" parent="." instance=ExtResource("163_able5")]
 position = Vector2(-735, -152)
 
 [node name="PlataformaDummy3" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-496, -263)
+position = Vector2(-427, -202)
 
 [node name="PlataformaDummy4" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-338, -121)
+position = Vector2(-742, -265)
 
 [node name="PlataformaDummy5" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-193, -248)
+position = Vector2(-328, -138)
 
 [node name="PlataformaDummy6" parent="." instance=ExtResource("163_able5")]
-position = Vector2(192, -121)
+position = Vector2(-220, -199)
 
 [node name="PlataformaDummy7" parent="." instance=ExtResource("163_able5")]
-position = Vector2(95, -248)
+position = Vector2(-309, -257)
 
 [node name="PlataformaDummy8" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-87, -76)
+position = Vector2(70, -122)
 
 [node name="PlataformaDummy9" parent="." instance=ExtResource("163_able5")]
-position = Vector2(-514, -97)
+position = Vector2(-475, -70)
 
 [node name="BossSlime" parent="." instance=ExtResource("162_jdv7c")]
 position = Vector2(14, -4)
+
+[node name="PlataformaDummy10" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-14, -266)
+
+[node name="PlataformaDummy11" parent="." instance=ExtResource("163_able5")]
+position = Vector2(151, -200)
+
+[node name="PlataformaDummy12" parent="." instance=ExtResource("163_able5")]
+position = Vector2(161, -64)
+
+[node name="PlataformaDummy13" parent="." instance=ExtResource("163_able5")]
+position = Vector2(-26, -183)
+
+[node name="imvocador" parent="." instance=ExtResource("163_cxf1h")]
+position = Vector2(-219, -208)
+
+[node name="dummy" type="Timer" parent="."]
+
+[node name="nfriamiento" type="Timer" parent="."]
+
+[node name="imvocador2" parent="." instance=ExtResource("163_cxf1h")]
+position = Vector2(-744, -275)
+
+[node name="imvocador3" parent="." instance=ExtResource("163_cxf1h")]
+position = Vector2(201, -212)
+
+[connection signal="timeout" from="dummy" to="." method="_on_dummy_timeout"]
+[connection signal="timeout" from="nfriamiento" to="." method="_on_nfriamiento_timeout"]

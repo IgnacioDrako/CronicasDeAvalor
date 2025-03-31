@@ -1,0 +1,92 @@
+[gd_scene load_steps=19 format=3 uid="uid://chyx11ect2a6r"]
+
+[ext_resource type="Texture2D" uid="uid://b6fbpa4rnrjp0" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)1.png" id="1_88hws"]
+[ext_resource type="Script" path="res://codigo/imvocador.gd" id="1_cck17"]
+[ext_resource type="Texture2D" uid="uid://ccu46ovrxmifh" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)2.png" id="2_t31al"]
+[ext_resource type="Texture2D" uid="uid://cn3n5leyk72d6" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)3.png" id="3_ip5t6"]
+[ext_resource type="Texture2D" uid="uid://ca6in48dkwywj" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)4.png" id="4_40oae"]
+[ext_resource type="Texture2D" uid="uid://mqwomkce31mp" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)5.png" id="5_joyjq"]
+[ext_resource type="Texture2D" uid="uid://5mrjn7wua41f" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)6.png" id="6_a8cd1"]
+[ext_resource type="Texture2D" uid="uid://dnfu3o1n7g1pd" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)7.png" id="7_qitn8"]
+[ext_resource type="Texture2D" uid="uid://dpfcbu2mgpnmi" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)8.png" id="8_1g5a1"]
+[ext_resource type="Texture2D" uid="uid://mq4spmkruebx" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)9.png" id="9_yf4ju"]
+[ext_resource type="Texture2D" uid="uid://beqdihfx5e271" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)10.png" id="10_gf77q"]
+[ext_resource type="Texture2D" uid="uid://4w4tuu2apvo6" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)11.png" id="11_8kd5r"]
+[ext_resource type="Texture2D" uid="uid://bee8dnbmw5hdy" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)12.png" id="12_7dgiq"]
+[ext_resource type="Texture2D" uid="uid://ch13jm4k48qqw" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)13.png" id="13_4jdxb"]
+[ext_resource type="Texture2D" uid="uid://dd23ee4ihkxmv" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)14.png" id="14_pkeqw"]
+[ext_resource type="Texture2D" uid="uid://bho1crvpaqn2p" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)15.png" id="15_ksm3t"]
+[ext_resource type="Texture2D" uid="uid://caixkhwpr05ka" path="res://recursos/maguia/Dark VFX 01 - 02/Dark VFX 2/Separated Frames/Dark VFX 2 (48x64)16.png" id="16_4m75r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tm3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_88hws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t31al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ip5t6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_40oae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_joyjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a8cd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qitn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1g5a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yf4ju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gf77q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8kd5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7dgiq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_4jdxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pkeqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ksm3t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_4m75r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="imvocador" type="Node2D"]
+script = ExtResource("1_cck17")
+
+[node name="enfriamiento" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_4tm3l")
+autoplay = "default"
+frame_progress = 0.446949
+
+[node name="vida" type="Timer" parent="."]
+
+[connection signal="timeout" from="enfriamiento" to="." method="_on_enfriamiento_timeout"]
+[connection signal="timeout" from="vida" to="." method="_on_vida_timeout"]

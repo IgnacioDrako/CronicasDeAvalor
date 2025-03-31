@@ -1,6 +1,6 @@
 extends CharacterBody2D
-var heal = 500
-var speed = 00
+var heal = 260
+var speed = 100
 var damage = 10
 var max_heal = 500  
 @onready var mirar_derecha: RayCast2D = $Derecha
@@ -11,6 +11,9 @@ var derecha = true
 @onready var cabeza0: CollisionShape2D = $hitbox/CollisionShape2D
 @onready var cabeza1: CollisionShape2D = $hurtbox/CollisionShape2D2
 @onready var barravida: TextureProgressBar = $fondoVida/Barravida
+@onready var detection: CollisionShape2D = $detection/CollisionShape2D
+@onready var coso: Timer = $coso
+
 func _ready() -> void:
 	# Establece el valor máximo de vida al inicio
 	max_heal = heal
@@ -23,8 +26,10 @@ func cambiar_direccion() -> void:
 		print("Cambiando a izquierda")
 		animated_sprite_2d.flip_h = true
 		animated_sprite_atque_d_2.flip_h = true
+		animated_sprite_atque_d_2.position.x = -60
 		cabeza0.position.x = -25
 		cabeza1.position.x = -25
+		detection.position.x = -50
 	# Si el raycast izquierdo detecta una colisión, cambia a la derecha
 	elif mirar_izquierda.is_colliding():
 		derecha = true
@@ -34,6 +39,9 @@ func cambiar_direccion() -> void:
 		animated_sprite_atque_d_2.flip_h=false 
 		cabeza0.position.x = 10
 		cabeza1.position.x = 10
+		detection.position.x = 50
+		animated_sprite_atque_d_2.position.x = 68
+
 		
 func _physics_process(delta: float) -> void:
 	cambiar_direccion()
@@ -67,3 +75,31 @@ func actualizarvida():
 	
 	# Actualiza la escala de la barra de vida
 	barravida.scale.x = porcentaje_vida
+
+
+func _on_detection_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		print("Jugador detectado")
+		if heal <=250:
+			speed = 0
+			animated_sprite_2d.visible=false
+			animated_sprite_atque_d_2.visible = true
+			animated_sprite_atque_d_2.play("attack")
+			var parent = area.get_parent()
+			parent.received_damage(25)
+			coso.start(1)
+		else:
+			#👍
+			pass
+		pass
+	pass # Replace with function body.
+
+
+func _on_coso_timeout() -> void:
+	animated_sprite_2d.visible=true
+	animated_sprite_atque_d_2.visible=false
+	if derecha:
+		speed = 300
+	else:
+		speed = -300
+	pass # Replace with function body.
