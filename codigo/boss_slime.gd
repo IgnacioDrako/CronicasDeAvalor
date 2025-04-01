@@ -13,6 +13,9 @@ var derecha = true
 @onready var barravida: TextureProgressBar = $fondoVida/Barravida
 @onready var detection: CollisionShape2D = $detection/CollisionShape2D
 @onready var coso: Timer = $coso
+@onready var muerte_estatico: Sprite2D = $muerteEstatico
+@onready var cuerpo1: CollisionShape2D = $hitbox/CollisionShape2D2
+@onready var cuerpo0: CollisionShape2D = $hurtbox/CollisionShape2D
 
 func _ready() -> void:
 	# Establece el valor máximo de vida al inicio
@@ -26,6 +29,7 @@ func cambiar_direccion() -> void:
 		print("Cambiando a izquierda")
 		animated_sprite_2d.flip_h = true
 		animated_sprite_atque_d_2.flip_h = true
+		muerte_estatico.flip_h=true
 		animated_sprite_atque_d_2.position.x = -60
 		cabeza0.position.x = -25
 		cabeza1.position.x = -25
@@ -37,6 +41,7 @@ func cambiar_direccion() -> void:
 		print("Cambiando a derecha")
 		animated_sprite_2d.flip_h = false 
 		animated_sprite_atque_d_2.flip_h=false 
+		muerte_estatico.flip_h=false
 		cabeza0.position.x = 10
 		cabeza1.position.x = 10
 		detection.position.x = 50
@@ -65,6 +70,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		heal = max(0, heal)
 		# Actualiza la barra de vida
 		actualizarvida()
+		if heal<= 0:
+			muerte()
 
 
 func actualizarvida():
@@ -103,3 +110,15 @@ func _on_coso_timeout() -> void:
 	else:
 		speed = -300
 	pass # Replace with function body.
+func muerte():
+	speed=0
+	cabeza0.disabled=true
+	cabeza1.disable=true
+	cuerpo0.disabled=true
+	cuerpo1.disabled=true
+	animated_sprite_2d.visible=false
+	animated_sprite_atque_d_2.visible=false
+	muerte_estatico.visible=true
+	detection.disabled=true
+	barravida.visible=false
+	pass

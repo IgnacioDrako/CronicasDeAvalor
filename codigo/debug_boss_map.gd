@@ -26,14 +26,3 @@ func _on_continuar_juego():
 
 func _on_salir_al_menu():
 	print("Salir al menú desde el nodo padre")
-
-func _on_dummy_timeout() -> void:
-	print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-	$imvocador.invocaresqueleto()
-	#enfriamiento.start(25)
-	pass 
-func _on_nfriamiento_timeout() -> void:
-	#dummy.start(1)
-	#$imvocador.invocaresqueleto()
-	#enfriamiento.start(25)
-	pass # Replace with function body.

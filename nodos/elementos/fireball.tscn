@@ -149,7 +149,7 @@ position = Vector2(2, -45)
 scale = Vector2(2.52083, 2.58333)
 sprite_frames = SubResource("SpriteFrames_yvwol")
 autoplay = "default"
-frame_progress = 0.977578
+frame_progress = 0.0628932
 
 [node name="damage" type="Area2D" parent="."]
 

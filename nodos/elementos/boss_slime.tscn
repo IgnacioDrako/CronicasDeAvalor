@@ -1,12 +1,32 @@
-[gd_scene load_steps=62 format=3 uid="uid://b586c3vkx4kp1"]
+[gd_scene load_steps=79 format=3 uid="uid://b586c3vkx4kp1"]
 
 [ext_resource type="Script" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
 [ext_resource type="Texture2D" uid="uid://cte56ba48imkg" path="res://recursos/Enemigos/boss_Slime/sprite_creado.png" id="1_s226o"]
 [ext_resource type="Texture2D" uid="uid://d0afqs5ra7dp2" path="res://recursos/Enemigos/boss_Slime/sprite_creado1.png" id="2_fqlmh"]
+[ext_resource type="Texture2D" uid="uid://dnul7wc65voyt" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-0.png" id="2_n8mn6"]
+[ext_resource type="Texture2D" uid="uid://d24lrgdrkr85c" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-1.png" id="3_6y0g8"]
 [ext_resource type="Texture2D" uid="uid://cu6kx6bllk21e" path="res://recursos/Enemigos/boss_Slime/sprite_creado0.png" id="3_pupxb"]
+[ext_resource type="Texture2D" uid="uid://o60gbkm8oe7w" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-2.png" id="4_2qdl5"]
+[ext_resource type="Texture2D" uid="uid://dss4ouosoa5o1" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-3.png" id="5_p2plf"]
 [ext_resource type="Texture2D" uid="uid://245jfvow2xwf" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar_background.png" id="5_rebo3"]
+[ext_resource type="Texture2D" uid="uid://b448qrgg14a6o" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-4.png" id="6_2roui"]
 [ext_resource type="Texture2D" uid="uid://pk0mu2ilnrtj" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/health_bar.png" id="6_7k0ea"]
 [ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="7_iy1fy"]
+[ext_resource type="Texture2D" uid="uid://nwdry73qr08y" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-5.png" id="7_ommt7"]
+[ext_resource type="Texture2D" uid="uid://dh4viuoho5jf0" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-6.png" id="8_thtka"]
+[ext_resource type="Texture2D" uid="uid://cybk5tv1bfsgo" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-7.png" id="9_56tbj"]
+[ext_resource type="Texture2D" uid="uid://cjktjcgcb6x4" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-8.png" id="10_ikwq6"]
+[ext_resource type="Texture2D" uid="uid://billi8m065l20" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-9.png" id="11_edis6"]
+[ext_resource type="Texture2D" uid="uid://d32bso001n6qr" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-10.png" id="12_mv5xx"]
+[ext_resource type="Texture2D" uid="uid://ekkr0w28aonc" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-11.png" id="13_mrf0y"]
+[ext_resource type="Texture2D" uid="uid://bgop88cl6tphy" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-12.png" id="14_ownrv"]
+[ext_resource type="Texture2D" uid="uid://7gvc13vn3q52" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-13.png" id="15_jr0rh"]
+[ext_resource type="Texture2D" uid="uid://cd5eylp6gmakj" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-14.png" id="16_imipm"]
+[ext_resource type="Texture2D" uid="uid://lpq1v5vfsql8" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-15.png" id="17_bc784"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqtff"]
+atlas = ExtResource("2_n8mn6")
+region = Rect2(0, 0, 177, 127)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wirsj"]
 atlas = ExtResource("2_fqlmh")
@@ -126,6 +146,59 @@ region = Rect2(2124, 0, 177, 127)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v0jfe"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqtff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6y0g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2qdl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_p2plf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2roui")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ommt7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_thtka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_56tbj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ikwq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_edis6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mv5xx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mrf0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ownrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_jr0rh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_imipm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bc784")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wirsj")
@@ -373,11 +446,11 @@ position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_v0jfe")
 animation = &"idel"
 autoplay = "idel"
-frame_progress = 0.532298
+frame_progress = 0.166972
 
 [node name="AnimatedSpriteAtqueD2" type="AnimatedSprite2D" parent="."]
 visible = false
-position = Vector2(68, -47)
+position = Vector2(68, -46)
 sprite_frames = SubResource("SpriteFrames_3socb")
 animation = &"attack"
 frame_progress = 0.371341
@@ -450,6 +523,11 @@ texture = ExtResource("7_iy1fy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
 position = Vector2(0.5, -20.5)
 shape = SubResource("RectangleShape2D_qffh1")
+
+[node name="muerteEstatico" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -39)
+texture = ExtResource("17_bc784")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

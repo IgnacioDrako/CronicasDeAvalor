@@ -1,4 +1,4 @@
-[gd_scene load_steps=480 format=4 uid="uid://blefswfnofgf7"]
+[gd_scene load_steps=481 format=4 uid="uid://blefswfnofgf7"]
 
 [ext_resource type="Script" path="res://codigo/debug_boss_map.gd" id="1_5uqp1"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_la6yu"]
@@ -163,6 +163,7 @@
 [ext_resource type="PackedScene" uid="uid://b586c3vkx4kp1" path="res://nodos/elementos/boss_slime.tscn" id="162_jdv7c"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="163_able5"]
 [ext_resource type="PackedScene" uid="uid://chyx11ect2a6r" path="res://recursos/interactuavles/imvocador.tscn" id="163_cxf1h"]
+[ext_resource type="PackedScene" uid="uid://dh81pbjobuhwk" path="res://nodos/elementos/imvocador_2.tscn" id="164_i7gto"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1fk2"]
 texture = ExtResource("1_la6yu")
@@ -2584,7 +2585,7 @@ position = Vector2(70, -122)
 position = Vector2(-475, -70)
 
 [node name="BossSlime" parent="." instance=ExtResource("162_jdv7c")]
-position = Vector2(14, -4)
+position = Vector2(14, 1)
 
 [node name="PlataformaDummy10" parent="." instance=ExtResource("163_able5")]
 position = Vector2(-14, -266)
@@ -2599,17 +2600,28 @@ position = Vector2(161, -64)
 position = Vector2(-26, -183)
 
 [node name="imvocador" parent="." instance=ExtResource("163_cxf1h")]
-position = Vector2(-219, -208)
+z_index = 1
+position = Vector2(-219, -204)
 
 [node name="dummy" type="Timer" parent="."]
 
 [node name="nfriamiento" type="Timer" parent="."]
 
 [node name="imvocador2" parent="." instance=ExtResource("163_cxf1h")]
-position = Vector2(-744, -275)
+z_index = 1
+position = Vector2(-744, -273)
 
 [node name="imvocador3" parent="." instance=ExtResource("163_cxf1h")]
-position = Vector2(201, -212)
+z_index = 1
+position = Vector2(201, -207)
+
+[node name="imvocador4" parent="." instance=ExtResource("164_i7gto")]
+z_index = 1
+position = Vector2(-555, -151)
+
+[node name="imvocador5" parent="." instance=ExtResource("164_i7gto")]
+z_index = 1
+position = Vector2(-186, -245)
 
 [connection signal="timeout" from="dummy" to="." method="_on_dummy_timeout"]
 [connection signal="timeout" from="nfriamiento" to="." method="_on_nfriamiento_timeout"]

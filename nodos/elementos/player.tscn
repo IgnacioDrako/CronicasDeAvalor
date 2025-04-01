@@ -583,9 +583,8 @@ script = ExtResource("1_kk8ih")
 position = Vector2(1, -56)
 scale = Vector2(1.38333, 1.3875)
 sprite_frames = SubResource("SpriteFrames_0rcv5")
-animation = &"ataque1"
+animation = &"dead"
 autoplay = "Idle"
-frame_progress = 0.415482
 
 [node name="HurtTimer" type="Timer" parent="."]
 

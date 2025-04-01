@@ -2612,7 +2612,7 @@ position = Vector2(-1042, -580)
 position = Vector2(-2180, -488)
 
 [node name="Guardar" parent="." instance=ExtResource("166_ptjrr")]
-position = Vector2(-1258, -515)
+position = Vector2(-1632, -513)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("167_jfn61")

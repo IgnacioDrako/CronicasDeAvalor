@@ -184,6 +184,7 @@ func change_state(new_state: int) -> void:
 			animated_sprite.play("dead")
 			audiomorir.play()
 			respawn_timer.start(1)
+			
 
 func handle_state_logic(delta: float) -> void:
 	# Aplicar gravedad siempre que no esté en el suelo
@@ -367,7 +368,8 @@ func received_damage(damage_amount: int) -> void:
 	cancel_combo()
 	
 	if DemoGlobal.vidaPj <= 0:
-		change_state(PlayerState.DEAD)
+		#change_state(PlayerState.DEAD)
+		die()
 	else:
 		change_state(PlayerState.HURT)
 
@@ -380,15 +382,13 @@ func _on_hurt_timer_timeout() -> void:
 		else:
 			change_state(PlayerState.JUMPING)
 
-func die(delta: float = 0) -> void:
-	if is_dead:
-		return
-	
-	is_dead = true
+func die():
 	change_state(PlayerState.DEAD)
+	animated_sprite.play("dead")
 
 func _on_respawn_timer_timeout() -> void:
 	get_tree().reload_current_scene()
+	DemoGlobal.loadgame()
 
 func hit(damage: int) -> void:
 	if not is_hurt and not is_dead and current_state != PlayerState.ROLLING:
