@@ -7,28 +7,28 @@ En Crónicas de Avalor, los jugadores se embarcan en una aventura épica a trav�
 <h3>🚀Características</h3>
 Motor de juego: Godot Engine
 
-Género: Plataforma 2D
+<h5>Género: </h5>Plataforma 2D
 
-Estilo artístico: Pixel art
+<h5>Estilo artístico: </h5>Pixel art
 
-Mecánicas de juego: Saltos y combate
+<h5>Mecánicas de juego: </h5>Saltos y combate
 
 <h3>📂Estructura del Proyecto</h3>
 El repositorio está organizado de la siguiente manera:
 
-/codigo: Contiene los scripts y lógica del juego.
+<h5>/codigo: </h5>Contiene los scripts y lógica del juego.
 
-/recursos: Incluye los assets visuales y sonoros utilizados.
+<h5>/recursos: </h5>Incluye los assets visuales y sonoros utilizados.
 
-/nodos: Escenas y nodos de Godot que conforman los niveles y la interfaz.
+<h5>/nodos: </h5>Escenas y nodos de Godot que conforman los niveles y la interfaz.
 
-/Salve: Archivos relacionados con el sistema de guardado de partidas.
+<h5>/Salve: </h5>Archivos relacionados con el sistema de guardado de partidas.
 
-project.godot: Archivo principal del proyecto de Godot.
+<h5>project.godot: </h5>Archivo principal del proyecto de Godot.
 
-.gitignore: Archivos y carpetas excluidos del control de versiones.
+<h5>.gitignore: </h5>Archivos y carpetas excluidos del control de versiones.
 
-README.md: Este archivo de documentación.
+<h5>README.md: </h5>Este archivo de documentación.
 
 <h3>🛠️Requisitos del Sistema</h3>
 Para ejecutar el proyecto, necesitas tener instalado:
