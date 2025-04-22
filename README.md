@@ -68,3 +68,13 @@ oco
 elthen
 
 edermunizz
+
+<h3>📄Licencia</h3>
+Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo LICENSE para más información.
+
+<h3>📫Contacto</h3>
+Para consultas, sugerencias o contribuciones, puedes contactar al autor:
+
+Nombre: Ignacio Drako
+
+GitHub: [@IgnacioDrako](https://github.com/IgnacioDrako)
