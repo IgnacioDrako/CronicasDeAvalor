@@ -20,7 +20,7 @@ var current_state = DemonState.IDLE
 var health = 50
 var maxlife = 50
 var is_hurt: bool = false
-var speed = 50.0
+var speed = 0
 var player_position = Vector2()
 var threshold = 1.0  # Umbral para evitar vibraciones
 var damage = 10
@@ -127,6 +127,7 @@ func get_PJ_position(pos_x: int, pos_y: int) -> void:
 	player_position = Vector2(pos_x, pos_y)
 
 func move_towards_player(delta):
+	speed=50
 	if current_state == DemonState.HURT or current_state == DemonState.DEAD:
 		return
 		

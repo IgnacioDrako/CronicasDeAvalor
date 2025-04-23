@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://dm1ugis7i5sm2"]
+[gd_scene load_steps=75 format=4 uid="uid://dm1ugis7i5sm2"]
 
 [ext_resource type="Texture2D" uid="uid://b6ssr2ragcclm" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_2.png" id="1_bnaxn"]
 [ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_imvj2"]
@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="31_85vs4"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="33_7fo4c"]
 [ext_resource type="PackedScene" uid="uid://edijvxvx3tii" path="res://nodos/elementos/entrada.tscn" id="33_kf7sr"]
+[ext_resource type="Script" path="res://codigo/GuardarNuevaPartida.gd" id="35_1t2o6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhc7f"]
 texture = ExtResource("1_bnaxn")
@@ -263,9 +264,58 @@ _data = {
 "dummy": SubResource("Animation_j6vak")
 }
 
+[sub_resource type="Animation" id="Animation_0il0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3gkqw"]
+resource_name = "a"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7mhd"]
+_data = {
+"RESET": SubResource("Animation_0il0e"),
+"a": SubResource("Animation_3gkqw")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1r4i0"]
+
 [node name="Entrada_Mapa0" type="Node2D"]
 position = Vector2(-7, -95)
 script = ExtResource("1_imvj2")
+
+[node name="player" parent="." instance=ExtResource("31_85vs4")]
+z_index = 1
+position = Vector2(52, -25)
+
+[node name="MenuPausa" parent="player" instance=ExtResource("33_7fo4c")]
+z_index = 1
+offset_left = -117.0
+offset_top = -207.0
+offset_right = -117.0
+offset_bottom = -207.0
 
 [node name="TileMapLayer0" type="TileMapLayer" parent="."]
 position = Vector2(-384, -706)
@@ -314,7 +364,7 @@ tile_set = SubResource("TileSet_hc823")
 position = Vector2(431, -18)
 
 [node name="ColorRect" type="ColorRect" parent="Entrada"]
-z_index = 1
+z_index = 2
 offset_left = -702.0
 offset_top = -484.0
 offset_right = 505.0
@@ -327,11 +377,28 @@ libraries = {
 "": SubResource("AnimationLibrary_r4ycc")
 }
 
-[node name="player" parent="." instance=ExtResource("31_85vs4")]
-position = Vector2(52, -25)
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -1131.0
+offset_top = -305.0
+offset_right = -1091.0
+offset_bottom = -265.0
+scale = Vector2(56.7088, 10.4233)
+color = Color(0, 0, 0, 1)
 
-[node name="MenuPausa" parent="player" instance=ExtResource("33_7fo4c")]
-offset_left = -117.0
-offset_top = -207.0
-offset_right = -117.0
-offset_bottom = -207.0
+[node name="cargamapa" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_c7mhd")
+}
+
+[node name="GuardarPartidaNueva" type="Node2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="GuardarPartidaNueva"]
+script = ExtResource("35_1t2o6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GuardarPartidaNueva/Area2D"]
+position = Vector2(52, -26)
+shape = SubResource("RectangleShape2D_1r4i0")
+
+[connection signal="area_entered" from="GuardarPartidaNueva/Area2D" to="GuardarPartidaNueva/Area2D" method="_on_area_entered"]

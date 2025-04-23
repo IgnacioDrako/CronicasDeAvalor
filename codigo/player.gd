@@ -47,7 +47,7 @@ func _ready() -> void:
 	# Posicionar al jugador en la posición guardada
 	add_to_group("player")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
-	respawn_timer.timeout.connect(_on_respawn_timer_timeout)
+	#respawn_timer.timeout.connect(_on_respawn_timer_timeout)
 	hurt_timer.timeout.connect(_on_hurt_timer_timeout)
 	timerroll.timeout.connect(_on_timerroll_timeout)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
@@ -75,6 +75,9 @@ func _ready() -> void:
 	
 	#Barra de vida
 	actualizar_Vida()
+	
+	#Menu Muerte
+	$MenuMuerte.visible=false
 
 func custom_get_gravity() -> Vector2:
 	return Vector2(0, 980)  # Asumiendo una función get_gravity basada en el código original
@@ -113,6 +116,8 @@ func cancel_combo() -> void:
 
 func actualizar_Vida() -> void:
 	$Camera2D/Hud/HP0/vida.scale.x = DemoGlobal.vidaPj / 100.0
+	if DemoGlobal.vidaPj <= 0:
+		$Camera2D/Hud/HP0/vida.scale.x = 0 / 100.0
 	
 func _physics_process(delta: float) -> void:
 	# Actualizar vida
@@ -383,7 +388,7 @@ func _on_hurt_timer_timeout() -> void:
 			change_state(PlayerState.JUMPING)
 
 func die():
-	change_state(PlayerState.DEAD)
+	$MenuMuerte.visible=true
 	animated_sprite.play("dead")
 
 func _on_respawn_timer_timeout() -> void:

@@ -444,9 +444,9 @@ script = ExtResource("1_5tkg7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_v0jfe")
-animation = &"idel"
+animation = &"move"
 autoplay = "idel"
-frame_progress = 0.166972
+frame_progress = 0.195056
 
 [node name="AnimatedSpriteAtqueD2" type="AnimatedSprite2D" parent="."]
 visible = false

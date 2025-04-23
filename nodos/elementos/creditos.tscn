@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://4e3oua18jdus"]
+
+[ext_resource type="Script" path="res://codigo/creditos.gd" id="1_0wxlv"]
+[ext_resource type="Texture2D" uid="uid://by178bsckufft" path="res://recursos/Medieval_Castle_Asset_Pack/Background/layer_1.png" id="1_wfkd2"]
+[ext_resource type="Texture2D" uid="uid://8pglfltdbdhg" path="res://recursos/img/menuInicial.png" id="2_v52aa"]
+[ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="3_aamab"]
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wxlv")
+
+[node name="Fondo_0" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wfkd2")
+expand_mode = 1
+
+[node name="fondo_1" type="TextureRect" parent="Fondo_0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v52aa")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Fondo_0"]
+layout_mode = 0
+offset_top = 66.0
+offset_right = 1148.0
+offset_bottom = 274.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_aamab")
+theme_override_font_sizes/font_size = 75
+text = "Cronicas de Avalon"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Fondo_0"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 144.0
+offset_right = 46.0
+offset_bottom = 167.0
+scale = Vector2(28.6, 21.84)

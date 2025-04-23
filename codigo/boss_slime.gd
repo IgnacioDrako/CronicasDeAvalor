@@ -1,8 +1,8 @@
 extends CharacterBody2D
-var heal = 260
-var speed = 100
+var heal = 100
+var speed = 0
 var damage = 10
-var max_heal = 500  
+var max_heal = 100
 @onready var mirar_derecha: RayCast2D = $Derecha
 @onready var mirar_izquierda: RayCast2D = $Izquierda
 var derecha = true
@@ -87,7 +87,7 @@ func actualizarvida():
 func _on_detection_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		print("Jugador detectado")
-		if heal <=250:
+		if heal <=35:
 			speed = 0
 			animated_sprite_2d.visible=false
 			animated_sprite_atque_d_2.visible = true

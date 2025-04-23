@@ -10,7 +10,7 @@ func _ready() -> void:
 	#enfriamiento.one_shot = false
 	#enfriamiento.start(10)
 	animated_sprite_2d.visible = false
-	enfriamiento.start(25)
+	enfriamiento.start(55)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

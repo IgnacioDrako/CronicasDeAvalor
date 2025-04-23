@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://dr8f68mtcrruu"]
+[gd_scene load_steps=93 format=3 uid="uid://dr8f68mtcrruu"]
 
 [ext_resource type="Script" path="res://codigo/player.gd" id="1_kk8ih"]
 [ext_resource type="Texture2D" uid="uid://bar0prfo5eq7q" path="res://recursos/player/_Idle.png" id="2_srovr"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://65llpfo044tu" path="res://recursos/audio/efecto/ataque/HitPlate.ogg" id="19_cgxko"]
 [ext_resource type="AudioStream" uid="uid://biww3phmqjekx" path="res://recursos/audio/efecto/ataque/Miss1.ogg" id="19_mhouv"]
 [ext_resource type="AudioStream" uid="uid://cer6p8a603n1f" path="res://recursos/audio/efecto/pasos/pasos.mp3" id="21_f3tx6"]
+[ext_resource type="PackedScene" uid="uid://dtycemk1wxpdj" path="res://nodos/elementos/menu_muerte.tscn" id="23_l2hcj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi7r4"]
 atlas = ExtResource("2_srovr")
@@ -572,7 +573,7 @@ size = Vector2(42, 50)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l3a78"]
 height = 43.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2s7nx"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qx4d7"]
 height = 48.0
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
@@ -583,7 +584,7 @@ script = ExtResource("1_kk8ih")
 position = Vector2(1, -56)
 scale = Vector2(1.38333, 1.3875)
 sprite_frames = SubResource("SpriteFrames_0rcv5")
-animation = &"dead"
+animation = &"move"
 autoplay = "Idle"
 
 [node name="HurtTimer" type="Timer" parent="."]
@@ -609,7 +610,8 @@ position = Vector2(96, 3)
 scale = Vector2(1.02542, 1.42308)
 
 [node name="HP1" type="Sprite2D" parent="Camera2D/Hud/HP0"]
-position = Vector2(-6.82648, -1.4054)
+position = Vector2(-6.82648, -2.1081)
+scale = Vector2(1.07802, 1.22486)
 texture = ExtResource("15_m4dt1")
 
 [node name="vida" type="TextureProgressBar" parent="Camera2D/Hud/HP0"]
@@ -622,6 +624,7 @@ offset_left = -59.049
 offset_top = -6.49435
 offset_right = -59.0008
 offset_bottom = -6.50435
+scale = Vector2(1, 1.16865)
 texture_over = ExtResource("16_lcuxc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/Hud/HP0"]
@@ -646,8 +649,8 @@ shape = SubResource("CapsuleShape2D_l3a78")
 debug_color = Color(0, 1, 0, 0.419608)
 
 [node name="Cuerpo" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
-shape = SubResource("CapsuleShape2D_2s7nx")
+position = Vector2(1, -25)
+shape = SubResource("CapsuleShape2D_qx4d7")
 
 [node name="Timerroll" type="Timer" parent="."]
 
@@ -663,7 +666,7 @@ stream = ExtResource("19_mhouv")
 
 [node name="Audiomorir" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("19_5yp30")
-volume_db = -20.364
+volume_db = -7.139
 
 [node name="AudioCaminar" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_f3tx6")
@@ -672,3 +675,9 @@ pitch_scale = 1.81
 parameters/looping = true
 
 [node name="combo" type="Timer" parent="."]
+
+[node name="MenuMuerte" parent="." instance=ExtResource("23_l2hcj")]
+offset_left = -43.0
+offset_top = -138.0
+offset_right = -43.0
+offset_bottom = -138.0

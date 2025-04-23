@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c80lh8gk2f85"]
+[gd_scene load_steps=27 format=3 uid="uid://c80lh8gk2f85"]
 
 [ext_resource type="Texture2D" uid="uid://bdxu1or47pj8g" path="res://recursos/Enemigos/Training Dummy Sprite Sheet.png" id="1_3ndyp"]
 [ext_resource type="Script" path="res://codigo/dummy.gd" id="1_aty77"]
@@ -23,6 +23,58 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_3ndyp")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ewi"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hcwd"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hco0u"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymwdt"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kue2o"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p34ou"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vv25p"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd155"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcc7g"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc18r"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8itlh"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfep3"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh0us"]
+atlas = ExtResource("1_3ndyp")
+region = Rect2(224, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_pig0i"]
 atlas = ExtResource("1_3ndyp")
 region = Rect2(0, 0, 32, 32)
@@ -45,6 +97,55 @@ animations = [{
 "loop": true,
 "name": &"Hit0",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ewi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hcwd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hco0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymwdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kue2o")
+}],
+"loop": true,
+"name": &"Hit1",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p34ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vv25p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd155")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcc7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc18r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8itlh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfep3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh0us")
+}],
+"loop": true,
+"name": &"Hit2",
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -72,7 +173,7 @@ scale = Vector2(1.60938, 2.04688)
 sprite_frames = SubResource("SpriteFrames_qq8ro")
 animation = &"Hit0"
 autoplay = "idel"
-frame_progress = 0.230531
+frame_progress = 0.575634
 
 [node name="hurtboxenemi" parent="." instance=ExtResource("2_r33sv")]
 
@@ -84,19 +185,22 @@ debug_color = Color(0.949855, 0.332668, 0, 0.419608)
 [node name="TimerHurt" type="Timer" parent="."]
 
 [node name="vida" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
 position = Vector2(-1, -62)
 texture = ExtResource("4_k5sw2")
 
-[node name="vida" type="TextureProgressBar" parent="vida"]
-offset_left = -49.0
-offset_top = -3.0
-offset_right = 69.0
-offset_bottom = 37.0
+[node name="vida2" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -50.0
+offset_top = -65.0
+offset_right = 68.0
+offset_bottom = -25.0
 texture_under = ExtResource("5_gnvss")
 texture_over = ExtResource("6_bwl3q")
 texture_progress_offset = Vector2(100, 0)
 
-[node name="Hp" type="Label" parent="vida/vida"]
+[node name="Hp" type="Label" parent="vida2"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0

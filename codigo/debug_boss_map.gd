@@ -2,10 +2,13 @@ extends Node2D
 @onready var menu_pausa = $player/MenuPausa
 @onready var dummy: Timer = $dummy
 @onready var enfriamiento: Timer = $nfriamiento
+@onready var animation_player: AnimationPlayer = $Map/MainMap/Muro/AnimationPlayer
+@onready var boss_slime: CharacterBody2D = $BossSlime
 
 func _ready():
 	menu_pausa.connect("continuar_juego", Callable(self, "_on_continuar_juego"))
 	menu_pausa.connect("salir_al_menu", Callable(self, "_on_salir_al_menu"))
+	$ColorRect/AnimationPlayer.play("a")
 
 func _input(event):
 	if event.is_action_pressed("escape"):
@@ -26,3 +29,20 @@ func _on_continuar_juego():
 
 func _on_salir_al_menu():
 	print("Salir al menú desde el nodo padre")
+
+
+func _on_triger_puerta_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		animation_player.play("cerrar")
+		boss_slime.speed=100
+		pass
+	pass # Replace with function body.
+func _fin_demo():
+	$imvocador2.queue_free()
+	$imvocador3.queue_free()
+	$imvocador4.queue_free()
+	$imvocador5.queue_free()
+	$ColorRect2/AnimationPlayer.play("b")
+	await get_tree().create_timer(2.5).timeout
+	get_tree().change_scene_to_file("res://nodos/elementos/creditos.tscn")
+	pass

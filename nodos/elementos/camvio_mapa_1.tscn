@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://10hiqga5ehje"]
+
+[ext_resource type="Script" path="res://codigo/camvio_mapa_1.gd" id="1_jwhi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oopmx"]
+size = Vector2(42, 61)
+
+[sub_resource type="Animation" id="Animation_tl35h"]
+resource_name = "a"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_m1dfl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6pnyn"]
+_data = {
+"RESET": SubResource("Animation_m1dfl"),
+"a": SubResource("Animation_tl35h")
+}
+
+[node name="cambioMapa1" type="Node2D"]
+script = ExtResource("1_jwhi2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11, -20.5)
+shape = SubResource("RectangleShape2D_oopmx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -416.0
+offset_top = -408.0
+offset_right = 450.0
+offset_bottom = 214.0
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_6pnyn")
+}
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://yoriwxyrtwk2"]
+
+[ext_resource type="Texture2D" uid="uid://bt7hvhgc6ro08" path="res://recursos/Medieval_Castle_Asset_Pack/map/spikes.png" id="1_m2frp"]
+[ext_resource type="Script" path="res://codigo/paredmovil.gd" id="1_yhwt6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuba7"]
+size = Vector2(29, 276.794)
+
+[node name="paredmovil" type="Node2D"]
+z_index = 1
+script = ExtResource("1_yhwt6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4.5, -92.3968)
+shape = SubResource("RectangleShape2D_uuba7")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(-1, -94)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(-1, -63)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D11" type="Sprite2D" parent="."]
+position = Vector2(-1, -32)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D12" type="Sprite2D" parent="."]
+position = Vector2(-1, -126)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D13" type="Sprite2D" parent="."]
+position = Vector2(-1, -157)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D14" type="Sprite2D" parent="."]
+position = Vector2(-1, -187)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D15" type="Sprite2D" parent="."]
+position = Vector2(-1, -219)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[node name="Sprite2D16" type="Sprite2D" parent="."]
+position = Vector2(-0.999996, 31)
+rotation = 1.5708
+texture = ExtResource("1_m2frp")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

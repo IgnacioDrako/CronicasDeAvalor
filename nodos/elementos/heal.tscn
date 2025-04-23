@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://vbqy5j5yfitg"]
+[gd_scene load_steps=6 format=3 uid="uid://vbqy5j5yfitg"]
 
 [ext_resource type="Script" path="res://codigo/heal.gd" id="1_y4q7s"]
 [ext_resource type="Texture2D" uid="uid://bosvvvnq1wp6i" path="res://recursos/Medieval_Castle_Asset_Pack/Decorations/bag_1.png" id="2_ollvn"]
+[ext_resource type="AudioStream" uid="uid://c48l32s6mykr0" path="res://recursos/audio/efecto/otro/bag.ogg" id="3_jr3ym"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ect3"]
 radius = 19.0
@@ -23,5 +24,7 @@ texture = ExtResource("2_ollvn")
 shape = SubResource("RectangleShape2D_4pvsk")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jr3ym")
+pitch_scale = 1.67
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

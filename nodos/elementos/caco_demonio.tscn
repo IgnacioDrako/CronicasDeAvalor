@@ -248,6 +248,7 @@ radius = 13.0384
 radius = 85.3815
 
 [node name="CacoDemonio" type="CharacterBody2D"]
+position = Vector2(-4, 3)
 script = ExtResource("1_sulyk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
