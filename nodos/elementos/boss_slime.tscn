@@ -1,9 +1,10 @@
-[gd_scene load_steps=79 format=3 uid="uid://b586c3vkx4kp1"]
+[gd_scene load_steps=85 format=3 uid="uid://b586c3vkx4kp1"]
 
 [ext_resource type="Script" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
 [ext_resource type="Texture2D" uid="uid://cte56ba48imkg" path="res://recursos/Enemigos/boss_Slime/sprite_creado.png" id="1_s226o"]
 [ext_resource type="Texture2D" uid="uid://d0afqs5ra7dp2" path="res://recursos/Enemigos/boss_Slime/sprite_creado1.png" id="2_fqlmh"]
 [ext_resource type="Texture2D" uid="uid://dnul7wc65voyt" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-0.png" id="2_n8mn6"]
+[ext_resource type="AudioStream" uid="uid://dthmlpgqo5seu" path="res://recursos/audio/efecto/Muerte/SlimeDeath.ogg" id="2_upjr0"]
 [ext_resource type="Texture2D" uid="uid://d24lrgdrkr85c" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-1.png" id="3_6y0g8"]
 [ext_resource type="Texture2D" uid="uid://cu6kx6bllk21e" path="res://recursos/Enemigos/boss_Slime/sprite_creado0.png" id="3_pupxb"]
 [ext_resource type="Texture2D" uid="uid://o60gbkm8oe7w" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-2.png" id="4_2qdl5"]
@@ -23,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://7gvc13vn3q52" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-13.png" id="15_jr0rh"]
 [ext_resource type="Texture2D" uid="uid://cd5eylp6gmakj" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-14.png" id="16_imipm"]
 [ext_resource type="Texture2D" uid="uid://lpq1v5vfsql8" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-15.png" id="17_bc784"]
+[ext_resource type="AudioStream" uid="uid://bkc7xjbmeuifc" path="res://recursos/audio/efecto/ataque/mSlimeAggroA.ogg" id="25_jiu1a"]
+[ext_resource type="AudioStream" uid="uid://bb4003jh0j7lg" path="res://recursos/audio/efecto/ataque/mSlimeAttackB.ogg" id="26_s18e0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqtff"]
 atlas = ExtResource("2_n8mn6")
@@ -438,15 +441,55 @@ size = Vector2(114, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qffh1"]
 size = Vector2(115, 13)
 
+[sub_resource type="Animation" id="Animation_7bsuh"]
+resource_name = "fin"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nsrf7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4f52"]
+_data = {
+"RESET": SubResource("Animation_nsrf7"),
+"fin": SubResource("Animation_7bsuh")
+}
+
 [node name="BossSlime" type="CharacterBody2D"]
 script = ExtResource("1_5tkg7")
+
+[node name="Muerte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_upjr0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -39)
 sprite_frames = SubResource("SpriteFrames_v0jfe")
-animation = &"move"
+animation = &"idel"
 autoplay = "idel"
-frame_progress = 0.195056
+frame_progress = 0.829359
 
 [node name="AnimatedSpriteAtqueD2" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -528,6 +571,25 @@ shape = SubResource("RectangleShape2D_qffh1")
 visible = false
 position = Vector2(0, -39)
 texture = ExtResource("17_bc784")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 939.0
+offset_top = -761.0
+offset_right = 979.0
+offset_bottom = -721.0
+scale = Vector2(-47.8905, 40.6661)
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_j4f52")
+}
+
+[node name="Daño" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_jiu1a")
+
+[node name="Ataque" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("26_s18e0")
 
 [connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

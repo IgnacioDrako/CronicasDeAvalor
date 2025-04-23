@@ -1,4 +1,4 @@
-[gd_scene load_steps=485 format=4 uid="uid://b7y8ufoscpbcg"]
+[gd_scene load_steps=488 format=4 uid="uid://b7y8ufoscpbcg"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_5lqsj"]
 [ext_resource type="PackedScene" uid="uid://cw64hxcde4mr8" path="res://nodos/elementos/portal_dummy.tscn" id="2_a8m3u"]
@@ -2513,6 +2513,42 @@ sources/154 = SubResource("TileSetAtlasSource_dx1o3")
 sources/155 = SubResource("TileSetAtlasSource_vi2e5")
 sources/156 = SubResource("TileSetAtlasSource_fwcjp")
 
+[sub_resource type="Animation" id="Animation_0il0e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3gkqw"]
+resource_name = "a"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c7mhd"]
+_data = {
+"RESET": SubResource("Animation_0il0e"),
+"a": SubResource("Animation_3gkqw")
+}
+
 [node name="DebugMap" type="Node2D"]
 position = Vector2(-19, -4)
 
@@ -2619,3 +2655,18 @@ parameters/looping = true
 
 [node name="heal" parent="." instance=ExtResource("168_i34bd")]
 position = Vector2(-817, -533)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -1131.0
+offset_top = -305.0
+offset_right = -1091.0
+offset_bottom = -265.0
+scale = Vector2(56.7088, 10.4233)
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_c7mhd")
+}

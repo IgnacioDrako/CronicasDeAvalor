@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://65llpfo044tu" path="res://recursos/audio/efecto/ataque/HitPlate.ogg" id="19_cgxko"]
 [ext_resource type="AudioStream" uid="uid://biww3phmqjekx" path="res://recursos/audio/efecto/ataque/Miss1.ogg" id="19_mhouv"]
 [ext_resource type="AudioStream" uid="uid://cer6p8a603n1f" path="res://recursos/audio/efecto/pasos/pasos.mp3" id="21_f3tx6"]
-[ext_resource type="PackedScene" uid="uid://dtycemk1wxpdj" path="res://nodos/elementos/menu_muerte.tscn" id="23_l2hcj"]
+[ext_resource type="Script" path="res://codigo/menu_muerte.gd" id="23_kqlxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi7r4"]
 atlas = ExtResource("2_srovr")
@@ -676,8 +676,38 @@ parameters/looping = true
 
 [node name="combo" type="Timer" parent="."]
 
-[node name="MenuMuerte" parent="." instance=ExtResource("23_l2hcj")]
-offset_left = -43.0
-offset_top = -138.0
-offset_right = -43.0
-offset_bottom = -138.0
+[node name="MenuMuerte" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_left = -40.0
+offset_top = -188.0
+offset_bottom = -148.0
+script = ExtResource("23_kqlxb")
+
+[node name="ColorRect" type="ColorRect" parent="MenuMuerte"]
+offset_left = -16.0
+offset_top = -11.0
+offset_right = 24.0
+offset_bottom = 29.0
+scale = Vector2(3.01065, 3.1828)
+color = Color(0, 0, 0, 0.372549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuMuerte"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MenuMuerte/VBoxContainer"]
+layout_mode = 2
+text = "Continuar?"
+
+[node name="Button" type="Button" parent="MenuMuerte/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Button2")
+text = "Cargar"
+
+[node name="Button2" type="Button" parent="MenuMuerte/VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Button")
+text = "Salir"

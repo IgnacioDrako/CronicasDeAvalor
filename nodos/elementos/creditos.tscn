@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4e3oua18jdus"]
+[gd_scene load_steps=6 format=3 uid="uid://4e3oua18jdus"]
 
 [ext_resource type="Script" path="res://codigo/creditos.gd" id="1_0wxlv"]
 [ext_resource type="Texture2D" uid="uid://by178bsckufft" path="res://recursos/Medieval_Castle_Asset_Pack/Background/layer_1.png" id="1_wfkd2"]
 [ext_resource type="Texture2D" uid="uid://8pglfltdbdhg" path="res://recursos/img/menuInicial.png" id="2_v52aa"]
 [ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="3_aamab"]
+[ext_resource type="AudioStream" uid="uid://ds0wt60nkvtsh" path="res://recursos/audio/musica/menudemo.mp3" id="5_v0wv8"]
 
 [node name="Creditos" type="Control"]
 layout_mode = 3
@@ -45,10 +46,36 @@ theme_override_font_sizes/font_size = 75
 text = "Cronicas de Avalon"
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Fondo_0"]
+[node name="ColorRect" type="ColorRect" parent="Fondo_0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 124.0
+offset_top = 174.0
+offset_right = 124.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.56)
+color = Color(0.389287, 0.389287, 0.389287, 0.443137)
+
+[node name="textoCreditos" type="Label" parent="Fondo_0/ColorRect"]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 144.0
-offset_right = 46.0
-offset_bottom = 167.0
-scale = Vector2(28.6, 21.84)
+offset_left = -10.0
+offset_top = 144.643
+offset_right = 1048.0
+offset_bottom = 293.643
+scale = Vector2(1.12555, 1.64288)
+theme_override_fonts/font = ExtResource("3_aamab")
+theme_override_font_sizes/font_size = 75
+text = "Gracias por jugar la demo 
+Juego por Ignacio Delgado "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="intro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_v0wv8")
+volume_db = 10.182
+autoplay = true
+parameters/looping = true

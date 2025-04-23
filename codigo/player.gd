@@ -76,9 +76,6 @@ func _ready() -> void:
 	#Barra de vida
 	actualizar_Vida()
 	
-	#Menu Muerte
-	$MenuMuerte.visible=false
-
 func custom_get_gravity() -> Vector2:
 	return Vector2(0, 980)  # Asumiendo una función get_gravity basada en el código original
 
@@ -388,8 +385,9 @@ func _on_hurt_timer_timeout() -> void:
 			change_state(PlayerState.JUMPING)
 
 func die():
-	$MenuMuerte.visible=true
+	$MenuMuerte.mostrar()
 	animated_sprite.play("dead")
+	#DemoGlobal.loadgame()
 
 func _on_respawn_timer_timeout() -> void:
 	get_tree().reload_current_scene()

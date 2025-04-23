@@ -15,6 +15,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		$ColorRect/AnimationPlayer.play("a")
 		await get_tree().create_timer(0.5).timeout  # Espera 1 segundo
-		get_tree().change_scene_to_file("res://nodos/Map/zonasegura_2.tscn")
+		get_tree().change_scene_to_file("res://nodos/Map/zonasegura_1.tscn")
 		pass
 	pass # Replace with function body.

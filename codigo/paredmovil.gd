@@ -1,16 +1,17 @@
 extends Node2D
 
-var velocidad = 305
-var direccion = Vector2(0, 1)
+#var velocidad = 305
+#var direccion = Vector2(0, 1)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.play("mover")
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.x += velocidad * delta
-	velocidad += 0.02
+	#position.x += velocidad * delta
+	#velocidad += 0.02
 	pass
 
 

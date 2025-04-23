@@ -1,4 +1,4 @@
-[gd_scene load_steps=504 format=4 uid="uid://blefswfnofgf7"]
+[gd_scene load_steps=505 format=4 uid="uid://blefswfnofgf7"]
 
 [ext_resource type="Script" path="res://codigo/debug_boss_map.gd" id="1_5uqp1"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_la6yu"]
@@ -12905,7 +12905,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_615q7"]
-size = Vector2(34, 28)
+size = Vector2(92, 95)
 
 [sub_resource type="Animation" id="Animation_g8y7y"]
 length = 0.001
@@ -12937,10 +12937,27 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_u05ww"]
+resource_name = "b"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_enp1o"]
 _data = {
 "RESET": SubResource("Animation_g8y7y"),
-"a": SubResource("Animation_ccr7u")
+"a": SubResource("Animation_ccr7u"),
+"b": SubResource("Animation_u05ww")
 }
 
 [node name="debug_boss_map" type="Node2D"]
@@ -12991,7 +13008,7 @@ libraries = {
 [node name="trigerPuerta" type="Area2D" parent="Map"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/trigerPuerta"]
-position = Vector2(-599, -46)
+position = Vector2(-628, -79.5)
 shape = SubResource("RectangleShape2D_615q7")
 
 [node name="PlataformaDummy" parent="." instance=ExtResource("163_able5")]
@@ -13057,7 +13074,7 @@ offset_left = -2496.0
 offset_top = -465.0
 offset_right = -2456.0
 offset_bottom = -425.0
-scale = Vector2(32.6791, 18.9779)
+scale = Vector2(326.986, 35.7071)
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]

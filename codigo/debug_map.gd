@@ -1,7 +1,7 @@
 extends Node2D
 @onready var color_rect: ColorRect = $ColorRect
 @onready var menu_pausa: Control = $player/MenuPausa
-@onready var cargamapa: AnimationPlayer = $ColorRect/cargamapa
+@onready var cargamapa: AnimationPlayer = $ColorRect/AnimationPlayer
 
 func _ready():
 	menu_pausa.connect("continuar_juego", Callable(self, "_on_continuar_juego"))

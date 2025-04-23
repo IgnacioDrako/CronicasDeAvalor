@@ -17,6 +17,8 @@ var derecha = true
 @onready var cuerpo1: CollisionShape2D = $hitbox/CollisionShape2D2
 @onready var cuerpo0: CollisionShape2D = $hurtbox/CollisionShape2D
 
+
+
 func _ready() -> void:
 	# Establece el valor máximo de vida al inicio
 	max_heal = heal
@@ -66,6 +68,7 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		print("Daño al boss " + str(heal))
 		# Reduce la vida en 10 puntos
 		heal -= 10
+		$"Daño".play()
 		# Asegura que la vida no baje de 0
 		heal = max(0, heal)
 		# Actualiza la barra de vida
@@ -95,6 +98,7 @@ func _on_detection_area_entered(area: Area2D) -> void:
 			var parent = area.get_parent()
 			parent.received_damage(25)
 			coso.start(1)
+			$Ataque.play()
 		else:
 			#👍
 			pass
@@ -111,9 +115,12 @@ func _on_coso_timeout() -> void:
 		speed = -300
 	pass # Replace with function body.
 func muerte():
+	$AnimatedSprite2D.play("dead")
 	speed=0
+	$hurtbox.monitorable=false
+	$hitbox.monitorable=false
 	cabeza0.disabled=true
-	cabeza1.disable=true
+	cabeza1.disabled=true
 	cuerpo0.disabled=true
 	cuerpo1.disabled=true
 	animated_sprite_2d.visible=false
@@ -121,4 +128,11 @@ func muerte():
 	muerte_estatico.visible=true
 	detection.disabled=true
 	barravida.visible=false
+	var tween = create_tween()
+	tween.tween_property(self, "position:y", position.y + 100, 2.0).set_ease(Tween.EASE_IN)
+	tween.parallel().tween_property(self, "modulate:a", 0, 1.5)
+	tween.tween_callback(queue_free)
+	$ColorRect/AnimationPlayer.play("fin")
+	$Muerte.play()
+	get_parent()._fin_demo()
 	pass

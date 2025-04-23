@@ -5,16 +5,20 @@ extends Control
 func _ready() -> void:
 	$VBoxContainer/Button2.grab_focus()
 	$VBoxContainer/Button.grab_focus()
+	$VBoxContainer/Button.pressed.connect(_on_button_pressed)
+	$VBoxContainer/Button2.pressed.connect(_on_button_2_pressed)
+	visible = false
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func mostrar():
+	visible = true
+	$VBoxContainer/Button.grab_focus()
 	pass
 
-
 func _on_button_pressed() -> void:
+	visible = false
 	DemoGlobal.loadgame()
+	get_tree().change_scene_to_file(DemoGlobal.current_scene)
 	pass # Replace with function body.
 
 

@@ -4,6 +4,7 @@ extends Node2D
 @onready var enfriamiento: Timer = $nfriamiento
 @onready var animation_player: AnimationPlayer = $Map/MainMap/Muro/AnimationPlayer
 @onready var boss_slime: CharacterBody2D = $BossSlime
+var contador=0
 
 func _ready():
 	menu_pausa.connect("continuar_juego", Callable(self, "_on_continuar_juego"))
@@ -33,16 +34,16 @@ func _on_salir_al_menu():
 
 func _on_triger_puerta_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		animation_player.play("cerrar")
-		boss_slime.speed=100
-		pass
+		if contador==0:
+			animation_player.play("cerrar")
+			boss_slime.speed=100
+			$Map/trigerPuerta/CollisionShape2D.disabled=true
+			contador=+1
+		else:
+			print("si")
 	pass # Replace with function body.
 func _fin_demo():
-	$imvocador2.queue_free()
-	$imvocador3.queue_free()
-	$imvocador4.queue_free()
-	$imvocador5.queue_free()
-	$ColorRect2/AnimationPlayer.play("b")
-	await get_tree().create_timer(2.5).timeout
+	$ColorRect/AnimationPlayer.play("b")
+	await get_tree().create_timer(4).timeout
 	get_tree().change_scene_to_file("res://nodos/elementos/creditos.tscn")
 	pass

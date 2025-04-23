@@ -386,7 +386,7 @@ offset_bottom = -265.0
 scale = Vector2(56.7088, 10.4233)
 color = Color(0, 0, 0, 1)
 
-[node name="cargamapa" type="AnimationPlayer" parent="ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_c7mhd")

@@ -20675,7 +20675,6 @@ autoplay = true
 parameters/looping = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 z_index = 2
 offset_left = -608.0
 offset_top = -383.0
@@ -20684,7 +20683,7 @@ offset_bottom = -343.0
 scale = Vector2(29.4558, 13.4048)
 color = Color(0, 0, 0, 0)
 
-[node name="Cargamapa" type="AnimationPlayer" parent="ColorRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
 "": SubResource("AnimationLibrary_hrwe0")
 }
