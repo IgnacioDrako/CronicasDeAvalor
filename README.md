@@ -2,7 +2,7 @@
 Crónicas de Avalor es un juego indie de plataformas desarrollado como Trabajo de Fin de Grado en Ingeniería Informática. El proyecto está construido utilizando el motor de juegos Godot Engine y tiene como objetivo ofrecer una experiencia de juego envolvente con mecánicas clásicas y una narrativa original.
 
 <h3>🎮Descripción</h3>
-En Crónicas de Avalor, los jugadores se embarcan en una aventura épica a través de tierras misteriosas, enfrentándose a desafíos y enemigos mientras descubren los secretos de Avalor. El juego combina elementos de acción y exploración, ofreciendo una jugabilidad dinámica y una historia cautivadora.
+En Crónicas de Avalor, los jugadores se embarcan en una aventura a través de una mazmorra, enfrentándose enemigos. El juego combina elementos de acción y plataforma.
 
 <h3>🚀Características</h3>
 Motor de juego: Godot Engine
