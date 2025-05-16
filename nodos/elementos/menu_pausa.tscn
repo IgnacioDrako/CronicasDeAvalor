@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt4wswwjvuc4u"]
 
-[ext_resource type="Script" path="res://codigo/menu_pause.gd" id="1_bi66v"]
+[ext_resource type="Script" uid="uid://cytmchtfa0e7g" path="res://codigo/menu_pause.gd" id="1_bi66v"]
 [ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="2_l3ubb"]
 
 [node name="MenuPausa" type="Control"]

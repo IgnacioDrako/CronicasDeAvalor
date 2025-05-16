@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw4gmp4s0ojxv"]
 
-[ext_resource type="Script" path="res://codigo/main_menu.gd" id="1_uqrro"]
+[ext_resource type="Script" uid="uid://bbdlmb5dto8dd" path="res://codigo/main_menu.gd" id="1_uqrro"]
 [ext_resource type="Texture2D" uid="uid://by178bsckufft" path="res://recursos/Medieval_Castle_Asset_Pack/Background/layer_1.png" id="2_4b2wh"]
 [ext_resource type="Texture2D" uid="uid://8pglfltdbdhg" path="res://recursos/img/menuInicial.png" id="3_mil3x"]
 [ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="4_88b55"]
@@ -65,10 +65,10 @@ theme_override_constants/separation = 15
 [node name="Jugar" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Cargar")
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_88b55")
 theme_override_font_sizes/font_size = 40
 text = "Nueva Partida"
@@ -77,10 +77,10 @@ text = "Nueva Partida"
 layout_mode = 2
 focus_neighbor_top = NodePath("../Jugar")
 focus_neighbor_bottom = NodePath("../Salir")
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_88b55")
 theme_override_font_sizes/font_size = 40
 text = "Cargar"
@@ -88,9 +88,9 @@ text = "Cargar"
 [node name="Salir" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Cargar")
-theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/icon_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_88b55")
 theme_override_font_sizes/font_size = 40
 text = "Salir"

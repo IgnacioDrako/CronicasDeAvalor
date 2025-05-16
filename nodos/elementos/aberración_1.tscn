@@ -1,9 +1,9 @@
 [gd_scene load_steps=59 format=3 uid="uid://cbhaouns2iaun"]
 
-[ext_resource type="Script" path="res://codigo/aberración_1.gd" id="1_2g33f"]
+[ext_resource type="Script" uid="uid://bo8qv1dfoap6y" path="res://codigo/aberración_1.gd" id="1_2g33f"]
 [ext_resource type="Texture2D" uid="uid://xxd3k4phjpj1" path="res://recursos/Enemigos/Bringer-of-Death-SpritSheet_no-Effect.png" id="2_7floc"]
-[ext_resource type="Script" path="res://codigo/hit_box_enemy.gd" id="3_6yq7x"]
-[ext_resource type="Script" path="res://codigo/hurtboxenemi.gd" id="4_qmlu1"]
+[ext_resource type="Script" uid="uid://ddit028y2j0vj" path="res://codigo/hit_box_enemy.gd" id="3_6yq7x"]
+[ext_resource type="Script" uid="uid://bk06aw4ro083e" path="res://codigo/hurtboxenemi.gd" id="4_qmlu1"]
 [ext_resource type="AudioStream" uid="uid://d1jm77jtsn57l" path="res://recursos/audio/efecto/ataque/Miss2.ogg" id="5_1vya3"]
 [ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="6_x7p8h"]
 [ext_resource type="AudioStream" uid="uid://oat3vhmll0mk" path="res://recursos/audio/efecto/Muerte/Aberracion.ogg" id="7_iumy3"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=526 format=4 uid="uid://dyvnxg80n833m"]
 
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_i5y8a"]
+[ext_resource type="Script" uid="uid://ddb1d56bxxdcp" path="res://codigo/debug_map.gd" id="1_i5y8a"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="2_kqnqf"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="3_gpm38"]
 [ext_resource type="Texture2D" uid="uid://s2ncvm78n4l8" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_3.png" id="4_dvtjv"]
@@ -164,16 +164,16 @@
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="160_og4fx"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="161_2tfx3"]
 [ext_resource type="Texture2D" uid="uid://cdb1cq6q8gs8u" path="res://recursos/Medieval_Castle_Asset_Pack/Decorations/flag_blue.png" id="161_wv5hy"]
-[ext_resource type="Script" path="res://codigo/trigger_mensaje.gd" id="164_n074c"]
-[ext_resource type="Script" path="res://codigo/trigger_mensaje_0.gd" id="165_e5fhf"]
-[ext_resource type="Script" path="res://codigo/trigermensaje_1.gd" id="166_8i5eb"]
-[ext_resource type="Script" path="res://codigo/trigermensaje_2.gd" id="167_kkxrf"]
+[ext_resource type="Script" uid="uid://cvvk28hjd6sa3" path="res://codigo/trigger_mensaje.gd" id="164_n074c"]
+[ext_resource type="Script" uid="uid://0eq0ffreq8mx" path="res://codigo/trigger_mensaje_0.gd" id="165_e5fhf"]
+[ext_resource type="Script" uid="uid://df1aeo25w4wsp" path="res://codigo/trigermensaje_1.gd" id="166_8i5eb"]
+[ext_resource type="Script" uid="uid://daxqym44a3ato" path="res://codigo/trigermensaje_2.gd" id="167_kkxrf"]
 [ext_resource type="PackedScene" uid="uid://c80lh8gk2f85" path="res://nodos/elementos/dummy_2.tscn" id="168_u7diy"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="169_rd0a8"]
 [ext_resource type="PackedScene" uid="uid://cwjdyjy1abd3q" path="res://nodos/elementos/caco_demonio.tscn" id="170_a6xca"]
 [ext_resource type="PackedScene" uid="uid://vbqy5j5yfitg" path="res://nodos/elementos/heal.tscn" id="171_u7v4i"]
 [ext_resource type="PackedScene" uid="uid://cbhaouns2iaun" path="res://nodos/elementos/aberración_1.tscn" id="172_pixh4"]
-[ext_resource type="Script" path="res://codigo/camvio_mapa0.gd" id="174_58bq6"]
+[ext_resource type="Script" uid="uid://b2rl2h7c7iuri" path="res://codigo/camvio_mapa0.gd" id="174_58bq6"]
 [ext_resource type="AudioStream" uid="uid://gkkjv8kkkh4" path="res://recursos/audio/musica/mazmorraDemo.mp3" id="175_rjwvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cv4"]
@@ -6959,8 +6959,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8jj54"]
 _data = {
-"RESET": SubResource("Animation_frskw"),
-"a": SubResource("Animation_upus5")
+&"RESET": SubResource("Animation_frskw"),
+&"a": SubResource("Animation_upus5")
 }
 
 [sub_resource type="Animation" id="Animation_t387s"]
@@ -6995,8 +6995,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvpwn"]
 _data = {
-"RESET": SubResource("Animation_t387s"),
-"a": SubResource("Animation_a8kg7")
+&"RESET": SubResource("Animation_t387s"),
+&"a": SubResource("Animation_a8kg7")
 }
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_x5akw"]
@@ -7261,7 +7261,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CamvioMapa/ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_8jj54")
+&"": SubResource("AnimationLibrary_8jj54")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -7276,7 +7276,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_dvpwn")
+&"": SubResource("AnimationLibrary_dvpwn")
 }
 
 [node name="Escalero5" type="RigidBody2D" parent="."]

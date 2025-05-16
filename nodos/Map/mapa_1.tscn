@@ -1,7 +1,7 @@
 [gd_scene load_steps=514 format=4 uid="uid://bnb35440tn4o8"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_4m21t"]
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_wxnig"]
+[ext_resource type="Script" uid="uid://ddb1d56bxxdcp" path="res://codigo/debug_map.gd" id="1_wxnig"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_0qt3w"]
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="2_55dsk"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="3_kmnqn"]
@@ -168,7 +168,7 @@
 [ext_resource type="PackedScene" uid="uid://yoriwxyrtwk2" path="res://nodos/elementos/paredmovil.tscn" id="166_ak61k"]
 [ext_resource type="PackedScene" uid="uid://6fn2o08mmvsg" path="res://nodos/elementos/plataforma.tscn" id="167_qwl5g"]
 [ext_resource type="PackedScene" uid="uid://cg8mpfya153iv" path="res://nodos/elementos/brujo.tscn" id="168_x5tdl"]
-[ext_resource type="Script" path="res://codigo/zona_3.gd" id="169_n7tbl"]
+[ext_resource type="Script" uid="uid://dmvba7l1ukgj" path="res://codigo/zona_3.gd" id="169_n7tbl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ugvs"]
 texture = ExtResource("1_4m21t")
@@ -6913,8 +6913,23 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dvpwn"]
 _data = {
-"RESET": SubResource("Animation_t387s"),
-"a": SubResource("Animation_a8kg7")
+&"RESET": SubResource("Animation_t387s"),
+&"a": SubResource("Animation_a8kg7")
+}
+
+[sub_resource type="Animation" id="Animation_i5dab"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2331, -2187)]
 }
 
 [sub_resource type="Animation" id="Animation_nalkp"]
@@ -6933,25 +6948,10 @@ tracks/0/keys = {
 "values": [Vector2(-3392, -2187), Vector2(2331, -2187)]
 }
 
-[sub_resource type="Animation" id="Animation_i5dab"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2331, -2187)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4pdyx"]
 _data = {
-"RESET": SubResource("Animation_i5dab"),
-"mover": SubResource("Animation_nalkp")
+&"RESET": SubResource("Animation_i5dab"),
+&"mover": SubResource("Animation_nalkp")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btn07"]
@@ -6990,8 +6990,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsupv"]
 _data = {
-"RESET": SubResource("Animation_883xi"),
-"a": SubResource("Animation_j4ued")
+&"RESET": SubResource("Animation_883xi"),
+&"a": SubResource("Animation_j4ued")
 }
 
 [node name="mapa1" type="Node2D"]
@@ -7090,7 +7090,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_dvpwn")
+&"": SubResource("AnimationLibrary_dvpwn")
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -7104,7 +7104,7 @@ position = Vector2(2331, -2187)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="paredmovil"]
 libraries = {
-"": SubResource("AnimationLibrary_4pdyx")
+&"": SubResource("AnimationLibrary_4pdyx")
 }
 
 [node name="enemigoMovil" type="Node" parent="."]
@@ -7169,7 +7169,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Zona3/ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_gsupv")
+&"": SubResource("AnimationLibrary_gsupv")
 }
 
 [connection signal="area_entered" from="zona de muerte" to="." method="_on_zona_de_muerte_area_entered"]

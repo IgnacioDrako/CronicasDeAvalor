@@ -1,6 +1,6 @@
 [gd_scene load_steps=93 format=3 uid="uid://dr8f68mtcrruu"]
 
-[ext_resource type="Script" path="res://codigo/player.gd" id="1_kk8ih"]
+[ext_resource type="Script" uid="uid://c70avlobv2luh" path="res://codigo/player.gd" id="1_kk8ih"]
 [ext_resource type="Texture2D" uid="uid://bar0prfo5eq7q" path="res://recursos/player/_Idle.png" id="2_srovr"]
 [ext_resource type="Texture2D" uid="uid://kkjj3m354f2a" path="res://recursos/player/_AttackNoMovement.png" id="3_x5a4h"]
 [ext_resource type="Texture2D" uid="uid://ccadjjt6otstq" path="res://recursos/player/_Run.png" id="4_6a8m2"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b67rjkyqt63at" path="res://recursos/player/_Hit.png" id="5_rp83d"]
 [ext_resource type="Texture2D" uid="uid://m0egrmgv7fvu" path="res://recursos/player/_CrouchTransition.png" id="6_ufq0t"]
 [ext_resource type="PackedScene" uid="uid://cqur4ilb6yi5h" path="res://recursos/player/hitboxplayer.tscn" id="8_m8omp"]
-[ext_resource type="Script" path="res://codigo/hurtboxpj.gd" id="8_u6lbh"]
+[ext_resource type="Script" uid="uid://bd3vqy6mw27hq" path="res://codigo/hurtboxpj.gd" id="8_u6lbh"]
 [ext_resource type="Texture2D" uid="uid://cpturh4oxckxp" path="res://recursos/player/_Roll.png" id="9_yr0ji"]
 [ext_resource type="Texture2D" uid="uid://cl3gp4j011php" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/weapon_icon.png" id="13_nscuh"]
 [ext_resource type="Texture2D" uid="uid://bpjfkss1cl33d" path="res://recursos/Medieval_Castle_Asset_Pack/HUD/bar.png" id="14_lj1b0"]
@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://65llpfo044tu" path="res://recursos/audio/efecto/ataque/HitPlate.ogg" id="19_cgxko"]
 [ext_resource type="AudioStream" uid="uid://biww3phmqjekx" path="res://recursos/audio/efecto/ataque/Miss1.ogg" id="19_mhouv"]
 [ext_resource type="AudioStream" uid="uid://cer6p8a603n1f" path="res://recursos/audio/efecto/pasos/pasos.mp3" id="21_f3tx6"]
-[ext_resource type="Script" path="res://codigo/menu_muerte.gd" id="23_kqlxb"]
+[ext_resource type="Script" uid="uid://5cy15nkepste" path="res://codigo/menu_muerte.gd" id="23_kqlxb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vi7r4"]
 atlas = ExtResource("2_srovr")
@@ -686,6 +686,7 @@ offset_bottom = -148.0
 script = ExtResource("23_kqlxb")
 
 [node name="ColorRect" type="ColorRect" parent="MenuMuerte"]
+layout_mode = 0
 offset_left = -16.0
 offset_top = -11.0
 offset_right = 24.0
@@ -694,6 +695,7 @@ scale = Vector2(3.01065, 3.1828)
 color = Color(0, 0, 0, 0.372549)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuMuerte"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 8

@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://c3tyxdl1vido6"]
 
 [ext_resource type="Texture2D" uid="uid://cwdyvu7rxabb1" path="res://recursos/maguia/Fire Effect 2/Fire Effect 2/Explosion 2 SpriteSheet.png" id="1_wjdit"]
-[ext_resource type="Script" path="res://codigo/fireball.gd" id="1_wyinm"]
+[ext_resource type="Script" uid="uid://turpapcymdc2" path="res://codigo/fireball.gd" id="1_wyinm"]
 [ext_resource type="AudioStream" uid="uid://bv14hoe8jk2jd" path="res://recursos/audio/efecto/ataque/Hunter_ExplosiveShotImpact2.ogg" id="3_fvbvi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xx4e8"]

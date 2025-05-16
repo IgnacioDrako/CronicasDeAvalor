@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bl23rj5fjx8v3"]
 
-[ext_resource type="Script" path="res://codigo/guardar.gd" id="1_s1lwv"]
+[ext_resource type="Script" uid="uid://pslxo55m54yh" path="res://codigo/guardar.gd" id="1_s1lwv"]
 [ext_resource type="Texture2D" uid="uid://1qtjieklsjwy" path="res://recursos/Medieval_Castle_Asset_Pack/Decorations/bookshelf_1.png" id="1_xscl8"]
 [ext_resource type="AudioStream" uid="uid://j7njbfnr2py5" path="res://recursos/audio/efecto/otro/save.ogg" id="3_yay3g"]
 

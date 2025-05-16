@@ -12,8 +12,9 @@ config_version=5
 
 config/name="CronicasDeAvalor_V_0.0"
 run/main_scene="res://nodos/elementos/main_menu.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://recursos/img/Dummy0.png"
+config/windows_native_icon="res://recursos/img/Dummy0.ico"
 
 [autoload]
 

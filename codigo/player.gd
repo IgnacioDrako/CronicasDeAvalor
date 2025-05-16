@@ -2,12 +2,11 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando
-
-# Máquina de estados para el jugador
-enum PlayerState {IDLE, MOVING, JUMPING, ATTACKING, ATTACKING_COMBO, HURT, ROLLING, DEAD}
+const ROLL_SPEED = SPEED * 2  # Velocidad duplicada cuando está rodando# Máquina de estados para el jugador
+enum PlayerState {IDLE, MOVING, JUMPING, ATTACKING, ATTACKING_COMBO, HURT, ROLLING, DEAD}#combo no esta implementado
 var current_state = PlayerState.IDLE
 var can_combo = false  # Variable para permitir el combo
+var vida=100
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -76,11 +75,12 @@ func _ready() -> void:
 	#Barra de vida
 	actualizar_Vida()
 	
+	#Bug en .EXE no guarda vida en valor global
+	
 func custom_get_gravity() -> Vector2:
 	return Vector2(0, 980)  # Asumiendo una función get_gravity basada en el código original
 
-func _process(delta):
-	# Esta función debe ser más simple, sólo para inputs que no estén ligados a la física
+func _process(delta): 
 	if current_state == PlayerState.IDLE or current_state == PlayerState.MOVING:
 		if Input.is_action_just_pressed("Atack"):
 			start_attack()
@@ -112,8 +112,8 @@ func cancel_combo() -> void:
 	auto_combo_timer.stop()
 
 func actualizar_Vida() -> void:
-	$Camera2D/Hud/HP0/vida.scale.x = DemoGlobal.vidaPj / 100.0
-	if DemoGlobal.vidaPj <= 0:
+	$Camera2D/Hud/HP0/vida.scale.x = vida / 100.0
+	if vida <= 0:
 		$Camera2D/Hud/HP0/vida.scale.x = 0 / 100.0
 	
 func _physics_process(delta: float) -> void:
@@ -123,7 +123,7 @@ func _physics_process(delta: float) -> void:
 	# Determinar el próximo estado basado en la situación actual
 	var next_state = current_state
 	
-	if DemoGlobal.vidaPj <= 0:
+	if vida <= 0:
 		next_state = PlayerState.DEAD
 	elif is_hurt:
 		next_state = PlayerState.HURT
@@ -348,14 +348,14 @@ func _on_animation_finished(anim_name: String) -> void:
 			change_state(PlayerState.JUMPING)
 
 func received_damage(damage_amount: int) -> void:
-	if DemoGlobal.vidaPj <= 0:
+	if vida <= 0:
 		die()
 	if is_hurt or is_dead or current_state == PlayerState.ROLLING:
 		return
 	
-	DemoGlobal.vidaPj -= damage_amount
+	vida -= damage_amount
 	print("Jugador recibe daño: ", damage_amount)
-	print("Salud restante: ", DemoGlobal.vidaPj)
+	print("Salud restante: ", vida)
 	
 	is_hurt = true
 	hurt_timer.start(0.5)
@@ -369,7 +369,7 @@ func received_damage(damage_amount: int) -> void:
 	# Interrumpir el ataque si está atacando
 	cancel_combo()
 	
-	if DemoGlobal.vidaPj <= 0:
+	if vida <= 0:
 		#change_state(PlayerState.DEAD)
 		die()
 	else:
@@ -399,10 +399,10 @@ func hit(damage: int) -> void:
 
 func heal(cura: int) -> void:
 	print("Curado "+str(cura))
-	if DemoGlobal.vidaPj + cura >= 100:
-		DemoGlobal.vidaPj = 100
+	if vida + cura >= 100:
+		vida = 100
 	else:
-		DemoGlobal.vidaPj += cura
+		vida += cura
 	actualizar_Vida()
 
 # Función para habilitar/deshabilitar el combo automático (útil si quieres agregar una opción en el menú)

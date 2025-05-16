@@ -17,6 +17,7 @@ func mostrar():
 
 func _on_button_pressed() -> void:
 	visible = false
+	DemoGlobal.vidaPj += 100
 	DemoGlobal.loadgame()
 	get_tree().change_scene_to_file(DemoGlobal.current_scene)
 	pass # Replace with function body.

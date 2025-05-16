@@ -2545,8 +2545,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7mhd"]
 _data = {
-"RESET": SubResource("Animation_0il0e"),
-"a": SubResource("Animation_3gkqw")
+&"RESET": SubResource("Animation_0il0e"),
+&"a": SubResource("Animation_3gkqw")
 }
 
 [node name="DebugMap" type="Node2D"]
@@ -2668,5 +2668,5 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_c7mhd")
+&"": SubResource("AnimationLibrary_c7mhd")
 }

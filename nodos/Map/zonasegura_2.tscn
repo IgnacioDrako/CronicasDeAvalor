@@ -1,7 +1,7 @@
 [gd_scene load_steps=529 format=4 uid="uid://plibbgwwdt8u"]
 
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_2aaui"]
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_nuqs1"]
+[ext_resource type="Script" uid="uid://ddb1d56bxxdcp" path="res://codigo/debug_map.gd" id="1_nuqs1"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_juot7"]
 [ext_resource type="Texture2D" uid="uid://s2ncvm78n4l8" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_3.png" id="3_7xsbs"]
 [ext_resource type="Texture2D" uid="uid://d0usjg1bul4en" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_4.png" id="4_qdksn"]
@@ -181,8 +181,8 @@
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="179_4dvqu"]
 [ext_resource type="PackedScene" uid="uid://bl23rj5fjx8v3" path="res://nodos/elementos/guardar.tscn" id="181_c7t5g"]
 [ext_resource type="AudioStream" uid="uid://cvgncjytghtj7" path="res://recursos/audio/musica/ZonaDescaso.mp3" id="181_kj7x5"]
-[ext_resource type="Script" path="res://codigo/guardar2.gd" id="182_6eile"]
-[ext_resource type="Script" path="res://codigo/cambioJefe.gd" id="183_06mju"]
+[ext_resource type="Script" uid="uid://wphkwo4i01kb" path="res://codigo/guardar2.gd" id="182_6eile"]
+[ext_resource type="Script" uid="uid://dsdks1esaattg" path="res://codigo/cambioJefe.gd" id="183_06mju"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nics7"]
 texture = ExtResource("1_2aaui")
@@ -25387,8 +25387,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrwe0"]
 _data = {
-"RESET": SubResource("Animation_t1d6p"),
-"a": SubResource("Animation_tuq53")
+&"RESET": SubResource("Animation_t1d6p"),
+&"a": SubResource("Animation_tuq53")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0j5tj"]
@@ -25439,7 +25439,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_hrwe0")
+&"": SubResource("AnimationLibrary_hrwe0")
 }
 
 [node name="Guardar" parent="." instance=ExtResource("181_c7t5g")]

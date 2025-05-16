@@ -1,7 +1,7 @@
 [gd_scene load_steps=75 format=4 uid="uid://dm1ugis7i5sm2"]
 
 [ext_resource type="Texture2D" uid="uid://b6ssr2ragcclm" path="res://recursos/Medieval_Castle_Asset_Pack/map/platform_2.png" id="1_bnaxn"]
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_imvj2"]
+[ext_resource type="Script" uid="uid://ddb1d56bxxdcp" path="res://codigo/debug_map.gd" id="1_imvj2"]
 [ext_resource type="Texture2D" uid="uid://duu727owf7b44" path="res://recursos/Free Pixel Art Forest/Free Pixel Art Forest/Preview/Background.png" id="2_6o70i"]
 [ext_resource type="Texture2D" uid="uid://c04gxgh7ryipu" path="res://recursos/Medieval_Castle_Asset_Pack/map/blank.png" id="3_b48u2"]
 [ext_resource type="Texture2D" uid="uid://dlhh86iwgf806" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_side_right_2.png" id="4_y6kyv"]
@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://dr8f68mtcrruu" path="res://nodos/elementos/player.tscn" id="31_85vs4"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="33_7fo4c"]
 [ext_resource type="PackedScene" uid="uid://edijvxvx3tii" path="res://nodos/elementos/entrada.tscn" id="33_kf7sr"]
-[ext_resource type="Script" path="res://codigo/GuardarNuevaPartida.gd" id="35_1t2o6"]
+[ext_resource type="Script" uid="uid://kt8nr52xu0fk" path="res://codigo/GuardarNuevaPartida.gd" id="35_1t2o6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vhc7f"]
 texture = ExtResource("1_bnaxn")
@@ -261,7 +261,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r4ycc"]
 _data = {
-"dummy": SubResource("Animation_j6vak")
+&"dummy": SubResource("Animation_j6vak")
 }
 
 [sub_resource type="Animation" id="Animation_0il0e"]
@@ -296,8 +296,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c7mhd"]
 _data = {
-"RESET": SubResource("Animation_0il0e"),
-"a": SubResource("Animation_3gkqw")
+&"RESET": SubResource("Animation_0il0e"),
+&"a": SubResource("Animation_3gkqw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1r4i0"]
@@ -374,7 +374,7 @@ color = Color(1, 1, 1, 0)
 [node name="TrasicionAnimacion" type="AnimationPlayer" parent="Entrada/ColorRect"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_r4ycc")
+&"": SubResource("AnimationLibrary_r4ycc")
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -389,7 +389,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_c7mhd")
+&"": SubResource("AnimationLibrary_c7mhd")
 }
 
 [node name="GuardarPartidaNueva" type="Node2D" parent="."]

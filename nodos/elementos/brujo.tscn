@@ -1,6 +1,6 @@
 [gd_scene load_steps=159 format=3 uid="uid://cg8mpfya153iv"]
 
-[ext_resource type="Script" path="res://codigo/brujo.gd" id="1_6d873"]
+[ext_resource type="Script" uid="uid://c53kwawc5mcfo" path="res://codigo/brujo.gd" id="1_6d873"]
 [ext_resource type="Texture2D" uid="uid://c4t0b1ol7wgp0" path="res://recursos/Enemigos/Necromancer/Necromancer/Attack/spr_NecromancerAttackWithoutEffect_strip47.png" id="2_bwld2"]
 [ext_resource type="Texture2D" uid="uid://nvrqsl00f022" path="res://recursos/Enemigos/Necromancer/Necromancer/Death/spr_NecromancerDeath_strip52.png" id="3_7fnkg"]
 [ext_resource type="Texture2D" uid="uid://dohreprilhja3" path="res://recursos/Enemigos/Necromancer/Necromancer/GetHit/spr_NecromancerGetHitWithoutEffect_strip9.png" id="3_nev85"]

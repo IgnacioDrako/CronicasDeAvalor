@@ -1,9 +1,9 @@
 [gd_scene load_steps=42 format=3 uid="uid://cwjdyjy1abd3q"]
 
 [ext_resource type="Texture2D" uid="uid://b0d7jcqi7dkud" path="res://recursos/Enemigos/Cacodaemon Sprite Sheet.png" id="1_gd06k"]
-[ext_resource type="Script" path="res://codigo/caco_demonio.gd" id="1_sulyk"]
+[ext_resource type="Script" uid="uid://4on34o5tjgly" path="res://codigo/caco_demonio.gd" id="1_sulyk"]
 [ext_resource type="PackedScene" uid="uid://b6qpjhgisv1d3" path="res://recursos/Enemigos/hurtboxenemi.tscn" id="2_1fvu4"]
-[ext_resource type="Script" path="res://codigo/detection.gd" id="4_5nbfa"]
+[ext_resource type="Script" uid="uid://bx7xj0tonxkbo" path="res://codigo/detection.gd" id="4_5nbfa"]
 [ext_resource type="PackedScene" uid="uid://dg2yvldmsbw6u" path="res://nodos/elementos/hit_box_enemy.tscn" id="5_dj30p"]
 [ext_resource type="AudioStream" uid="uid://b8xr2k7emua0v" path="res://recursos/audio/efecto/ataque/Cacodemonio.ogg" id="6_o0552"]
 [ext_resource type="AudioStream" uid="uid://8frtyd3cx4g8" path="res://recursos/audio/efecto/ataque/HitFlesh.ogg" id="7_r37im"]

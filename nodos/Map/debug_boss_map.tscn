@@ -1,6 +1,6 @@
 [gd_scene load_steps=505 format=4 uid="uid://blefswfnofgf7"]
 
-[ext_resource type="Script" path="res://codigo/debug_boss_map.gd" id="1_5uqp1"]
+[ext_resource type="Script" uid="uid://bkr4tmgf5xehx" path="res://codigo/debug_boss_map.gd" id="1_5uqp1"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_la6yu"]
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="2_b8vgi"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_swr8y"]
@@ -12900,8 +12900,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7bq68"]
 _data = {
-"RESET": SubResource("Animation_v4kdo"),
-"cerrar": SubResource("Animation_vflb3")
+&"RESET": SubResource("Animation_v4kdo"),
+&"cerrar": SubResource("Animation_vflb3")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_615q7"]
@@ -12955,9 +12955,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_enp1o"]
 _data = {
-"RESET": SubResource("Animation_g8y7y"),
-"a": SubResource("Animation_ccr7u"),
-"b": SubResource("Animation_u05ww")
+&"RESET": SubResource("Animation_g8y7y"),
+&"a": SubResource("Animation_ccr7u"),
+&"b": SubResource("Animation_u05ww")
 }
 
 [node name="debug_boss_map" type="Node2D"]
@@ -13002,7 +13002,7 @@ position = Vector2(-712, -195)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Map/MainMap/Muro"]
 libraries = {
-"": SubResource("AnimationLibrary_7bq68")
+&"": SubResource("AnimationLibrary_7bq68")
 }
 
 [node name="trigerPuerta" type="Area2D" parent="Map"]
@@ -13079,7 +13079,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_enp1o")
+&"": SubResource("AnimationLibrary_enp1o")
 }
 
 [connection signal="area_entered" from="Map/trigerPuerta" to="." method="_on_triger_puerta_area_entered"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=85 format=3 uid="uid://b586c3vkx4kp1"]
 
-[ext_resource type="Script" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
+[ext_resource type="Script" uid="uid://cd0uvtibc3fes" path="res://codigo/boss_slime.gd" id="1_5tkg7"]
 [ext_resource type="Texture2D" uid="uid://cte56ba48imkg" path="res://recursos/Enemigos/boss_Slime/sprite_creado.png" id="1_s226o"]
 [ext_resource type="Texture2D" uid="uid://d0afqs5ra7dp2" path="res://recursos/Enemigos/boss_Slime/sprite_creado1.png" id="2_fqlmh"]
 [ext_resource type="Texture2D" uid="uid://dnul7wc65voyt" path="res://recursos/Enemigos/boss_Slime/dead/0a198347af5a4088b698bbed4e89240cs18M4r12OmhyiMOA-0.png" id="2_n8mn6"]
@@ -441,6 +441,21 @@ size = Vector2(114, 51)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qffh1"]
 size = Vector2(115, 13)
 
+[sub_resource type="Animation" id="Animation_nsrf7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_7bsuh"]
 resource_name = "fin"
 length = 5.0
@@ -457,25 +472,10 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_nsrf7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j4f52"]
 _data = {
-"RESET": SubResource("Animation_nsrf7"),
-"fin": SubResource("Animation_7bsuh")
+&"RESET": SubResource("Animation_nsrf7"),
+&"fin": SubResource("Animation_7bsuh")
 }
 
 [node name="BossSlime" type="CharacterBody2D"]
@@ -582,7 +582,7 @@ color = Color(1, 1, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_j4f52")
+&"": SubResource("AnimationLibrary_j4f52")
 }
 
 [node name="Daño" type="AudioStreamPlayer2D" parent="."]

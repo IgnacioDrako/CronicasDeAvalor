@@ -1,6 +1,6 @@
 [gd_scene load_steps=524 format=4 uid="uid://c7o2shnthmjbc"]
 
-[ext_resource type="Script" path="res://codigo/debug_map.gd" id="1_04jmr"]
+[ext_resource type="Script" uid="uid://ddb1d56bxxdcp" path="res://codigo/debug_map.gd" id="1_04jmr"]
 [ext_resource type="Texture2D" uid="uid://cvbsetd5e3w4i" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_1.png" id="1_86s6x"]
 [ext_resource type="Texture2D" uid="uid://pskjo6e6lbb2" path="res://recursos/Medieval_Castle_Asset_Pack/map/arch_2.png" id="2_b0npo"]
 [ext_resource type="Texture2D" uid="uid://s2ncvm78n4l8" path="res://recursos/Medieval_Castle_Asset_Pack/map/brick_3.png" id="3_5e14u"]
@@ -181,7 +181,7 @@
 [ext_resource type="PackedScene" uid="uid://dt4wswwjvuc4u" path="res://nodos/elementos/menu_pausa.tscn" id="179_p8m5r"]
 [ext_resource type="PackedScene" uid="uid://vbqy5j5yfitg" path="res://nodos/elementos/heal.tscn" id="180_1kbgx"]
 [ext_resource type="AudioStream" uid="uid://cvgncjytghtj7" path="res://recursos/audio/musica/ZonaDescaso.mp3" id="181_tkla3"]
-[ext_resource type="Script" path="res://codigo/pararelboss.gd" id="183_13n02"]
+[ext_resource type="Script" uid="uid://dvx55od2aa2nl" path="res://codigo/pararelboss.gd" id="183_13n02"]
 [ext_resource type="PackedScene" uid="uid://cany5eisily7a" path="res://nodos/elementos/guardar_0.tscn" id="183_didjc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kpi4k"]
@@ -20622,8 +20622,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hrwe0"]
 _data = {
-"RESET": SubResource("Animation_t1d6p"),
-"a": SubResource("Animation_tuq53")
+&"RESET": SubResource("Animation_t1d6p"),
+&"a": SubResource("Animation_tuq53")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4qfdm"]
@@ -20685,7 +20685,7 @@ color = Color(0, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
 libraries = {
-"": SubResource("AnimationLibrary_hrwe0")
+&"": SubResource("AnimationLibrary_hrwe0")
 }
 
 [node name="Guardar0" parent="." instance=ExtResource("183_didjc")]

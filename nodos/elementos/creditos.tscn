@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://4e3oua18jdus"]
 
-[ext_resource type="Script" path="res://codigo/creditos.gd" id="1_0wxlv"]
+[ext_resource type="Script" uid="uid://duffgnnkwutrv" path="res://codigo/creditos.gd" id="1_0wxlv"]
 [ext_resource type="Texture2D" uid="uid://by178bsckufft" path="res://recursos/Medieval_Castle_Asset_Pack/Background/layer_1.png" id="1_wfkd2"]
 [ext_resource type="Texture2D" uid="uid://8pglfltdbdhg" path="res://recursos/img/menuInicial.png" id="2_v52aa"]
 [ext_resource type="FontFile" uid="uid://c6avg4bjqcpl8" path="res://recursos/font/darks-skyrim-font/DarkXShadowSkyrim.ttf" id="3_aamab"]
